@@ -1,0 +1,6 @@
+{
+  "/api/v1": {
+    "target": "https://pacific-forest-76418.herokuapp.com/",
+    "secure": false
+  }
+}

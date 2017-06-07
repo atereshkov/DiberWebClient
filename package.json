@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "node app.js",
+    "start": "node app.js --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "deploy": "git push origin master && git push heroku master",
