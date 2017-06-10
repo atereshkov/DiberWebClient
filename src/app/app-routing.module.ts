@@ -1,11 +1,12 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { MainPageComponent } from "./components/main-page/main-page.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 export const ROUTES: Routes = [
   //{ path: '', redirectTo: '/main-page', pathMatch: 'full' },
   { path: '', component: MainPageComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
