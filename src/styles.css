@@ -1,5 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
 body, html {
   height: 100%;
   font: 400 15px/1.8 "Lato", sans-serif;
+}
+
+/* Add padding for support fixed-top navbar */
+body {
+  padding-top: 70px;
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
 }
