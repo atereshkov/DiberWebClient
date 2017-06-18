@@ -9,15 +9,15 @@
 .form-signin {
   max-width: 330px;
   margin: 0 auto;
-  padding: 18% 15px 15px;
+  padding: 16% 15px 15px;
 }
 
 .form-signin .form-signin-heading,
-.form-signin .checkbox {
+.form-signin {
   margin-bottom: 10px;
 }
 
-.form-signin .checkbox {
+.form-signin{
   font-weight: normal;
 }
 
