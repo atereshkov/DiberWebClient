@@ -1,23 +1,17 @@
 export class User {
-  id: string;
+  id: number;
   roles: Role[];
   username: string;
   password: string;
-  accountNonExpired: boolean;
-  accountNonLocked: boolean;
-  credentialsNonExpired: boolean;
-  enabled: boolean;
+  email: string;
+  fullname: string;
 
-  constructor(id: string, roles: Role[], username: string, password: string,
-              accountNonExpired: boolean, accountNonLocked: boolean, credentialsNonExpired: boolean,
-              enabled: boolean) {
+  constructor(id: number, roles: Role[], username: string, password: string, email: string, fullname: string) {
     this.id = id;
     this.roles = roles;
     this.username = username;
     this.password = password;
-    this.accountNonExpired = accountNonExpired;
-    this.accountNonLocked = accountNonLocked;
-    this.credentialsNonExpired = credentialsNonExpired;
-    this.enabled = enabled;
+    this.email = email;
+    this.fullname = fullname;
   }
 }
