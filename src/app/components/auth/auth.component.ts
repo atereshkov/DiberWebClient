@@ -30,7 +30,9 @@ export class AuthComponent implements OnInit {
     this.authService.login(this.username, this.password)
       .subscribe(result => {
           if (result === true) {
-            this.router.navigate(['/home']);
+            if (this.authService.isUserLoggedIn()) {
+              this.router.navigate(['/home']);
+            }
           } else {
             this.error = 'Authentication error';
             this.loading = false;

@@ -10,6 +10,8 @@ export class AuthService {
 
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
   private static CLIENT_ID = 'client_id';
+  private static CLIENT_SECRET = 'client_secret';
+  private static CLIENT_SECRET_VALUE = '123456';
   private static CLIENT_ID_VALUE = 'clientapp';
   private static GRANT_TYPE = 'grant_type';
   private static GRANT_TYPE_VALUE = 'password';
@@ -19,20 +21,23 @@ export class AuthService {
   }
 
   login(login: string, password: string) {
-    const headers = new Headers({ 'Content-Type': 'application/json',
+    const headers = new Headers({ 'Accept': 'application/json',
+                                  'Content-Type': 'application/x-www-form-urlencoded',
                                   'Authorization': AuthService.HEADER_AUTHORIZATION_VALUE });
 
     let params: URLSearchParams = new URLSearchParams();
     params.set(AuthService.CLIENT_ID, AuthService.CLIENT_ID_VALUE);
     params.set(AuthService.GRANT_TYPE, AuthService.GRANT_TYPE_VALUE);
+    params.set(AuthService.CLIENT_SECRET, AuthService.CLIENT_SECRET_VALUE);
     params.set('username', login);
     params.set('password', password);
 
-    const options = new RequestOptions({ headers: headers, params: params });
+    const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(AuthService.AUTH, options)
+    return this.http.post(AuthService.AUTH, params, options)
       .map((response: Response) => {
-        const token = response.json() && response.json().token;
+        const token = response.json() && response.json().access_token;
+        console.info(response.json());
         if (token) {
           this.token = token;
           localStorage.setItem('currentUser', JSON.stringify({ username: login, token: token, password: password }));
