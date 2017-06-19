@@ -36,11 +36,12 @@ export class AuthService {
 
     return this.http.post(AuthService.AUTH, params, options)
       .map((response: Response) => {
-        const token = response.json() && response.json().access_token;
+        const access_token = response.json().access_token;
+        const refresh_token = response.json().refresh_token;
         console.info(response.json());
-        if (token) {
-          this.token = token;
-          localStorage.setItem('currentUser', JSON.stringify({ username: login, token: token, password: password }));
+        if (access_token) {
+          this.token = access_token;
+          localStorage.setItem('currentUser', JSON.stringify({ username: login, access_token: access_token, refresh_token: refresh_token, password: password }));
           return true;
         } else {
           return false;
