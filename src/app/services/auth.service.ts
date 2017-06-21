@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthService {
 
-  public token: String;
   private static AUTH = 'https://pacific-forest-76418.herokuapp.com/oauth/token';
 
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
@@ -40,7 +39,6 @@ export class AuthService {
         const refresh_token = response.json().refresh_token;
         console.info(response.json());
         if (access_token) {
-          this.token = access_token;
           localStorage.setItem('currentUser', JSON.stringify({ username: login, access_token: access_token, refresh_token: refresh_token, password: password }));
           return true;
         } else {
@@ -55,7 +53,6 @@ export class AuthService {
   }
 
   logout(): void {
-    this.token = null;
     localStorage.removeItem('currentUser');
   }
 
