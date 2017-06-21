@@ -1,6 +1,7 @@
 import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
   private static GRANT_TYPE = 'grant_type';
   private static GRANT_TYPE_VALUE = 'password';
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
 
   }
 
@@ -54,6 +55,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('currentUser');
+    this.router.navigate(['/']);
   }
 
   private static handleError(error: Response | any) {

@@ -10,6 +10,10 @@ export class LoggedInGuard implements CanActivate {
   }
 
   canActivate(): boolean {
+    //if (this.authService.isUserLoggedIn()) {
+      //this.authService.logout();
+    //}
+
     return !this.authService.isUserLoggedIn();
   }
 

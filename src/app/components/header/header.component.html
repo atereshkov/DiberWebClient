@@ -25,9 +25,8 @@
     </ul>
 
     <!-- Right area -->
-    <!-- TODO: !isUserLoggedIn() -->
     <div class="navbar-nav navbar-right">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto" *ngIf="!isUserLoggedIn()">
         <li class="nav-item">
           <a class="nav-link" routerLink="signin">Login</a>
         </li>
@@ -36,13 +35,12 @@
         </li>
       </ul>
 
-      <!-- TODO: isUserLoggedIn() -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="isUserLoggedIn()">
         <a class="nav-link dropdown-toggle" id="navbar-dropdown-menu-link" data-toggle="dropdown" aria-haspopup="true"
-           aria-expanded="false" href="#">Signed in as user22</a>
+           aria-expanded="false" href="#">Signed in as {{user.username}}</a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-menu-link">
           <a class="dropdown-item" routerLink="menu1">Menu 1</a>
-          <a class="dropdown-item" routerLink="menu2">Menu 2</a>
+          <a class="dropdown-item" routerLink="signin">Logout</a>
         </div>
       </li>
     </div>
