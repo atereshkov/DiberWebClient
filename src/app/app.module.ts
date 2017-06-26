@@ -2,10 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -15,6 +13,8 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { CourierDashboardComponent } from './components/courier-dashboard/courier-dashboard.component';
 import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
+import { LoggedInGuard } from "./guards/logged-in.guard";
+import { AuthService } from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +35,10 @@ import { ClientDashboardComponent } from './components/client-dashboard/client-d
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    LoggedInGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

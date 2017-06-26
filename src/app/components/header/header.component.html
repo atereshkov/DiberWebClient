@@ -40,7 +40,7 @@
            aria-expanded="false" href="#">Signed in as {{user.username}}</a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-menu-link">
           <a class="dropdown-item" routerLink="menu1">Menu 1</a>
-          <a class="dropdown-item" routerLink="signin">Logout</a>
+          <a class="dropdown-item" (click)="authService.logout()">Logout</a>
         </div>
       </li>
     </div>
