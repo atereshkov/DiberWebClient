@@ -15,6 +15,7 @@ import { CourierDashboardComponent } from './components/courier-dashboard/courie
 import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
 import { LoggedInGuard } from "./guards/logged-in.guard";
 import { AuthService } from "./services/auth.service";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthService } from "./services/auth.service";
     AuthComponent,
     AdminPanelComponent,
     CourierDashboardComponent,
-    ClientDashboardComponent
+    ClientDashboardComponent,
+    RegisterComponent
   ],
   imports: [
     NgbModule.forRoot(),
