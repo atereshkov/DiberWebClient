@@ -1,0 +1,17 @@
+.bgimg-1 {
+  display: flex;
+  opacity: 0.65;
+  background-size: cover;
+  background: url("http://www.brockmetal.com/wp-content/uploads/2014/01/parallax-section-background-03.jpg") no-repeat fixed center;
+  min-height: 100%;
+}
+
+.gray-card {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+}
+
+.divider-form {
+  border: 1px solid #333;
+  margin: 10px 10px;
+}
