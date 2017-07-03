@@ -11,7 +11,7 @@ import {User} from "../../models/user";
 })
 export class RegisterComponent implements OnInit {
 
-  private user: User;
+  user: User;
   loading = false;
   error = '';
 
