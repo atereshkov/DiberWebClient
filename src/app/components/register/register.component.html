@@ -1,0 +1,33 @@
+<div class="bgimg-1">
+  <div class="container">
+    <div class="row h-100">
+      <div class="offset-md-4 col-md-4 my-auto">
+        <div class="card card-inverse gray-card">
+          <div class="card-block">
+            <h3 class="text-center">Please login</h3>
+            <br>
+            <input type="text" id="LoginUserName" class="form-control input-sm chat-input"
+                   placeholder="Username or Email"
+                   required
+                   name="login"
+                   [(ngModel)]="username"/>
+            <br>
+            <input type="password" id="LoginUserPassword" class="form-control input-sm chat-input"
+                   placeholder="Password"
+                   name="pass"
+                   id="passwordField"
+                   [(ngModel)]="password"/>
+            <br>
+            <div class="wrapper">
+            <span class="group-btn">
+               <button class="btn btn-primary btn-lg btn-block" (click)="login()">Log in</button>
+            </span>
+            </div>
+            <div class="divider-form"></div>
+            <p class="message text-center">Not registered? <a href="register">Create an account!</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
