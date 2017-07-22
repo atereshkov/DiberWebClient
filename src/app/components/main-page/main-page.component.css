@@ -6,17 +6,17 @@
 }
 
 .bgimg-1 {
-  background-image: url("http://www.brockmetal.com/wp-content/uploads/2014/01/parallax-section-background-03.jpg");
+  background-image: url("/assets/images/main-background.jpg");
   min-height: 100%;
 }
 
 .bgimg-2 {
-  background-image: url("http://file.mrbool.com/mrbool/articles/RicardoArrigoni/Parallax/Parallax1.jpg");
+  background-image: url("/assets/images/background2.jpg");
   min-height: 53%;
 }
 
 .bgimg-3 {
-  background-image: url("http://www.brockmetal.com/wp-content/uploads/2014/01/parallax-section-background-04.jpg");
+  background-image: url("/assets/images/background3.jpg");
   min-height: 54%;
 }
 

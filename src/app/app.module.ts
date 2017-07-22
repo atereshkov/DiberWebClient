@@ -16,6 +16,7 @@ import { ClientDashboardComponent } from './components/client-dashboard/client-d
 import { LoggedInGuard } from "./guards/logged-in.guard";
 import { AuthService } from "./services/auth.service";
 import { RegisterComponent } from './components/register/register.component';
+import {AdminGuard} from "./guards/admin.guard";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { RegisterComponent } from './components/register/register.component';
   ],
   providers: [
     LoggedInGuard,
+    AdminGuard,
     AuthService
   ],
   bootstrap: [AppComponent]
