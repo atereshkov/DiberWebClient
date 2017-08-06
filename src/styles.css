@@ -8,8 +8,10 @@ body {
   padding-top: 70px;
 }
 
-@media (max-width: 979px) {
+/*
+@media (min-width: 980px) {
   body {
-    padding-top: 0;
+    padding-top: 70px;
   }
 }
+*/
