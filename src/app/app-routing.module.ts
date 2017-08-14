@@ -7,6 +7,7 @@ import { LoggedInGuard } from "./guards/logged-in.guard"
 import {RegisterComponent} from "./components/register/register.component";
 import {AdminGuard} from "./guards/admin.guard";
 import {AdminPanelComponent} from "./components/admin-panel/admin-panel.component";
+import {LandingPageComponent} from "./components/landing-page/landing-page.component";
 
 export const ROUTES: Routes = [
   //{ path: '', redirectTo: '/main-page', pathMatch: 'full' },
@@ -14,6 +15,7 @@ export const ROUTES: Routes = [
   { path: 'signin', component: AuthComponent, canActivate: [LoggedInGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
   { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard] },
+  { path: 'landing', component: LandingPageComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
