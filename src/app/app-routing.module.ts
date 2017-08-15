@@ -11,11 +11,10 @@ import {LandingPageComponent} from "./components/landing-page/landing-page.compo
 
 export const ROUTES: Routes = [
   //{ path: '', redirectTo: '/main-page', pathMatch: 'full' },
-  { path: '', component: MainPageComponent },
+  { path: '', component: LandingPageComponent },
   { path: 'signin', component: AuthComponent, canActivate: [LoggedInGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
   { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard] },
-  { path: 'landing', component: LandingPageComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
