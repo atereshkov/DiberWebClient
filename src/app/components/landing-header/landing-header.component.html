@@ -22,14 +22,51 @@
           <a class="nav-link page-scroll pr-3 font-weight-bold" href="#four">Contact Us</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="signin">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="register">Register</a>
-        </li>
-      </ul>
     </div>
+
+
+    <ul class="nav navbar-nav navbar-right ml-auto" *ngIf="!isUserLoggedIn()">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="signin">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="register">Register</a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right ml-auto" *ngIf="isUserLoggedIn()">
+      <li class="nav-item">
+        <a class="nav-link" id="navbar-dropdown-panel-link" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false" href="#">
+          Dashboard
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-panel-link">
+          <a class="dropdown-item" routerLink="admin">Admin</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="dashboard/client">Client</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="dashboard/courier">Courier</a>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right ml-auto" *ngIf="isUserLoggedIn()">
+      <li class="nav-item">
+        <a class="nav-link" id="navbar-dropdown-menu-link" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false" href="#">
+          Personal
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-menu-link">
+          <a class="dropdown-item" routerLink="profile">Signed in as {{user.username}}</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="profile">My profile</a>
+          <a class="dropdown-item" routerLink="help">Help</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="settings">Settings</a>
+          <a class="dropdown-item" (click)="authService.logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+
   </div>
 </nav>
