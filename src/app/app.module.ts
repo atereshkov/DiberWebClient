@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MainPageComponent } from './components/main-page/main-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthComponent } from './components/auth/auth.component';
@@ -16,16 +15,15 @@ import { ClientDashboardComponent } from './components/client-dashboard/client-d
 import { LoggedInGuard } from "./guards/logged-in.guard";
 import { AuthService } from "./services/auth.service";
 import { RegisterComponent } from './components/register/register.component';
-import {AdminGuard} from "./guards/admin.guard";
+import { AdminGuard } from "./guards/admin.guard";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LandingHeaderComponent } from './components/landing-header/landing-header.component';
-import {LandingFooterComponent} from "./components/landing-footer/landing-footer.component";
+import { LandingFooterComponent } from "./components/landing-footer/landing-footer.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    MainPageComponent,
     PageNotFoundComponent,
     HeaderComponent,
     AuthComponent,
