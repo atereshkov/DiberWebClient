@@ -5,9 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HeaderComponent } from './components/header/header.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { CourierDashboardComponent } from './components/courier-dashboard/courier-dashboard.component';
@@ -23,9 +21,7 @@ import { LandingFooterComponent } from "./components/landing-footer/landing-foot
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     PageNotFoundComponent,
-    HeaderComponent,
     AuthComponent,
     AdminPanelComponent,
     CourierDashboardComponent,

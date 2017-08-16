@@ -5,7 +5,8 @@ import { User } from "../../models/user";
 @Component({
   selector: 'app-landing-header',
   templateUrl: 'landing-header.component.html',
-  styleUrls: ['landing-header.component.css']
+  styleUrls: ['landing-header.component.css'],
+  providers: [AuthService]
 })
 export class LandingHeaderComponent implements OnInit {
 
