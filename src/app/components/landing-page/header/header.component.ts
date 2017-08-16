@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth.service";
-import { User } from "../../models/user";
+import {AuthService} from "../../../services/auth.service";
+import {User} from "../../../models/user";
 
 @Component({
-  selector: 'app-landing-header',
-  templateUrl: 'landing-header.component.html',
-  styleUrls: ['landing-header.component.css'],
+  selector: 'app-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css'],
   providers: [AuthService]
 })
 export class LandingHeaderComponent implements OnInit {

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LandingHeaderComponent } from './landing-header.component';
+import { LandingHeaderComponent } from './header.component';
 
 describe('LandingHeaderComponent', () => {
   let component: LandingHeaderComponent;

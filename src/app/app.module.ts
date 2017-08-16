@@ -15,8 +15,8 @@ import { AuthService } from "./services/auth.service";
 import { RegisterComponent } from './components/register/register.component';
 import { AdminGuard } from "./guards/admin.guard";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { LandingHeaderComponent } from './components/landing-header/landing-header.component';
-import { LandingFooterComponent } from "./components/landing-footer/landing-footer.component";
+import { LandingHeaderComponent } from './components/landing-page/header/header.component';
+import { LandingFooterComponent } from "./components/landing-page/footer/footer.component";
 
 @NgModule({
   declarations: [
