@@ -1,6 +1,6 @@
-import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Http, Response, RequestOptions, Headers, URLSearchParams} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 import {Router} from "@angular/router";
 
 @Injectable()
@@ -21,9 +21,11 @@ export class AuthService {
   }
 
   login(login: string, password: string) {
-    const headers = new Headers({ 'Accept': 'application/json',
-                                  'Content-Type': 'application/x-www-form-urlencoded',
-                                  'Authorization': AuthService.HEADER_AUTHORIZATION_VALUE });
+    const headers = new Headers({
+      'Accept': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': AuthService.HEADER_AUTHORIZATION_VALUE
+    });
 
     let params: URLSearchParams = new URLSearchParams();
     params.set(AuthService.CLIENT_ID, AuthService.CLIENT_ID_VALUE);
@@ -32,7 +34,7 @@ export class AuthService {
     params.set('username', login);
     params.set('password', password);
 
-    const options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({headers: headers});
 
     return this.http.post(AuthService.AUTH, params, options)
       .map((response: Response) => {
@@ -40,7 +42,12 @@ export class AuthService {
         const refresh_token = response.json().refresh_token;
         console.info(response.json());
         if (access_token) {
-          localStorage.setItem('currentUser', JSON.stringify({ username: login, access_token: access_token, refresh_token: refresh_token, password: password }));
+          localStorage.setItem('currentUser', JSON.stringify({
+            username: login,
+            access_token: access_token,
+            refresh_token: refresh_token,
+            password: password
+          }));
           return true;
         } else {
           return false;
