@@ -1,6 +1,6 @@
-import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular/http";
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 
 @Injectable()
