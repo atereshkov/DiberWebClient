@@ -3,10 +3,12 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 
+
 @Injectable()
 export class AuthService {
 
   private static AUTH = 'https://pacific-forest-76418.herokuapp.com/oauth/token';
+  private static USER_INFO = 'https://pacific-forest-76418.herokuapp.com/api/v1/users/info';
 
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
   private static CLIENT_ID = 'client_id';
@@ -52,6 +54,20 @@ export class AuthService {
         } else {
           return false;
         }
+      })
+      .catch(AuthService.handleError);
+  }
+
+  getUserInfo(token: string) {
+    console.info('getUserInfo start with token: ' + token);
+    const headers = new Headers({
+      'Authorization': 'Bearer' + token
+    });
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(AuthService.USER_INFO, options)
+      .map((response: Response) => {
+        console.info(response.json());
       })
       .catch(AuthService.handleError);
   }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { AuthService } from "../../services/auth.service";
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-auth',
@@ -20,7 +20,6 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-
     //this.authService.logout();
   }
 
@@ -32,6 +31,8 @@ export class AuthComponent implements OnInit {
             if (this.authService.isUserLoggedIn()) {
               this.router.navigate(['/home']);
             }
+            let token = JSON.parse(localStorage.getItem('currentUser')).access_token;
+            this.authService.getUserInfo(token);
           } else {
             this.error = 'Authentication error';
             this.loading = false;

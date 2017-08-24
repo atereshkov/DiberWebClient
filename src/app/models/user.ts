@@ -13,4 +13,10 @@ export class User {
     this.email = email;
     this.fullname = fullname;
   }
+
+  public static fromJSON(data: string): User {
+    let jsonData = JSON.parse(data);
+    return new User(jsonData.id, jsonData.username, jsonData.password, jsonData.email, jsonData.fullname);
+  }
+
 }
