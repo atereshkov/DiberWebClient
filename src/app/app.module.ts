@@ -17,6 +17,7 @@ import { AdminGuard } from "./guards/admin.guard";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LandingHeaderComponent } from './components/landing-page/header/header.component';
 import { LandingFooterComponent } from "./components/landing-page/footer/footer.component";
+import { OrderListComponent } from './components/admin-panel/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LandingFooterComponent } from "./components/landing-page/footer/footer.
     RegisterComponent,
     LandingPageComponent,
     LandingHeaderComponent,
-    LandingFooterComponent
+    LandingFooterComponent,
+    OrderListComponent
   ],
   imports: [
     NgbModule.forRoot(),

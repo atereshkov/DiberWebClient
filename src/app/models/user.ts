@@ -1,4 +1,5 @@
 export class User {
+
   id: number;
   //roles: Role[];
   username: string;
