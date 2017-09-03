@@ -15,7 +15,7 @@ export class OrderService {
 
   }
 
-  getOrders(page: number, size: number): Observable<Order[]> {
+  getOrders(page: number, size: number): Observable<any> {
     let token = JSON.parse(localStorage.getItem(keys.TOKEN)).access_token;
     const headers = new Headers({
       'Authorization': 'Bearer' + token

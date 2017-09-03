@@ -14,7 +14,7 @@ export class OrderListComponent implements OnInit {
   loading = false;
   total = 0;
   page = 1;
-  limit = 6;
+  limit = 7;
 
   constructor(private orderService: OrderService) {
     this.orders = [];
@@ -28,8 +28,8 @@ export class OrderListComponent implements OnInit {
     this.orderService.getOrders(this.page - 1, this.limit)
       .subscribe(
         orders => {
-          this.orders = orders;
-          this.total = orders.length;
+          this.orders = orders.content;
+          this.total = orders.totalElements;
         },
         err => {
           this.logError(err);

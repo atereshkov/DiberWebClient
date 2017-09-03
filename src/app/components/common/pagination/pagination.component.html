@@ -1,9 +1,4 @@
 <div class="pagination justify-content-center" *ngIf="count > 0">
-  <div class="description">
-    <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ count }}</span>
-    <span class="page-totals">({{ totalPages() }} pages)</span>
-  </div>
-
   <ul class="pagination">
     <li class="page-item" [ngClass]="{ 'disabled': page === 1 || loading }">
       <a class="page-link" (click)="onPrev()">Previous</a>
@@ -16,4 +11,8 @@
       <a class="page-link" (click)="onNext(true)">Next</a>
     </li>
   </ul>
+</div>
+
+<div class="page-info text-center" *ngIf="count > 0">
+  <p>{{ getMin() }} - {{ getMax() }} of {{ count }} ({{ totalPages() }} pages)</p>
 </div>
