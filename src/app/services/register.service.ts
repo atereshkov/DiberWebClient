@@ -1,13 +1,14 @@
-import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular/http";
+import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {keys} from "../constants/storage.keys";
+import {api} from "../constants/api";
 
 @Injectable()
 export class RegisterService {
 
-  private static REGISTER = 'https://pacific-forest-76418.herokuapp.com/auth/register';
+  private static REGISTER = api.END_POINT + api.REGISTER;
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
 
   constructor(private http: Http, private router: Router) {
@@ -20,16 +21,9 @@ export class RegisterService {
       'Authorization': RegisterService.HEADER_AUTHORIZATION_VALUE
     });
 
-    let params: URLSearchParams = new URLSearchParams();
-    //params.set(AuthService.CLIENT_ID, AuthService.CLIENT_ID_VALUE);
-    //params.set(AuthService.GRANT_TYPE, AuthService.GRANT_TYPE_VALUE);
-    //params.set(AuthService.CLIENT_SECRET, AuthService.CLIENT_SECRET_VALUE);
-    //params.set('username', login);
-    //params.set('password', password);
-
     const options = new RequestOptions({headers: headers});
 
-    return this.http.post(RegisterService.REGISTER, params, options)
+    return this.http.post(RegisterService.REGISTER, options)
       .map((response: Response) => {
         const access_token = response.json().access_token;
         const refresh_token = response.json().refresh_token;

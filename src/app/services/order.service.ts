@@ -4,11 +4,12 @@ import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {Order} from "../models/order";
 import {keys} from "../constants/storage.keys";
+import {api} from "../constants/api";
 
 @Injectable()
 export class OrderService {
 
-  private static ORDERS = 'https://pacific-forest-76418.herokuapp.com/api/v1/orders';
+  private static ORDERS = api.END_POINT + api.ORDERS_ALL;
 
   constructor(private http: Http, private router: Router) {
 

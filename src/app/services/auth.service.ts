@@ -3,12 +3,13 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {keys} from "../constants/storage.keys";
+import {api} from "../constants/api";
 
 @Injectable()
 export class AuthService {
 
-  private static AUTH = 'https://pacific-forest-76418.herokuapp.com/oauth/token';
-  private static USER_INFO = 'https://pacific-forest-76418.herokuapp.com/api/v1/users/info';
+  private static AUTH = api.END_POINT + api.AUTH;
+  private static USER_INFO = api.END_POINT + api.USER_INFO;
 
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
   private static CLIENT_ID = 'client_id';
