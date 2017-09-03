@@ -13,7 +13,7 @@ export const ROUTES: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'signin', component: AuthComponent, canActivate: [LoggedInGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
-  { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard] },
+  { path: 'dashboard/admin', component: AdminPanelComponent, canActivate: [AdminGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 

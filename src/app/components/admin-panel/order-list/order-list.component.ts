@@ -23,7 +23,6 @@ export class OrderListComponent implements OnInit {
     this.orderService.getOrders()
       .subscribe(
         orders => {
-          console.info('I got orders: ' + orders.length);
           this.orders = orders;
         },
         err => this.logError(err)
