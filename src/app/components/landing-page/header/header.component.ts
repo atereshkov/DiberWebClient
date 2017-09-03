@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {User} from "../../../models/user";
 import {keys} from "../../../constants/storage.keys";
+import {UserAuthority} from "../../../helper/user.authority";
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,18 @@ export class LandingHeaderComponent implements OnInit {
     if (this.authService.isUserLoggedIn()) {
       this.user = JSON.parse(localStorage.getItem(keys.USER));
     }
+  }
+
+  isAdmin(): boolean {
+    return UserAuthority.isAdmin();
+  }
+
+  isCourier(): boolean {
+    return UserAuthority.isCourier();
+  }
+
+  isCustomer(): boolean {
+    return UserAuthority.isCustomer();
   }
 
   isUserLoggedIn(): boolean {

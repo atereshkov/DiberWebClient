@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {CanActivate, Router} from "@angular/router";
+import {UserAuthority} from "../helper/user.authority";
 
 @Injectable()
 export class AdminGuard implements CanActivate {
@@ -9,8 +10,7 @@ export class AdminGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-    // TODO check user roles
-    return true;
+    return UserAuthority.isAdmin();
   }
 
 }
