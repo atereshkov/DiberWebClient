@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
-import {keys} from "../../constants/storage.keys";
 
 @Component({
   selector: 'app-auth',
@@ -29,9 +28,6 @@ export class AuthComponent implements OnInit {
     this.authService.login(this.username, this.password)
       .subscribe(result => {
           if (result === true) {
-            if (this.authService.isUserLoggedIn()) {
-              this.router.navigate(['/home']);
-            }
             this.handleUserInfo()
           } else {
             this.error = 'Authentication error';
@@ -48,11 +44,20 @@ export class AuthComponent implements OnInit {
     this.authService.getUserInfo()
       .subscribe(result => {
           if (result === true) {
-            console.info('Got user info successfully.');
+            this.loading = false;
+            if (this.authService.isUserLoggedIn()) {
+              console.info('Got user info successfully.');
+              // TODO navigate to the proper dashboard or /
+              this.router.navigate(['/home']);
+            }
+          } else {
+            this.error = 'Authentication error';
+            this.loading = false;
           }
         },
         error => {
-
+          this.error = 'Authentication error';
+          this.loading = false;
         });
   }
 

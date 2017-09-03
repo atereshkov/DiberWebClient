@@ -17,7 +17,7 @@ export class LandingHeaderComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isUserLoggedIn()) {
-      this.user = JSON.parse(localStorage.getItem(keys.TOKEN));
+      this.user = JSON.parse(localStorage.getItem(keys.USER));
     }
   }
 

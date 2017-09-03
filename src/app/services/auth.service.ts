@@ -40,22 +40,7 @@ export class AuthService {
     const options = new RequestOptions({headers: headers});
 
     return this.http.post(AuthService.AUTH, params, options)
-      .map((response: Response) => {
-        const access_token = response.json().access_token;
-        const refresh_token = response.json().refresh_token;
-        console.info(response.json());
-        if (access_token) {
-          localStorage.setItem(keys.TOKEN, JSON.stringify({
-            username: login,
-            access_token: access_token,
-            refresh_token: refresh_token,
-            password: password
-          }));
-          return true;
-        } else {
-          return false;
-        }
-      })
+      .map(AuthService.handleToken)
       .catch(AuthService.handleError);
   }
 
@@ -72,13 +57,27 @@ export class AuthService {
   }
 
   isUserLoggedIn(): boolean {
-    return !!localStorage.getItem(keys.TOKEN);
+    return !!localStorage.getItem(keys.USER);
   }
 
   logout(): void {
     localStorage.removeItem(keys.USER);
     localStorage.removeItem(keys.TOKEN);
     this.router.navigate(['/']);
+  }
+
+  private static handleToken(response: Response): boolean {
+    const access_token = response.json().access_token;
+    const refresh_token = response.json().refresh_token;
+    if (access_token && refresh_token) {
+      localStorage.setItem(keys.TOKEN, JSON.stringify({
+        access_token: access_token,
+        refresh_token: refresh_token
+      }));
+      return true;
+    } else {
+      return false;
+    }
   }
 
   private static handleUserInfo(response: Response): boolean {
