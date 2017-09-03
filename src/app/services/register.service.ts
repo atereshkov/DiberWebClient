@@ -2,6 +2,7 @@ import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
+import {keys} from "../constants/storage.keys";
 
 @Injectable()
 export class RegisterService {
@@ -34,7 +35,7 @@ export class RegisterService {
         const refresh_token = response.json().refresh_token;
         console.info(response.json());
         if (access_token) {
-          localStorage.setItem('currentUser', JSON.stringify({
+          localStorage.setItem(keys.TOKEN, JSON.stringify({
             username: login,
             access_token: access_token,
             refresh_token: refresh_token,

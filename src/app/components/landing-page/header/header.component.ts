@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {User} from "../../../models/user";
+import {keys} from "../../../constants/storage.keys";
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class LandingHeaderComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isUserLoggedIn()) {
-      this.user = JSON.parse(localStorage.getItem('currentUser'));
+      this.user = JSON.parse(localStorage.getItem(keys.TOKEN));
     }
   }
 

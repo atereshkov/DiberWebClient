@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {Order} from "../models/order";
+import {keys} from "../constants/storage.keys";
 
 @Injectable()
 export class OrderService {
@@ -14,7 +15,7 @@ export class OrderService {
   }
 
   getOrders(): Observable<Order[]> {
-    let token = JSON.parse(localStorage.getItem('currentUser')).access_token;
+    let token = JSON.parse(localStorage.getItem(keys.TOKEN)).access_token;
     const headers = new Headers({
       'Authorization': 'Bearer' + token
     });

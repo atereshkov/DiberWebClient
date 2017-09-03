@@ -2,6 +2,7 @@ import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
+import {keys} from "../constants/storage.keys";
 
 @Injectable()
 export class AuthService {
@@ -21,7 +22,7 @@ export class AuthService {
 
   }
 
-  login(login: string, password: string) {
+  login(login: string, password: string): Observable<boolean> {
     const headers = new Headers({
       'Accept': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -43,7 +44,7 @@ export class AuthService {
         const refresh_token = response.json().refresh_token;
         console.info(response.json());
         if (access_token) {
-          localStorage.setItem('currentUser', JSON.stringify({
+          localStorage.setItem(keys.TOKEN, JSON.stringify({
             username: login,
             access_token: access_token,
             refresh_token: refresh_token,
@@ -57,27 +58,36 @@ export class AuthService {
       .catch(AuthService.handleError);
   }
 
-  getUserInfo(token: string) {
-    console.info('getUserInfo start with token: ' + token);
+  getUserInfo(): Observable<boolean> {
+    let token = JSON.parse(localStorage.getItem(keys.TOKEN)).access_token;
     const headers = new Headers({
       'Authorization': 'Bearer' + token
     });
     const options = new RequestOptions({headers: headers});
 
     return this.http.get(AuthService.USER_INFO, options)
-      .map((response: Response) => {
-        console.info(response.json());
-      })
+      .map(AuthService.handleUserInfo)
       .catch(AuthService.handleError);
   }
 
   isUserLoggedIn(): boolean {
-    return !!localStorage.getItem('currentUser');
+    return !!localStorage.getItem(keys.TOKEN);
   }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem(keys.USER);
+    localStorage.removeItem(keys.TOKEN);
     this.router.navigate(['/']);
+  }
+
+  private static handleUserInfo(response: Response): boolean {
+    console.info(response.json());
+    let user = response.json();
+    if (user) {
+      localStorage.setItem(keys.USER, JSON.stringify(user));
+      return true;
+    }
+    return false;
   }
 
   private static handleError(error: Response | any) {
