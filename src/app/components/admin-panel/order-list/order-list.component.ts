@@ -11,6 +11,11 @@ export class OrderListComponent implements OnInit {
 
   orders: Order[];
 
+  loading = false;
+  total = 0;
+  page = 1;
+  limit = 6;
+
   constructor(private orderService: OrderService) {
     this.orders = [];
   }
@@ -20,17 +25,32 @@ export class OrderListComponent implements OnInit {
   }
 
   private loadData() {
-    this.orderService.getOrders()
+    this.orderService.getOrders(this.page - 1, this.limit)
       .subscribe(
         orders => {
           this.orders = orders;
+          this.total = orders.length;
         },
-        err => this.logError(err)
+        err => {
+          this.logError(err);
+          this.loading = false;
+        }
       );
   }
 
-  ordersCount(): number {
-    return this.orders.length || 0
+  goToPage(n: number) {
+    this.page = n;
+    this.loadData();
+  }
+
+  onNext() {
+    this.page++;
+    this.loadData();
+  }
+
+  onPrev() {
+    this.page--;
+    this.loadData();
   }
 
   // TODO Logger

@@ -20,6 +20,7 @@ import {LandingFooterComponent} from "./components/landing-page/footer/footer.co
 import {OrderListComponent} from "./components/admin-panel/order-list/order-list.component";
 import {OrderService} from "./services/order.service";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PaginationComponent } from './components/common/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LandingHeaderComponent,
     LandingFooterComponent,
     OrderListComponent,
-    DashboardComponent
+    DashboardComponent,
+    PaginationComponent
   ],
   imports: [
     NgbModule.forRoot(),

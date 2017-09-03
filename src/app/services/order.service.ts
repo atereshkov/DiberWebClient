@@ -15,14 +15,14 @@ export class OrderService {
 
   }
 
-  getOrders(): Observable<Order[]> {
+  getOrders(page: number, size: number): Observable<Order[]> {
     let token = JSON.parse(localStorage.getItem(keys.TOKEN)).access_token;
     const headers = new Headers({
       'Authorization': 'Bearer' + token
     });
     const options = new RequestOptions({headers: headers});
 
-    return this.http.get(OrderService.ORDERS, options)
+    return this.http.get(OrderService.ORDERS + '?' + 'page=' + page + '&' + 'size=' + size, options)
       .map((response: Response) => {
         if (response.status != 200) {
           throw new Error('Error when getting orders. Status: ' + response.status);
