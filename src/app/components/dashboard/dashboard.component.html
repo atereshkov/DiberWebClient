@@ -1,0 +1,79 @@
+<div class="container marketing">
+  <br>
+  <h3>Hello, {{user.username}}!</h3>
+</div>
+
+<div class="container marketing text-center">
+  <br>
+  <div class="dashboard-container">
+    <div *ngIf="isCourier()" class="dashboard-item col-lg-3">
+      <img class="rounded-circle"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+           alt="Generic placeholder image" width="140" height="140">
+      <h2>Courier</h2>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula
+        ut id elit.</p>
+      <p><a class="btn btn-primary" href="/dashboard/courier" role="button">Open dashboard</a></p>
+    </div>
+    <div *ngIf="isCustomer()" class="dashboard-item col-lg-3">
+      <img class="rounded-circle"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+           alt="Generic placeholder image" width="140" height="140">
+      <h2>Client</h2>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula
+        ut id elit.</p>
+      <p><a class="btn btn-primary" href="/dashboard/client" role="button">Open dashboard</a></p>
+    </div>
+    <div *ngIf="isAdmin()" class="dashboard-item col-lg-3">
+      <img class="rounded-circle"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+           alt="Generic placeholder image" width="140" height="140">
+      <h2>Admin</h2>
+      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula
+        ut id elit.</p>
+      <p><a class="btn btn-warning" href="/dashboard/admin" role="button">Open dashboard</a></p>
+    </div>
+  </div>
+
+</div>
+
+<div class="container marketing">
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Not registered as a courier? <span class="text-muted">Register now!</span>
+      </h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
+        semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+        commodo.</p>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
+        semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+        commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto" src="/assets/images/default-placeholder-400x400.png"
+           alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7 push-md-5">
+      <h2 class="featurette-heading">Not registered as a client? <span class="text-muted">Register now!</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
+        semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+        commodo.</p>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
+        semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+        commodo.</p>
+    </div>
+    <div class="col-md-5 pull-md-7">
+      <img class="featurette-image img-fluid mx-auto" src="/assets/images/default-placeholder-400x400.png"
+           alt="Generic placeholder image">
+    </div>
+  </div>
+  <br>
+</div>

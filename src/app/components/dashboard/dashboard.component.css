@@ -1,0 +1,8 @@
+.dashboard-container {
+  text-align: center; /* set all inline elements to be centered */
+}
+
+.dashboard-container .dashboard-item {
+  display: inline-block; /* set the columns to inline blocks so they are centered */
+  float: none;
+}

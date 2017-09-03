@@ -8,8 +8,8 @@ import {AppComponent} from "./app.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {AuthComponent} from "./components/auth/auth.component";
 import {AdminPanelComponent} from "./components/admin-panel/admin-panel.component";
-import {CourierDashboardComponent} from "./components/courier-dashboard/courier-dashboard.component";
-import {ClientDashboardComponent} from "./components/client-dashboard/client-dashboard.component";
+import {CourierDashboardComponent} from "./components/dashboard/courier-dashboard/courier-dashboard.component";
+import {ClientDashboardComponent} from "./components/dashboard/client-dashboard/client-dashboard.component";
 import {LoggedInGuard} from "./guards/logged-in.guard";
 import {AuthService} from "./services/auth.service";
 import {RegisterComponent} from "./components/register/register.component";
@@ -19,6 +19,7 @@ import {LandingHeaderComponent} from "./components/landing-page/header/header.co
 import {LandingFooterComponent} from "./components/landing-page/footer/footer.component";
 import {OrderListComponent} from "./components/admin-panel/order-list/order-list.component";
 import {OrderService} from "./services/order.service";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {OrderService} from "./services/order.service";
     LandingPageComponent,
     LandingHeaderComponent,
     LandingFooterComponent,
-    OrderListComponent
+    OrderListComponent,
+    DashboardComponent
   ],
   imports: [
     NgbModule.forRoot(),

@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {UserAuthority} from "../../helper/user.authority";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-auth',
@@ -46,9 +48,7 @@ export class AuthComponent implements OnInit {
           if (result === true) {
             this.loading = false;
             if (this.authService.isUserLoggedIn()) {
-              console.info('Got user info successfully.');
-              // TODO navigate to the proper dashboard or /
-              this.router.navigate(['/home']);
+              this.navigateToDashboard()
             }
           } else {
             this.error = 'Authentication error';
@@ -59,6 +59,10 @@ export class AuthComponent implements OnInit {
           this.error = 'Authentication error';
           this.loading = false;
         });
+  }
+
+  private navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
 }
