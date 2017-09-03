@@ -12,7 +12,7 @@ import {UserAuthority} from "../../../helper/user.authority";
 })
 export class LandingHeaderComponent implements OnInit {
 
-  private user: User;
+  public user: User;
 
   constructor(private authService: AuthService) { }
 
