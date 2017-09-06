@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {Order} from "../../../models/order";
 import {OrderService} from "../../../services/order.service";
 
@@ -16,6 +16,8 @@ export class OrderListComponent implements OnInit {
   page = 1;
   limit = 7;
 
+  @Output() onOrdersLoaded: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(private orderService: OrderService) {
     this.orders = [];
   }
@@ -25,11 +27,14 @@ export class OrderListComponent implements OnInit {
   }
 
   private loadData() {
+    this.loading = true;
     this.orderService.getOrders(this.page - 1, this.limit)
       .subscribe(
         orders => {
           this.orders = orders.content;
           this.total = orders.totalElements;
+          this.loading = false;
+          this.onOrdersLoaded.emit(orders.totalElements);
         },
         err => {
           this.logError(err);
