@@ -1,3 +1,7 @@
 .page-info {
   display: block;
 }
+
+.page-num {
+  cursor: pointer;
+}

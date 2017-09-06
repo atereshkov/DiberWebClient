@@ -3,7 +3,7 @@
     <li class="page-item" [ngClass]="{ 'disabled': page === 1 || loading }">
       <a class="page-link" (click)="onPrev()">Previous</a>
     </li>
-    <li class="page-item" *ngFor="let pageNum of getPages()"
+    <li class="page-item page-num" *ngFor="let pageNum of getPages()"
         [ngClass]="{'active': pageNum === page, 'disabled': loading}">
       <a class="page-link" (click)="onPage(pageNum)">{{ pageNum }}</a>
     </li>
