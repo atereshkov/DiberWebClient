@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import {Router} from "@angular/router";
+import {api} from "../../constants/api";
 
 @Injectable()
 export class ExtendedHttp extends Http {
@@ -31,7 +32,7 @@ export class ExtendedHttp extends Http {
   }
 
   private updateUrl(req: string) {
-    return req;
+    return api.END_POINT + req;
   }
 
   private getRequestOptionArgs(options?: RequestOptionsArgs): RequestOptionsArgs {

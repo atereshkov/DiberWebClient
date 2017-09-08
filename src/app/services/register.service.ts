@@ -8,7 +8,7 @@ import {api} from "../constants/api";
 @Injectable()
 export class RegisterService {
 
-  private static REGISTER = api.END_POINT + api.REGISTER;
+  private static REGISTER_URL = api.REGISTER;
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
 
   constructor(private http: Http, private router: Router) {
@@ -23,7 +23,7 @@ export class RegisterService {
 
     const options = new RequestOptions({headers: headers});
 
-    return this.http.post(RegisterService.REGISTER, options)
+    return this.http.post(RegisterService.REGISTER_URL, options)
       .map((response: Response) => {
         const access_token = response.json().access_token;
         const refresh_token = response.json().refresh_token;

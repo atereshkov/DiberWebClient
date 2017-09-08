@@ -8,7 +8,7 @@ import {api} from "../constants/api";
 @Injectable()
 export class OrderService {
 
-  private static ORDERS = api.END_POINT + api.ORDERS_ALL;
+  private static ORDERS_URL = api.ORDERS_ALL;
 
   constructor(private http: Http, private router: Router) {
 
@@ -21,7 +21,7 @@ export class OrderService {
     });
     const options = new RequestOptions({headers: headers});
 
-    return this.http.get(OrderService.ORDERS + '?' + 'page=' + page + '&' + 'size=' + size, options)
+    return this.http.get(OrderService.ORDERS_URL + '?' + 'page=' + page + '&' + 'size=' + size, options)
       .map((response: Response) => {
         if (response.status != 200) {
           throw new Error('Error when getting orders. Status: ' + response.status);
