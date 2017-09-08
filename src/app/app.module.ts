@@ -1,7 +1,7 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
+import {HttpModule, RequestOptions, XHRBackend, Http} from "@angular/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {AppComponent} from "./app.component";
@@ -19,8 +19,10 @@ import {LandingHeaderComponent} from "./components/landing-page/header/header.co
 import {LandingFooterComponent} from "./components/landing-page/footer/footer.component";
 import {OrderListComponent} from "./components/admin-panel/order-list/order-list.component";
 import {OrderService} from "./services/order.service";
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PaginationComponent } from './components/common/pagination/pagination.component';
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {PaginationComponent} from "./components/common/pagination/pagination.component";
+import {httpFactory} from "./services/interceptors/http.factory";
+import {Router} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -49,7 +51,12 @@ import { PaginationComponent } from './components/common/pagination/pagination.c
     LoggedInGuard,
     AdminGuard,
     AuthService,
-    OrderService
+    OrderService,
+    {
+      provide: Http,
+      useFactory: httpFactory,
+      deps: [XHRBackend, RequestOptions, Router]
+    }
   ],
   bootstrap: [AppComponent]
 })

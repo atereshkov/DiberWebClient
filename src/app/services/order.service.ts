@@ -2,7 +2,6 @@ import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
-import {Order} from "../models/order";
 import {keys} from "../constants/storage.keys";
 import {api} from "../constants/api";
 
