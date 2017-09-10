@@ -221,7 +221,7 @@ header {
   text-align: center;
   color: #001A33;
   width: 100%;
-  background-color: #fff;
+  background: url(/assets/images/main-page/header-landing-bg.jpg) no-repeat center center scroll;
 }
 
 header .header-content {

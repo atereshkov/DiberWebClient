@@ -3,6 +3,7 @@ import {ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response
 import {Observable} from "rxjs/Rx";
 import {Router} from "@angular/router";
 import {api} from "../../constants/api";
+import {keys} from "../../constants/storage.keys";
 
 @Injectable()
 export class ExtendedHttp extends Http {
@@ -52,7 +53,10 @@ export class ExtendedHttp extends Http {
       .catch((error: Response) => {
         if (error.status === 401 || error.status === 403) {
           console.info('Got 401 or 403 status code. Navigate to /login page.');
-          this.router.navigate(['/login']);
+          localStorage.removeItem(keys.USER);
+          localStorage.removeItem(keys.TOKEN);
+          this.router.navigate(['/signin']);
+          // TODO use refresh token
         }
         return Observable.throw(error);
       });
