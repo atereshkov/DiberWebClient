@@ -7,15 +7,15 @@ body {
 }
 
 body {
-  font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
   color: #001A33;
   webkit-tap-highlight-color: #222;
-  top:0;
+  top: 0;
 }
 
 /* workaround modal-open padding issue */
 body.modal-open {
-  padding-right:0 !important;
+  padding-right: 0 !important;
 }
 
 hr {
@@ -53,11 +53,11 @@ p {
   font-size: 17px;
   line-height: 1.7;
   margin-bottom: 20px;
-  font-family:'Helvetica Neue',Arial,sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .text-normal {
-  font-family:'Helvetica Neue',Arial,sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .wide-space {
@@ -78,7 +78,7 @@ p {
 }
 
 .text-faded {
-  color: rgba(245,245,245,0.7);
+  color: rgba(245, 245, 245, 0.7);
 }
 
 .text-dark {
@@ -89,9 +89,9 @@ p {
   color: #fff;
 }
 
-.text-light:hover,.text-light:focus {
+.text-light:hover, .text-light:focus {
   color: #eee;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .text-primary {
@@ -118,11 +118,11 @@ footer {
 }
 
 footer h4, footer h6 {
-  color:#fff;
+  color: #fff;
 }
 
 .navbar {
-  border-color: rgba(35,35,35,.05);
+  border-color: rgba(35, 35, 35, .05);
   background-color: #fff;
   -webkit-transition: all .4s;
   -moz-transition: all .4s;
@@ -136,7 +136,7 @@ footer h4, footer h6 {
   -webkit-transition: padding .2s ease-in;
   -moz-transition: padding .2s ease-in;
   transition: padding .2s ease-in;
-  float:none;
+  float: none;
 }
 
 .navbar-brand:hover,
@@ -147,19 +147,20 @@ footer h4, footer h6 {
 .navbar .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
   background-color: #001A33;
 }
+
 .navbar .navbar-toggle, .navbar-default .navbar-collapse {
   border-color: transparent;
 }
 
-.navbar .navbar-nav > li>a,
-.navbar .navbar-nav>li>a:focus {
+.navbar .navbar-nav > li > a,
+.navbar .navbar-nav > li > a:focus {
   font-size: 12px;
   color: #001A33;
   text-transform: uppercase;
 }
 
-.navbar .navbar-nav>li>a:hover,
-.navbar .navbar-nav>li>a:focus:hover {
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus:hover {
   color: #007FFF;
 }
 
@@ -170,17 +171,18 @@ footer h4, footer h6 {
 }
 
 /* responsive nav */
-@media(max-width:48em) {
-  .navbar .navbar-nav>.nav-item {
+@media (max-width: 48em) {
+  .navbar .navbar-nav > .nav-item {
     float: none;
     margin-left: .1rem;
   }
+
   .navbar .navbar-nav {
-    float:none !important;
+    float: none !important;
   }
 }
 
-@media(min-width:48em) {
+@media (min-width: 48em) {
   .navbar {
     border-color: transparent;
     background-color: #fff;
@@ -199,7 +201,7 @@ footer h4, footer h6 {
   }
 
   .navbar .navbar-nav > li > a,
-  .navbar .navbar-nav> li > a:focus {
+  .navbar .navbar-nav > li > a:focus {
     color: #001A33;
     letter-spacing: 1.1px;
   }
@@ -210,7 +212,7 @@ footer h4, footer h6 {
   }
 
   #topNav {
-    background-color:#fff;
+    background-color: #fff;
   }
 
 }
@@ -244,7 +246,7 @@ header .header-content .inner p {
   color: #222;
 }
 
-@media(min-width:34em) {
+@media (min-width: 34em) {
   .icon-lg {
     font-size: 80px;
   }
@@ -287,7 +289,7 @@ header .header-content .inner p {
 }
 
 .list-group-item, .card-footer {
-  background-color:transparent;
+  background-color: transparent;
 }
 
 textarea {
@@ -300,11 +302,11 @@ textarea {
 
 .btn.btn-primary {
   background-color: transparent;
-  border:1px solid #007FFF;
+  border: 1px solid #007FFF;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
   transition: all .35s;
-  color:#007FFF;
+  color: #007FFF;
 }
 
 .btn.btn-primary:hover {
@@ -312,11 +314,12 @@ textarea {
 }
 
 .btn-primary-outline {
-  border-color:#007FFF;
-  color:#007FFF;
+  border-color: #007FFF;
+  color: #007FFF;
 }
+
 .btn-primary-outline:hover {
-  background-color:#007FFF;
+  background-color: #007FFF;
 }
 
 .btn-xl {
@@ -344,4 +347,13 @@ img::selection {
 img::-moz-selection {
   color: #fff;
   background: 0 0;
+}
+
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  font-size: 1.8em;
 }
