@@ -3,14 +3,14 @@ import {CanActivate} from "@angular/router";
 import {UserAuthority} from "../helper/user.authority";
 
 @Injectable()
-export class AdminGuard implements CanActivate {
+export class CourierGuard implements CanActivate {
 
   constructor() {
 
   }
 
   canActivate(): boolean {
-    return UserAuthority.isAdmin();
+    return UserAuthority.isCourier();
   }
 
 }

@@ -3,14 +3,14 @@ import {CanActivate} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 
 @Injectable()
-export class LoggedInGuard implements CanActivate {
+export class NotAuthorizedGuard implements CanActivate {
 
   constructor(private authService: AuthService) {
 
   }
 
   canActivate(): boolean {
-    return this.authService.isUserLoggedIn();
+    return !this.authService.isUserLoggedIn();
   }
 
 }

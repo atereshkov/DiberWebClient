@@ -10,7 +10,7 @@ import {AuthComponent} from "./components/auth/auth.component";
 import {AdminPanelComponent} from "./components/admin-panel/admin-panel.component";
 import {CourierDashboardComponent} from "./components/dashboard/courier-dashboard/courier-dashboard.component";
 import {ClientDashboardComponent} from "./components/dashboard/client-dashboard/client-dashboard.component";
-import {LoggedInGuard} from "./guards/logged-in.guard";
+import {NotAuthorizedGuard} from "./guards/not-authorized.guard";
 import {AuthService} from "./services/auth.service";
 import {RegisterComponent} from "./components/register/register.component";
 import {AdminGuard} from "./guards/admin.guard";
@@ -23,6 +23,9 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {PaginationComponent} from "./components/common/pagination/pagination.component";
 import {httpFactory} from "./services/interceptors/http.factory";
 import {Router} from "@angular/router";
+import {ClientGuard} from "./guards/client.guard";
+import {CourierGuard} from "./guards/courier.guard";
+import {LoggedInGuard} from "./guards/logged-in.guard";
 
 @NgModule({
   declarations: [
@@ -48,8 +51,11 @@ import {Router} from "@angular/router";
     AppRoutingModule
   ],
   providers: [
-    LoggedInGuard,
+    NotAuthorizedGuard,
     AdminGuard,
+    CourierGuard,
+    ClientGuard,
+    LoggedInGuard,
     AuthService,
     OrderService,
     {
