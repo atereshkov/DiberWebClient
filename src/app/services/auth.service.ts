@@ -1,57 +1,32 @@
-import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular/http";
+import {Http, Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {keys} from "../constants/storage.keys";
 import {api} from "../constants/api";
+import {BaseService} from "./base.service";
 
 @Injectable()
-export class AuthService {
+export class AuthService extends BaseService {
 
   private static AUTH_URL = api.AUTH;
   private static USER_INFO_URL = api.USER_INFO;
 
-  private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
-  private static CLIENT_ID = 'client_id';
-  private static CLIENT_SECRET = 'client_secret';
-  private static CLIENT_SECRET_VALUE = '123456';
-  private static CLIENT_ID_VALUE = 'clientapp';
-  private static GRANT_TYPE = 'grant_type';
-  private static GRANT_TYPE_VALUE = 'password';
-
   constructor(private http: Http, private router: Router) {
-
+    super();
   }
 
   login(login: string, password: string): Observable<boolean> {
-    const headers = new Headers({
-      'Accept': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': AuthService.HEADER_AUTHORIZATION_VALUE
-    });
-
-    let params: URLSearchParams = new URLSearchParams();
-    params.set(AuthService.CLIENT_ID, AuthService.CLIENT_ID_VALUE);
-    params.set(AuthService.GRANT_TYPE, AuthService.GRANT_TYPE_VALUE);
-    params.set(AuthService.CLIENT_SECRET, AuthService.CLIENT_SECRET_VALUE);
-    params.set('username', login);
-    params.set('password', password);
-
-    const options = new RequestOptions({headers: headers});
-
-    return this.http.post(AuthService.AUTH_URL, params, options)
+    let basicParams = this.getBasicParams(login, password);
+    let bearerRequestOptions = this.getBasicRequestOptions;
+    return this.http.post(AuthService.AUTH_URL, basicParams, bearerRequestOptions())
       .map(AuthService.handleToken)
       .catch(AuthService.handleError);
   }
 
   getUserInfo(): Observable<boolean> {
-    let token = JSON.parse(localStorage.getItem(keys.TOKEN)).access_token;
-    const headers = new Headers({
-      'Authorization': 'Bearer' + token
-    });
-    const options = new RequestOptions({headers: headers});
-
-    return this.http.get(AuthService.USER_INFO_URL, options)
+    let bearerRequestOptions = this.getBearerRequestOptions;
+    return this.http.get(AuthService.USER_INFO_URL, bearerRequestOptions())
       .map(AuthService.handleUserInfo)
       .catch(AuthService.handleError);
   }

@@ -1,7 +1,6 @@
 import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
 import {keys} from "../constants/storage.keys";
 import {api} from "../constants/api";
 
@@ -11,7 +10,7 @@ export class RegisterService {
   private static REGISTER_URL = api.REGISTER;
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: Http) {
 
   }
 
@@ -20,7 +19,6 @@ export class RegisterService {
       'Accept': 'application/json',
       'Authorization': RegisterService.HEADER_AUTHORIZATION_VALUE
     });
-
     const options = new RequestOptions({headers: headers});
 
     return this.http.post(RegisterService.REGISTER_URL, options)
@@ -41,6 +39,20 @@ export class RegisterService {
         }
       })
       .catch(RegisterService.handleError);
+  }
+
+  private static handleToken(response: Response): boolean {
+    const access_token = response.json().access_token;
+    const refresh_token = response.json().refresh_token;
+    if (access_token && refresh_token) {
+      localStorage.setItem(keys.TOKEN, JSON.stringify({
+        access_token: access_token,
+        refresh_token: refresh_token
+      }));
+      return true;
+    } else {
+      return false;
+    }
   }
 
   private static handleError(error: Response | any) {

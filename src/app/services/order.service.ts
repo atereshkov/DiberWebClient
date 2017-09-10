@@ -1,27 +1,21 @@
-import {Http, Response, RequestOptions, Headers} from "@angular/http";
+import {Http, Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
-import {keys} from "../constants/storage.keys";
 import {api} from "../constants/api";
+import {BaseService} from "./base.service";
 
 @Injectable()
-export class OrderService {
+export class OrderService extends BaseService {
 
   private static ORDERS_URL = api.ORDERS_ALL;
 
-  constructor(private http: Http, private router: Router) {
-
+  constructor(private http: Http) {
+    super();
   }
 
   getOrders(page: number, size: number): Observable<any> {
-    let token = JSON.parse(localStorage.getItem(keys.TOKEN)).access_token;
-    const headers = new Headers({
-      'Authorization': 'Bearer' + token
-    });
-    const options = new RequestOptions({headers: headers});
-
-    return this.http.get(OrderService.ORDERS_URL + '?' + 'page=' + page + '&' + 'size=' + size, options)
+    let bearerRequestOptions = this.getBearerRequestOptions();
+    return this.http.get(OrderService.ORDERS_URL + '?' + 'page=' + page + '&' + 'size=' + size, bearerRequestOptions)
       .map((response: Response) => {
         if (response.status != 200) {
           throw new Error('Error when getting orders. Status: ' + response.status);
@@ -30,6 +24,5 @@ export class OrderService {
         }
       })
   }
-
 
 }
