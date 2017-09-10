@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {keys} from "../constants/storage.keys";
 import {api} from "../constants/api";
+import {Register} from "../models/register";
 
 @Injectable()
 export class RegisterService {
@@ -14,45 +15,28 @@ export class RegisterService {
 
   }
 
-  register(login: string, password: string) {
+  register(user: Register) {
     const headers = new Headers({
       'Accept': 'application/json',
+      'Content-Type': 'application/json',
       'Authorization': RegisterService.HEADER_AUTHORIZATION_VALUE
     });
     const options = new RequestOptions({headers: headers});
 
-    return this.http.post(RegisterService.REGISTER_URL, options)
-      .map((response: Response) => {
-        const access_token = response.json().access_token;
-        const refresh_token = response.json().refresh_token;
-        console.info(response.json());
-        if (access_token) {
-          localStorage.setItem(keys.TOKEN, JSON.stringify({
-            username: login,
-            access_token: access_token,
-            refresh_token: refresh_token,
-            password: password
-          }));
-          return true;
-        } else {
-          return false;
-        }
-      })
+    let userData = JSON.stringify(user);
+    return this.http.post(RegisterService.REGISTER_URL, userData, options)
+      .map(RegisterService.handleUserInfo)
       .catch(RegisterService.handleError);
   }
 
-  private static handleToken(response: Response): boolean {
-    const access_token = response.json().access_token;
-    const refresh_token = response.json().refresh_token;
-    if (access_token && refresh_token) {
-      localStorage.setItem(keys.TOKEN, JSON.stringify({
-        access_token: access_token,
-        refresh_token: refresh_token
-      }));
+  private static handleUserInfo(response: Response): boolean {
+    console.info(response.json());
+    let user = response.json();
+    if (user) {
+      localStorage.setItem(keys.USER, JSON.stringify(user));
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   private static handleError(error: Response | any) {

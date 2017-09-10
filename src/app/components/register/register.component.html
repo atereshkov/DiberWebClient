@@ -9,14 +9,14 @@
             <fieldset class="form-group" style="text-align:center;">
               <div class="form-check form-check-inline">
                 <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input">
+                  <input type="checkbox" class="form-check-input" [checked]="user.courier" (change)="user.courier = !user.courier">
                   Courier
                 </label>
               </div>
 
               <div class="form-check form-check-inline">
                 <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input">
+                  <input type="checkbox" class="form-check-input" [checked]="user.customer" (change)="user.customer = !user.customer">
                   Client
                 </label>
               </div>

@@ -32,7 +32,7 @@ export class AuthService extends BaseService {
   }
 
   isUserLoggedIn(): boolean {
-    return !!localStorage.getItem(keys.USER);
+    return !!localStorage.getItem(keys.USER) && !!localStorage.getItem(keys.TOKEN);
   }
 
   logout(): void {

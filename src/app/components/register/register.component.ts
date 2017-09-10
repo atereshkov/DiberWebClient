@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { RegisterService } from "../../services/register.service";
-import {User} from "../../models/user";
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
+import {RegisterService} from "../../services/register.service";
+import {Register} from "../../models/register";
 
 @Component({
   selector: 'app-register',
@@ -11,38 +11,34 @@ import {User} from "../../models/user";
 })
 export class RegisterComponent implements OnInit {
 
-  user: User;
+  user: Register;
   loading = false;
   error = '';
-
 
   constructor(private router: Router, private registerService: RegisterService) {
 
   }
 
   ngOnInit() {
-    this.user = new User(0, "", "", "", "", []);
+    this.user = new Register("", "", "", "", false, false);
   }
 
   register() {
-    /*
+    // TODO Verify fields, etc.
     this.loading = true;
-    this.registerService.register(this.username, this.password)
+    this.registerService.register(this.user)
       .subscribe(result => {
           if (result === true) {
-            //if (this.registerService.isUserLoggedIn()) {
-            //  this.router.navigate(['/home']);
-            //}
+            this.router.navigate(['/signin']);
           } else {
-            this.error = 'Authentication error';
+            this.error = 'Registration error';
             this.loading = false;
           }
         },
         error => {
-          this.error = 'Authentication error';
+          this.error = 'Registration error';
           this.loading = false;
         });
-     */
   }
 
 }
