@@ -13,6 +13,8 @@ import {CourierDashboardComponent} from "./components/dashboard/courier-dashboar
 import {ClientDashboardComponent} from "./components/dashboard/client-dashboard/client-dashboard.component";
 import {ClientGuard} from "./guards/client.guard";
 import {CourierGuard} from "./guards/courier.guard";
+import {SettingsComponent} from "./components/settings/settings.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 export const ROUTES: Routes = [
   //{ path: '', redirectTo: '/main-page', pathMatch: 'full' },
@@ -23,6 +25,8 @@ export const ROUTES: Routes = [
   {path: 'dashboard/admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
   {path: 'dashboard/courier', component: CourierDashboardComponent, canActivate: [CourierGuard]},
   {path: 'dashboard/client', component: ClientDashboardComponent, canActivate: [ClientGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [LoggedInGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 

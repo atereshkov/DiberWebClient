@@ -26,6 +26,8 @@ import {Router} from "@angular/router";
 import {ClientGuard} from "./guards/client.guard";
 import {CourierGuard} from "./guards/courier.guard";
 import {LoggedInGuard} from "./guards/logged-in.guard";
+import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import {LoggedInGuard} from "./guards/logged-in.guard";
     LandingFooterComponent,
     OrderListComponent,
     DashboardComponent,
-    PaginationComponent
+    PaginationComponent,
+    ProfileComponent,
+    SettingsComponent
   ],
   imports: [
     NgbModule.forRoot(),
