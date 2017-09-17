@@ -13,11 +13,11 @@
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="/dashboard/admin/orders">Orders</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Shops</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Addresses</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Statistics</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/admin/users">Users</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/admin/shops">Shops</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/admin/addresses">Addresses</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/admin/analytics">Analytics</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/admin/statistics">Statistics</a></li>
       </ul>
     </div>
 
@@ -44,7 +44,7 @@
                 <i class="fa fa-list fa-4x"></i>
               </div>
               <h6 class="text-uppercase">Orders</h6>
-              <h1 class="display-1">{{totalOrders}}</h1>
+              <h1 class="display-1">26</h1>
             </div>
           </div>
         </div>
@@ -80,29 +80,8 @@
         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
       </p>
       -->
-      <div class="row my-4">
-        <div class="col-lg-3 col-md-4">
-          <div class="card">
-            <img class="card-img-top img-fluid" src="//placehold.it/740x180/bbb/fff?text=..." alt="Card image cap">
-            <div class="card-block">
-              <h4 class="card-title">Something</h4>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              <a href="#" class="btn btn-primary">Button</a>
-            </div>
-          </div>
-          <div class="card card-inverse bg-inverse mt-3">
-            <div class="card-block">
-              <h3 class="card-title">Something 2</h3>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              <a href="#" class="btn btn-outline-secondary">Button</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-9 col-md-8">
-          <div class="table-responsive">
-            <app-order-list (onOrdersLoaded)="loadOrdersCount($event)"></app-order-list>
-          </div>
-        </div>
+      <div id="content">
+        <router-outlet></router-outlet>
       </div>
 
     </div>

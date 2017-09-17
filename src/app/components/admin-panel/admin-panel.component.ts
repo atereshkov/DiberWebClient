@@ -7,7 +7,7 @@ import {Component, OnInit} from "@angular/core";
 })
 export class AdminPanelComponent implements OnInit {
 
-  totalOrders = 0;
+  //totalOrders = 0;
 
   constructor() {
   }
@@ -15,8 +15,10 @@ export class AdminPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*
   public loadOrdersCount(count: any): void {
     this.totalOrders = count;
   }
+  */
 
 }

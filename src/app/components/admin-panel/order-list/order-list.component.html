@@ -1,34 +1,57 @@
-<table class="table table-striped">
-  <thead class="thead-inverse">
-  <tr>
-    <th>#</th>
-    <th>Status</th>
-    <th>Date</th>
-    <th>Price</th>
-    <th>Edit</th>
-    <th>Remove</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let order of orders">
-    <td>{{order.id}}</td>
-    <td>{{order.status}}</td>
-    <td>{{order.date}}</td>
-    <td>{{order.price}}</td>
-    <td>
-      <button class="btn btn-warning">Edit</button>
-    </td>
-    <td>
-      <button class="btn btn-danger">Remove</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<app-pagination
-  (goPage)="goToPage($event)"
-  (goNext)="onNext()"
-  (goPrev)="onPrev()"
-  [pagesToShow]="5"
-  [page]="page"
-  [perPage]="limit"
-  [count]="total"></app-pagination>
+<div class="row my-4">
+  <div class="col-lg-3 col-md-4">
+    <div class="card">
+      <img class="card-img-top img-fluid" src="//placehold.it/740x180/bbb/fff?text=..." alt="Card image cap">
+      <div class="card-block">
+        <h4 class="card-title">Something about orders</h4>
+        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <a href="#" class="btn btn-primary">Button</a>
+      </div>
+    </div>
+    <div class="card card-inverse bg-inverse mt-3">
+      <div class="card-block">
+        <h3 class="card-title">Something 2</h3>
+        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <a href="#" class="btn btn-outline-secondary">Button</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9 col-md-8">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+        <tr>
+          <th>#</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Price</th>
+          <th>Edit</th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{order.id}}</td>
+          <td>{{order.status}}</td>
+          <td>{{order.date}}</td>
+          <td>{{order.price}}</td>
+          <td>
+            <button class="btn btn-warning">Edit</button>
+          </td>
+          <td>
+            <button class="btn btn-danger">Remove</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <app-pagination
+        (goPage)="goToPage($event)"
+        (goNext)="onNext()"
+        (goPrev)="onPrev()"
+        [pagesToShow]="5"
+        [page]="page"
+        [perPage]="limit"
+        [count]="total"></app-pagination>
+    </div>
+  </div>
+</div>
