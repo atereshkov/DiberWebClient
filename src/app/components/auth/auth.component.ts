@@ -27,6 +27,7 @@ export class AuthComponent implements OnInit {
 
   login() {
     this.loading = true;
+    this.error = '';
     this.authService.login(this.username, this.password)
       .subscribe(result => {
           if (result === true) {

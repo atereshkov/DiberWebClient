@@ -16,9 +16,12 @@
             <br>
             <div class="wrapper">
             <span class="group-btn">
-               <button class="btn btn-primary btn-lg btn-block" (click)="login()">Log in</button>
+               <button *ngIf="!loading" class="btn btn-primary btn-lg btn-block" [disabled]="loading" (click)="login()">Log in</button>
             </span>
+              <app-loading-indicator
+                [loading]="loading"></app-loading-indicator>
             </div>
+            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
             <div class="divider-form"></div>
             <p class="message text-center">Not registered? <a href="register">Create an account!</a></p>
             <p class="message text-center">Lost password? <a href="restore">Restore!</a></p>

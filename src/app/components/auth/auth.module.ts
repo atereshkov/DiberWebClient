@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {AuthComponent} from "./auth.component";
+import {LoadingIndicatorComponent} from "../common/loading-indicator/loading-indicator.component";
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import {AuthComponent} from "./auth.component";
     FormsModule
   ],
   declarations: [
-    AuthComponent
+    AuthComponent,
+    LoadingIndicatorComponent
   ]
 })
 

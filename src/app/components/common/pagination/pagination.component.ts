@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import {Component, Input, EventEmitter, Output} from "@angular/core";
 
 @Component({
   selector: 'app-pagination',
@@ -16,7 +16,8 @@ export class PaginationComponent {
   @Output() goNext = new EventEmitter<boolean>();
   @Output() goPage = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {
+  }
 
   getMin(): number {
     return ((this.perPage * this.page) - this.perPage) + 1;
