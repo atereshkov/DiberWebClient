@@ -29,7 +29,7 @@
           <th>Remove</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="!loading">
         <tr *ngFor="let order of orders">
           <td>{{order.id}}</td>
           <td>{{order.status}}</td>
@@ -44,6 +44,8 @@
         </tr>
         </tbody>
       </table>
+      <app-loading-indicator
+        [loading]="loading"></app-loading-indicator>
       <app-pagination
         (goPage)="goToPage($event)"
         (goNext)="onNext()"
