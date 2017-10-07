@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from "@angular/core";
-import {Order} from "../../../models/order";
-import {OrderService} from "../../../services/order.service";
+import {Order} from "../../../../models/order";
+import {OrderService} from "../../../../services/order.service";
 
 @Component({
   selector: 'app-order-list',

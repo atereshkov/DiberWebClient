@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {AdminGuard} from "../../guards/admin.guard";
 import {AdminPanelComponent} from "./admin-panel.component";
-import {OrderListComponent} from "./order-list/order-list.component";
+import {OrderListComponent} from "./content/order-list/order-list.component";
 
 export const routes: Routes = [
   {
