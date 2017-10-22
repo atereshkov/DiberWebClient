@@ -1,6 +1,6 @@
 {
   "/api/v1": {
-    "target": "https://pacific-forest-76418.herokuapp.com/",
+    "target": "https://diber-backend.herokuapp.com/",
     "secure": false
   }
 }

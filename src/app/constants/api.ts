@@ -1,5 +1,5 @@
 export const api = {
-  END_POINT: 'https://pacific-forest-76418.herokuapp.com/',
+  END_POINT: 'https://diber-backend.herokuapp.com/',
   USER_INFO: 'api/v1/users/info',
   AUTH: 'oauth/token',
   REGISTER: 'api/v1/auth/register',
