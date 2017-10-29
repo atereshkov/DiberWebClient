@@ -4,4 +4,5 @@ export const api = {
   AUTH: 'oauth/token',
   REGISTER: 'api/v1/auth/register',
   ORDERS_ALL: 'api/v1/orders',
+  USERS_ALL: 'api/v1/users',
 };

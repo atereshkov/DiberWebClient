@@ -17,9 +17,4 @@ export class User {
     this.roles = roles;
   }
 
-  public static fromJSON(data: string): User {
-    let jsonData = JSON.parse(data);
-    return new User(jsonData.id, jsonData.username, jsonData.password, jsonData.email, jsonData.fullname, jsonData.roles);
-  }
-
 }

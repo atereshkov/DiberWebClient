@@ -5,17 +5,17 @@ import {api} from "../constants/api";
 import {BaseService} from "./base.service";
 
 @Injectable()
-export class OrderService extends BaseService {
+export class UserService extends BaseService {
 
-  private static ORDERS_URL = api.ORDERS_ALL;
+  private static USERS_URL = api.USERS_ALL;
 
   constructor(private http: Http) {
     super();
   }
 
-  getOrders(page: number, size: number): Observable<any> {
+  getUsers(page: number, size: number): Observable<any> {
     let bearerRequestOptions = this.getBearerRequestOptions();
-    return this.http.get(OrderService.ORDERS_URL + '?' + 'page=' + page + '&' + 'size=' + size, bearerRequestOptions)
+    return this.http.get(UserService.USERS_URL + '?' + 'page=' + page + '&' + 'size=' + size, bearerRequestOptions)
       .map((response: Response) => {
         if (response.status != 200) {
           throw new Error('Error when getting orders. Status: ' + response.status);

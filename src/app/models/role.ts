@@ -6,9 +6,4 @@ export class Role {
     this.name = name;
   }
 
-  public static fromJSON(data: string): Role {
-    let jsonData = JSON.parse(data);
-    return new Role(jsonData.name);
-  }
-
 }

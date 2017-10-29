@@ -25,6 +25,7 @@ import {PageNotFoundModule} from "./components/page-not-found/page-not-found.mod
 import {ProfileModule} from "./components/profile/profile.module";
 import {SettingsModule} from "./components/settings/settings.module";
 import {DashboardModule} from "./components/dashboard/dashboard.module";
+import {UserService} from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {DashboardModule} from "./components/dashboard/dashboard.module";
     LoggedInGuard,
     AuthService,
     OrderService,
+    UserService,
     {
       provide: Http,
       useFactory: httpFactory,

@@ -3,6 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {AdminGuard} from "../../guards/admin.guard";
 import {AdminPanelComponent} from "./admin-panel.component";
 import {OrderListComponent} from "./content/order-list/order-list.component";
+import {UserListComponent} from "./content/user-list/user-list.component";
 
 export const routes: Routes = [
   {
@@ -11,6 +12,11 @@ export const routes: Routes = [
       {
         path: 'orders',
         component: OrderListComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'users',
+        component: UserListComponent,
         canActivate: [AdminGuard],
       }
     ]

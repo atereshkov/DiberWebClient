@@ -20,9 +20,4 @@ export class Address {
     this.phone = phone;
   }
 
-  public static fromJSON(data: string): Address {
-    let jsonData = JSON.parse(data);
-    return new Address(jsonData.id, jsonData.name, jsonData.postalCode, jsonData.country, jsonData.city, jsonData.region, jsonData.address, jsonData.phone);
-  }
-
 }
