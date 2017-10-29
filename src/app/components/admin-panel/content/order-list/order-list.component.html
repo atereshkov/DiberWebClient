@@ -24,7 +24,7 @@
           <th>#</th>
           <th>Status</th>
           <th>Date</th>
-          <th>Price</th>
+          <th>Price ($)</th>
           <th>Edit</th>
           <th>Remove</th>
         </tr>
@@ -33,7 +33,7 @@
         <tr *ngFor="let order of orders">
           <td>{{order.id}}</td>
           <td>{{order.status}}</td>
-          <td>{{order.date}}</td>
+          <td>{{order.date * 1000 | date: 'short' }}</td>
           <td>{{order.price}}</td>
           <td>
             <button class="btn btn-warning">Edit</button>
