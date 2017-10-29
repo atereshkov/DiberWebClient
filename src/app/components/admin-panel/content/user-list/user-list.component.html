@@ -3,19 +3,19 @@
     <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>Status</th>
-      <th>Date</th>
-      <th>Price ($)</th>
+      <th>Login</th>
+      <th>Email</th>
+      <th>Fullname</th>
       <th>Edit</th>
       <th>Remove</th>
     </tr>
     </thead>
     <tbody *ngIf="!loading">
     <tr *ngFor="let user of users">
-      <td>{{order.id}}</td>
-      <td>{{order.status}}</td>
-      <td>{{order.date * 1000 | date: 'short' }}</td>
-      <td>{{order.price}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.fullname}}</td>
       <td>
         <button class="btn btn-warning">Edit</button>
       </td>
