@@ -4,6 +4,7 @@ import {AdminGuard} from "../../guards/admin.guard";
 import {AdminPanelComponent} from "./admin-panel.component";
 import {OrderListComponent} from "./content/order-list/order-list.component";
 import {UserListComponent} from "./content/user-list/user-list.component";
+import {AddressListComponent} from "./content/address-list/address-list.component";
 
 export const routes: Routes = [
   {
@@ -17,6 +18,11 @@ export const routes: Routes = [
       {
         path: 'users',
         component: UserListComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'addresses',
+        component: AddressListComponent,
         canActivate: [AdminGuard],
       }
     ]

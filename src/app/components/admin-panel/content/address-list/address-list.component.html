@@ -1,0 +1,38 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Price ($)</th>
+      <th>Edit</th>
+      <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="!loading">
+    <tr *ngFor="let address of addresses">
+      <td>{{address.id}}</td>
+      <td>{{address.name}}</td>
+      <td>{{address.address}}</td>
+      <td>{{address.region}}</td>
+      <td>
+        <button class="btn btn-warning">Edit</button>
+      </td>
+      <td>
+        <button class="btn btn-danger">Remove</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <app-loading-indicator
+    [loading]="loading"></app-loading-indicator>
+  <app-pagination
+    (goPage)="goToPage($event)"
+    (goNext)="onNext()"
+    (goPrev)="onPrev()"
+    [pagesToShow]="5"
+    [page]="page"
+    [perPage]="limit"
+    [count]="total"></app-pagination>
+</div>

@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {HttpModule, RequestOptions, XHRBackend, Http} from "@angular/http";
+import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {AppComponent} from "./app.component";
@@ -26,6 +26,7 @@ import {ProfileModule} from "./components/profile/profile.module";
 import {SettingsModule} from "./components/settings/settings.module";
 import {DashboardModule} from "./components/dashboard/dashboard.module";
 import {UserService} from "./services/user.service";
+import {AddressService} from "./services/address.service";
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {UserService} from "./services/user.service";
     AuthService,
     OrderService,
     UserService,
+    AddressService,
     {
       provide: Http,
       useFactory: httpFactory,
