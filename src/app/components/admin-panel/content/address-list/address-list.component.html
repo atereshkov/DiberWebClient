@@ -3,9 +3,11 @@
     <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>Status</th>
-      <th>Date</th>
-      <th>Price ($)</th>
+      <th>User ID</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Address</th>
+      <th>Phone</th>
       <th>Edit</th>
       <th>Remove</th>
     </tr>
@@ -13,9 +15,11 @@
     <tbody *ngIf="!loading">
     <tr *ngFor="let address of addresses">
       <td>{{address.id}}</td>
-      <td>{{address.name}}</td>
+      <td>{{address.userId}}</td>
+      <td>{{address.country}}</td>
+      <td>{{address.city}}</td>
       <td>{{address.address}}</td>
-      <td>{{address.region}}</td>
+      <td>{{address.phone}}</td>
       <td>
         <button class="btn btn-warning">Edit</button>
       </td>

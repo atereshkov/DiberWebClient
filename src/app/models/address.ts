@@ -8,8 +8,9 @@ export class Address {
   region: string;
   address: string;
   phone: string;
+  userId: number;
 
-  constructor(id: number, name: string, postalCode: string, country: string, city: string, region: string, address: string, phone: string) {
+  constructor(id: number, name: string, postalCode: string, country: string, city: string, region: string, address: string, phone: string, userId: number) {
     this.id = id;
     this.name = name;
     this.postalCode = postalCode;
@@ -18,6 +19,7 @@ export class Address {
     this.region = region;
     this.address = address;
     this.phone = phone;
+    this.userId = userId;
   }
 
 }
