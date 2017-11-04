@@ -1,11 +1,11 @@
 <div class="table-responsive">
-  <table class="table table-striped">
+  <table class="table table-striped" sortable-table (sorted)="onSorted($event)">
     <thead class="thead-inverse">
     <tr>
-      <th>#</th>
-      <th>Login</th>
-      <th>Email</th>
-      <th>Fullname</th>
+      <th sortable-column="id" sort-direction="asc">#</th>
+      <th sortable-column="username">Login</th>
+      <th sortable-column="email">Email</th>
+      <th sortable-column="fullname">Fullname</th>
       <th>Edit</th>
       <th>Remove</th>
     </tr>

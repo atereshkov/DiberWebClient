@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Address} from "../../../../models/address";
 import {AddressService} from "../../../../services/address.service";
+import {SearchCriteria} from "../../../common/sortable-table/search-criteria";
 
 @Component({
   selector: 'app-address-list',
@@ -14,7 +15,7 @@ export class AddressListComponent implements OnInit {
   loading = false;
   total = 0;
   page = 1;
-  limit = 7;
+  limit = 10;
 
   @Output() onAddressesLoaded: EventEmitter<any> = new EventEmitter<any>();
 
@@ -35,6 +36,7 @@ export class AddressListComponent implements OnInit {
           this.total = addresses.totalElements;
           this.loading = false;
           this.onAddressesLoaded.emit(addresses.totalElements);
+          this.sort({sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {
           this.logError(err);
@@ -56,6 +58,22 @@ export class AddressListComponent implements OnInit {
   onPrev() {
     this.page--;
     this.loadData();
+  }
+
+  // Sorting
+
+  onSorted($event) {
+    this.addresses = this.sort($event);
+  }
+
+  sort(criteria: SearchCriteria): Address[] {
+    return this.addresses.sort((a, b) => {
+      if (criteria.sortDirection === 'desc') {
+        return a[criteria.sortColumn] < b[criteria.sortColumn] ? 1 : -1;
+      } else {
+        return a[criteria.sortColumn] > b[criteria.sortColumn] ? 1 : -1;
+      }
+    });
   }
 
   // TODO Logger

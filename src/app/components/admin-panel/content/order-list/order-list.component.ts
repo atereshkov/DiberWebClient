@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {Order} from "../../../../models/order";
 import {OrderService} from "../../../../services/order.service";
+import {SearchCriteria} from "../../../common/sortable-table/search-criteria";
 
 @Component({
   selector: 'app-order-list',
@@ -14,7 +15,7 @@ export class OrderListComponent implements OnInit {
   loading = false;
   total = 0;
   page = 1;
-  limit = 7;
+  limit = 10;
 
   @Output() onOrdersLoaded: EventEmitter<any> = new EventEmitter<any>();
 
@@ -35,6 +36,7 @@ export class OrderListComponent implements OnInit {
           this.total = orders.totalElements;
           this.loading = false;
           this.onOrdersLoaded.emit(orders.totalElements);
+          this.sort({sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {
           this.logError(err);
@@ -42,6 +44,8 @@ export class OrderListComponent implements OnInit {
         }
       );
   }
+
+  // Pagination
 
   goToPage(n: number) {
     this.page = n;
@@ -56,6 +60,22 @@ export class OrderListComponent implements OnInit {
   onPrev() {
     this.page--;
     this.loadData();
+  }
+
+  // Sorting
+
+  onSorted($event) {
+    this.orders = this.sort($event);
+  }
+
+  sort(criteria: SearchCriteria): Order[] {
+    return this.orders.sort((a, b) => {
+      if (criteria.sortDirection === 'desc') {
+        return a[criteria.sortColumn] < b[criteria.sortColumn] ? 1 : -1;
+      } else {
+        return a[criteria.sortColumn] > b[criteria.sortColumn] ? 1 : -1;
+      }
+    });
   }
 
   // TODO Logger
