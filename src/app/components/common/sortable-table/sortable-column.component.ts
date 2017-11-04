@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { SortService } from './sort.service';
+import { SortService } from '../../../services/sort.service';
 
 @Component({
   selector: '[sortable-column]',

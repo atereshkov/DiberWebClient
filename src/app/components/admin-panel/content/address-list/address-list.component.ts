@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Address} from "../../../../models/address";
 import {AddressService} from "../../../../services/address.service";
-import {SearchCriteria} from "../../../common/sortable-table/search-criteria";
+import {SortService} from "../../../../services/sort.service";
 
 @Component({
   selector: 'app-address-list',
@@ -19,7 +19,7 @@ export class AddressListComponent implements OnInit {
 
   @Output() onAddressesLoaded: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private addressService: AddressService) {
+  constructor(private addressService: AddressService, private sortService: SortService) {
     this.addresses = [];
   }
 
@@ -36,7 +36,7 @@ export class AddressListComponent implements OnInit {
           this.total = addresses.totalElements;
           this.loading = false;
           this.onAddressesLoaded.emit(addresses.totalElements);
-          this.sort({sortColumn: 'id', sortDirection: 'asc'});
+          this.sortService.sort(this.addresses, {sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {
           this.logError(err);
@@ -44,6 +44,8 @@ export class AddressListComponent implements OnInit {
         }
       );
   }
+
+  // Pagination
 
   goToPage(n: number) {
     this.page = n;
@@ -63,17 +65,7 @@ export class AddressListComponent implements OnInit {
   // Sorting
 
   onSorted($event) {
-    this.addresses = this.sort($event);
-  }
-
-  sort(criteria: SearchCriteria): Address[] {
-    return this.addresses.sort((a, b) => {
-      if (criteria.sortDirection === 'desc') {
-        return a[criteria.sortColumn] < b[criteria.sortColumn] ? 1 : -1;
-      } else {
-        return a[criteria.sortColumn] > b[criteria.sortColumn] ? 1 : -1;
-      }
-    });
+    this.addresses = this.sortService.sort(this.addresses, $event);
   }
 
   // TODO Logger

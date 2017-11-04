@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from "../../../../services/user.service";
 import {User} from "../../../../models/user";
-import {SearchCriteria} from "../../../common/sortable-table/search-criteria";
+import {SortService} from "../../../../services/sort.service";
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
 
   @Output() onUsersLoaded: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private sortService: SortService) {
     this.users = [];
   }
 
@@ -36,7 +36,7 @@ export class UserListComponent implements OnInit {
           this.total = users.totalElements;
           this.loading = false;
           this.onUsersLoaded.emit(users.totalElements);
-          this.sort({sortColumn: 'id', sortDirection: 'asc'});
+          this.sortService.sort(this.users, {sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {
           this.logError(err);
@@ -65,17 +65,7 @@ export class UserListComponent implements OnInit {
   // Sorting
 
   onSorted($event) {
-    this.users = this.sort($event);
-  }
-
-  sort(criteria: SearchCriteria): User[] {
-    return this.users.sort((a, b) => {
-      if (criteria.sortDirection === 'desc') {
-        return a[criteria.sortColumn] < b[criteria.sortColumn] ? 1 : -1;
-      } else {
-        return a[criteria.sortColumn] > b[criteria.sortColumn] ? 1 : -1;
-      }
-    });
+    this.users = this.sortService.sort(this.users, $event);
   }
 
   // TODO Logger
