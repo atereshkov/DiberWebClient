@@ -5,6 +5,7 @@ import {AdminPanelRoutingModule} from "./admin-panel-routing.module";
 import {OrderListModule} from "./content/order-list/order-list.module";
 import {UserListModule} from "./content/user-list/user-list.module";
 import {AddressListModule} from "./content/address-list/address-list.module";
+import {AdminOverviewModule} from "./content/admin-overview/admin-overview.module";
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import {AddressListModule} from "./content/address-list/address-list.module";
     AdminPanelRoutingModule,
     OrderListModule,
     UserListModule,
-    AddressListModule
+    AddressListModule,
+    AdminOverviewModule
   ],
   declarations: [
     AdminPanelComponent

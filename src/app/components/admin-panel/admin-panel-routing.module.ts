@@ -5,11 +5,22 @@ import {AdminPanelComponent} from "./admin-panel.component";
 import {OrderListComponent} from "./content/order-list/order-list.component";
 import {UserListComponent} from "./content/user-list/user-list.component";
 import {AddressListComponent} from "./content/address-list/address-list.component";
+import {AdminOverviewComponent} from "./content/admin-overview/admin-overview.component";
 
 export const routes: Routes = [
   {
     path: 'dashboard/admin', component: AdminPanelComponent, canActivate: [AdminGuard],
     children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
+        component: AdminOverviewComponent,
+        canActivate: [AdminGuard],
+      },
       {
         path: 'orders',
         component: OrderListComponent,
