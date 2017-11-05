@@ -8,12 +8,13 @@ body {
 
 /* workaround modal-open padding issue */
 body.modal-open {
-  padding-right:0 !important;
+  padding-right: 0 !important;
 }
 
 
 #sidebar {
-  padding-left:0;
+  padding-left: 0;
+  background: linear-gradient(to right, #e0e0e3, #fff);
 }
 
 /*
