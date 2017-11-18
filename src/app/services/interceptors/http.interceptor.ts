@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers} from "@angular/http";
-import {Observable} from "rxjs/Rx";
-import {Router} from "@angular/router";
-import {api} from "../../constants/api";
-import {keys} from "../../constants/storage.keys";
+import {Injectable} from '@angular/core';
+import {ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {Router} from '@angular/router';
+import {api} from '../../constants/api';
+import {keys} from '../../constants/storage.keys';
 
 @Injectable()
 export class ExtendedHttp extends Http {
@@ -43,7 +43,7 @@ export class ExtendedHttp extends Http {
     if (options.headers == null) {
       options.headers = new Headers();
     }
-    //options.headers.append('Content-Type', 'application/json');
+    // options.headers.append('Content-Type', 'application/json');
 
     return options;
   }

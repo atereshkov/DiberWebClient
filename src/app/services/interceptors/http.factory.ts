@@ -1,6 +1,6 @@
-import {XHRBackend, Http, RequestOptions} from "@angular/http";
-import {ExtendedHttp} from "./http.interceptor";
-import {Router} from "@angular/router";
+import {XHRBackend, Http, RequestOptions} from '@angular/http';
+import {ExtendedHttp} from './http.interceptor';
+import {Router} from '@angular/router';
 
 export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, router: Router): Http {
   return new ExtendedHttp(xhrBackend, requestOptions, router);

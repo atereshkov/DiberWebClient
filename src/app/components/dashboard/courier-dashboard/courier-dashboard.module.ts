@@ -1,6 +1,6 @@
-import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {CourierDashboardComponent} from "./courier-dashboard.component";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CourierDashboardComponent} from './courier-dashboard.component';
 
 @NgModule({
   imports: [

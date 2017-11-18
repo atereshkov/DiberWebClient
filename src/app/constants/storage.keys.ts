@@ -1,4 +1,4 @@
 export const keys = {
-  USER: "USER",
-  TOKEN: "TOKEN"
+  USER: 'USER',
+  TOKEN: 'TOKEN'
 };

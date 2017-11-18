@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../../services/auth.service";
-import {User} from "../../../models/user";
-import {keys} from "../../../constants/storage.keys";
-import {UserAuthority} from "../../../helper/user.authority";
+import {AuthService} from '../../../services/auth.service';
+import {User} from '../../../models/user';
+import {keys} from '../../../constants/storage.keys';
+import {UserAuthority} from '../../../helper/user.authority';
 
 @Component({
   selector: 'app-header',

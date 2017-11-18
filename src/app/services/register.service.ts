@@ -1,9 +1,9 @@
-import {Http, Response, RequestOptions, Headers} from "@angular/http";
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {keys} from "../constants/storage.keys";
-import {api} from "../constants/api";
-import {Register} from "../models/register";
+import {Http, Response, RequestOptions, Headers} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {keys} from '../constants/storage.keys';
+import {api} from '../constants/api';
+import {Register} from '../models/register';
 
 @Injectable()
 export class RegisterService {
@@ -23,7 +23,7 @@ export class RegisterService {
     });
     const options = new RequestOptions({headers: headers});
 
-    let userData = JSON.stringify(user);
+    const userData = JSON.stringify(user);
     return this.http.post(RegisterService.REGISTER_URL, userData, options)
       .map(RegisterService.handleUserInfo)
       .catch(RegisterService.handleError);
@@ -31,7 +31,7 @@ export class RegisterService {
 
   private static handleUserInfo(response: Response): boolean {
     console.info(response.json());
-    let user = response.json();
+    const user = response.json();
     if (user) {
       localStorage.setItem(keys.USER, JSON.stringify(user));
       return true;

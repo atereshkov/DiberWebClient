@@ -1,11 +1,11 @@
-import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
-import {AdminGuard} from "../../guards/admin.guard";
-import {AdminPanelComponent} from "./admin-panel.component";
-import {OrderListComponent} from "./content/order-list/order-list.component";
-import {UserListComponent} from "./content/user-list/user-list.component";
-import {AddressListComponent} from "./content/address-list/address-list.component";
-import {AdminOverviewComponent} from "./content/admin-overview/admin-overview.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminGuard} from '../../guards/admin.guard';
+import {AdminPanelComponent} from './admin-panel.component';
+import {OrderListComponent} from './content/order-list/order-list.component';
+import {UserListComponent} from './content/user-list/user-list.component';
+import {AddressListComponent} from './content/address-list/address-list.component';
+import {AdminOverviewComponent} from './content/admin-overview/admin-overview.component';
 
 export const routes: Routes = [
   {

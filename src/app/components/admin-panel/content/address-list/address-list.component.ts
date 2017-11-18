@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Address} from "../../../../models/address";
-import {AddressService} from "../../../../services/address.service";
-import {SortService} from "../../../../services/sort.service";
+import {Address} from '../../../../models/address';
+import {AddressService} from '../../../../services/address.service';
+import {SortService} from '../../../../services/sort.service';
 
 @Component({
   selector: 'app-address-list',

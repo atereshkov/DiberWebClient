@@ -1,8 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {AuthService} from "../../services/auth.service";
-import {keys} from "../../constants/storage.keys";
-import {UserAuthority} from "../../helper/user.authority";
-import {User} from "../../models/user";
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {keys} from '../../constants/storage.keys';
+import {UserAuthority} from '../../helper/user.authority';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-dashboard',

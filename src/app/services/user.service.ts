@@ -1,8 +1,8 @@
-import {Http, Response} from "@angular/http";
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {api} from "../constants/api";
-import {BaseService} from "./base.service";
+import {Http, Response} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {api} from '../constants/api';
+import {BaseService} from './base.service';
 
 @Injectable()
 export class UserService extends BaseService {
@@ -14,10 +14,10 @@ export class UserService extends BaseService {
   }
 
   getUsers(page: number, size: number): Observable<any> {
-    let bearerRequestOptions = this.getBearerRequestOptions();
+    const bearerRequestOptions = this.getBearerRequestOptions();
     return this.http.get(UserService.USERS_URL + '?' + 'page=' + page + '&' + 'size=' + size, bearerRequestOptions)
       .map((response: Response) => {
-        if (response.status != 200) {
+        if (response.status !== 200) {
           throw new Error('Error when getting orders. Status: ' + response.status);
         } else {
           return response.json();

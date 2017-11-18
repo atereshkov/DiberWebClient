@@ -1,6 +1,6 @@
-import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {ClientDashboardComponent} from "./client-dashboard.component";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ClientDashboardComponent} from './client-dashboard.component';
 
 @NgModule({
   imports: [

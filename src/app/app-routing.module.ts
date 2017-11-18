@@ -1,21 +1,21 @@
-import {Routes, RouterModule} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
-import {AuthComponent} from "./components/auth/auth.component";
-import {NotAuthorizedGuard} from "./guards/not-authorized.guard";
-import {RegisterComponent} from "./components/register/register.component";
-import {LandingPageComponent} from "./components/landing-page/landing-page.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {LoggedInGuard} from "./guards/logged-in.guard";
-import {CourierDashboardComponent} from "./components/dashboard/courier-dashboard/courier-dashboard.component";
-import {ClientDashboardComponent} from "./components/dashboard/client-dashboard/client-dashboard.component";
-import {ClientGuard} from "./guards/client.guard";
-import {CourierGuard} from "./guards/courier.guard";
-import {SettingsComponent} from "./components/settings/settings.component";
-import {ProfileComponent} from "./components/profile/profile.component";
+import {Routes, RouterModule} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {AuthComponent} from './components/auth/auth.component';
+import {NotAuthorizedGuard} from './guards/not-authorized.guard';
+import {RegisterComponent} from './components/register/register.component';
+import {LandingPageComponent} from './components/landing-page/landing-page.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {LoggedInGuard} from './guards/logged-in.guard';
+import {CourierDashboardComponent} from './components/dashboard/courier-dashboard/courier-dashboard.component';
+import {ClientDashboardComponent} from './components/dashboard/client-dashboard/client-dashboard.component';
+import {ClientGuard} from './guards/client.guard';
+import {CourierGuard} from './guards/courier.guard';
+import {SettingsComponent} from './components/settings/settings.component';
+import {ProfileComponent} from './components/profile/profile.component';
 
 export const routes: Routes = [
-  //{ path: '', redirectTo: '/main-page', pathMatch: 'full' },
+  // { path: '', redirectTo: '/main-page', pathMatch: 'full' },
   {path: '', component: LandingPageComponent},
   {path: 'signin', component: AuthComponent, canActivate: [NotAuthorizedGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [NotAuthorizedGuard]},

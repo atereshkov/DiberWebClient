@@ -1,10 +1,10 @@
-import {Http, Response} from "@angular/http";
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {Router} from "@angular/router";
-import {keys} from "../constants/storage.keys";
-import {api} from "../constants/api";
-import {BaseService} from "./base.service";
+import {Http, Response} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {keys} from '../constants/storage.keys';
+import {api} from '../constants/api';
+import {BaseService} from './base.service';
 
 @Injectable()
 export class AuthService extends BaseService {
@@ -17,15 +17,15 @@ export class AuthService extends BaseService {
   }
 
   login(login: string, password: string): Observable<boolean> {
-    let basicParams = this.getBasicParams(login, password);
-    let bearerRequestOptions = this.getBasicRequestOptions;
+    const basicParams = this.getBasicParams(login, password);
+    const bearerRequestOptions = this.getBasicRequestOptions;
     return this.http.post(AuthService.AUTH_URL, basicParams, bearerRequestOptions())
       .map(AuthService.handleToken)
       .catch(AuthService.handleError);
   }
 
   getUserInfo(): Observable<boolean> {
-    let bearerRequestOptions = this.getBearerRequestOptions;
+    const bearerRequestOptions = this.getBearerRequestOptions;
     return this.http.get(AuthService.USER_INFO_URL, bearerRequestOptions())
       .map(AuthService.handleUserInfo)
       .catch(AuthService.handleError);
@@ -57,7 +57,7 @@ export class AuthService extends BaseService {
 
   private static handleUserInfo(response: Response): boolean {
     console.info(response.json());
-    let user = response.json();
+    const user = response.json();
     if (user) {
       localStorage.setItem(keys.USER, JSON.stringify(user));
       return true;

@@ -1,7 +1,7 @@
-import {Component, OnInit, Output, EventEmitter} from "@angular/core";
-import {Order} from "../../../../models/order";
-import {OrderService} from "../../../../services/order.service";
-import {SortService} from "../../../../services/sort.service";
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Order} from '../../../../models/order';
+import {OrderService} from '../../../../services/order.service';
+import {SortService} from '../../../../services/sort.service';
 
 @Component({
   selector: 'app-order-list',

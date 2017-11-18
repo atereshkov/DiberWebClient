@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
-import {RegisterService} from "../../services/register.service";
-import {Register} from "../../models/register";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {RegisterService} from '../../services/register.service';
+import {Register} from '../../models/register';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = new Register("", "", "", "", false, false);
+    this.user = new Register('', '', '', '', false, false);
   }
 
   register() {
