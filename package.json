@@ -1,6 +1,6 @@
 {
   "name": "diber-web-client",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -31,9 +31,9 @@
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "jquery": "^3.2.1",
-    "rxjs": "^5.1.0",
+    "rxjs": "^5.5.0",
     "zone.js": "^0.8.4",
-    "typescript": "2.4.2"
+    "typescript": "2.6.1"
   },
   "devDependencies": {
     "@angular/cli": "1.5.2",
@@ -52,6 +52,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "2.4.2"
+    "typescript": "2.6.1"
   }
 }
