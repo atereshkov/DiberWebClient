@@ -6,6 +6,9 @@ import {OrderListComponent} from './content/order-list/order-list.component';
 import {UserListComponent} from './content/user-list/user-list.component';
 import {AddressListComponent} from './content/address-list/address-list.component';
 import {AdminOverviewComponent} from './content/admin-overview/admin-overview.component';
+import {AdminSearchComponent} from './content/admin-search/admin-search.component';
+import {AdminStatisticsComponent} from './content/admin-statistics/admin-statistics.component';
+import {AdminAnalyticsComponent} from './content/admin-analytics/admin-analytics.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +37,21 @@ export const routes: Routes = [
       {
         path: 'addresses',
         component: AddressListComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'search',
+        component: AdminSearchComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'statistics',
+        component: AdminStatisticsComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'analytics',
+        component: AdminAnalyticsComponent,
         canActivate: [AdminGuard],
       }
     ]

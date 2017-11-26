@@ -27,12 +27,18 @@ import {SettingsModule} from './components/settings/settings.module';
 import {DashboardModule} from './components/dashboard/dashboard.module';
 import {UserService} from './services/user.service';
 import {AddressService} from './services/address.service';
+import {AdminStatisticsComponent} from './components/admin-panel/content/admin-statistics/admin-statistics.component';
+import {AdminAnalyticsComponent} from './components/admin-panel/content/admin-analytics/admin-analytics.component';
+import {AdminSearchComponent} from './components/admin-panel/content/admin-search/admin-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingFooterComponent,
-    LandingHeaderComponent
+    LandingHeaderComponent,
+    AdminSearchComponent,
+    AdminStatisticsComponent,
+    AdminAnalyticsComponent
   ],
   imports: [
     NgbModule.forRoot(),
