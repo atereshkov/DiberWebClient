@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {Http, HttpModule, RequestOptions, XHRBackend} from '@angular/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
@@ -8,7 +8,6 @@ import {NotAuthorizedGuard} from './guards/not-authorized.guard';
 import {AuthService} from './services/auth.service';
 import {AdminGuard} from './guards/admin.guard';
 import {OrderService} from './services/order.service';
-import {httpFactory} from './services/interceptors/http.factory';
 import {Router} from '@angular/router';
 import {ClientGuard} from './guards/client.guard';
 import {CourierGuard} from './guards/courier.guard';
@@ -30,6 +29,7 @@ import {AddressService} from './services/address.service';
 import {AdminStatisticsComponent} from './components/admin-panel/content/admin-statistics/admin-statistics.component';
 import {AdminAnalyticsComponent} from './components/admin-panel/content/admin-analytics/admin-analytics.component';
 import {AdminSearchComponent} from './components/admin-panel/content/admin-search/admin-search.component';
+import {HttpGlobalInterceptor} from './services/interceptors/http.global.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import {AdminSearchComponent} from './components/admin-panel/content/admin-searc
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     LandingPageModule,
     DashboardModule,
     ProfileModule,
@@ -67,9 +67,9 @@ import {AdminSearchComponent} from './components/admin-panel/content/admin-searc
     UserService,
     AddressService,
     {
-      provide: Http,
-      useFactory: httpFactory,
-      deps: [XHRBackend, RequestOptions, Router]
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpGlobalInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

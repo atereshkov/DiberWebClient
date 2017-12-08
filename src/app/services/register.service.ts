@@ -1,4 +1,4 @@
-import {Http, Response, RequestOptions, Headers} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {keys} from '../constants/storage.keys';
@@ -11,7 +11,7 @@ export class RegisterService {
   private static REGISTER_URL = api.REGISTER;
   private static HEADER_AUTHORIZATION_VALUE = 'Basic Y2xpZW50YXBwOjEyMzQ1Ng==';
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
 
   }
 

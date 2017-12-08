@@ -1,4 +1,4 @@
-import {Http, Response} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {api} from '../constants/api';
@@ -9,20 +9,15 @@ export class AddressService extends BaseService {
 
   private static ADDRESSES_URL = api.ADDRESSES_ALL;
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
     super();
   }
 
   getAddresses(page: number, size: number): Observable<any> {
-    const bearerRequestOptions = this.getBearerRequestOptions();
-    return this.http.get(AddressService.ADDRESSES_URL + '?' + 'page=' + page + '&' + 'size=' + size, bearerRequestOptions)
-      .map((response: Response) => {
-        if (response.status !== 200) {
-          throw new Error('Error when getting orders. Status: ' + response.status);
-        } else {
-          return response.json();
-        }
-      });
+    const headers = this.getBearerHeaders();
+    return this.http.get(AddressService.ADDRESSES_URL + '?' + 'page=' + page + '&' + 'size=' + size, {
+      headers: headers
+    });
   }
 
 }

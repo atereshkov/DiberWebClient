@@ -28,12 +28,13 @@ export class OrderListComponent implements OnInit {
   }
 
   private loadData() {
+    console.log('KEK LOAD DATA');
     this.loading = true;
     this.orderService.getOrders(this.page - 1, this.limit)
       .subscribe(
-        orders => {
-          this.orders = orders.content;
-          this.total = orders.totalElements;
+        data => {
+          this.orders = data.content;
+          this.total = data.totalElements;
           this.loading = false;
           this.onOrdersLoaded.emit(orders.totalElements);
           this.sortService.sort(this.orders, {sortColumn: 'id', sortDirection: 'asc'});
@@ -70,7 +71,7 @@ export class OrderListComponent implements OnInit {
 
   // TODO Logger
   logError(error) {
-    console.error('Error: ' + +error.message ? error.message : error.toString());
+    console.error('Error: ' + error.message ? error.message : error.toString());
   }
 
 }

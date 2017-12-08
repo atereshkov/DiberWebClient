@@ -1,4 +1,4 @@
-import {Http, Response} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
@@ -12,7 +12,7 @@ export class AuthService extends BaseService {
   private static AUTH_URL = api.AUTH;
   private static USER_INFO_URL = api.USER_INFO;
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     super();
   }
 
