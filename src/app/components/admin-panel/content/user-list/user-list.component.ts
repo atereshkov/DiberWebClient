@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
           this.users = data.content;
           this.total = data.totalElements;
           this.loading = false;
-          this.onUsersLoaded.emit(users.totalElements);
+          this.onUsersLoaded.emit(data.totalElements);
           this.sortService.sort(this.users, {sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {

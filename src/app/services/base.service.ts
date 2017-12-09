@@ -34,17 +34,22 @@ export abstract class BaseService {
     return new HttpHeaders(headers);
   }
 
-  protected getBasicParams(login: string, password: string): HttpParams {
-    const requestOptions = {
-      params: new HttpParams()
+  protected getRegisterHeaders(): HttpHeaders {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': BaseService.HEADER_AUTHORIZATION_VALUE
     };
-    requestOptions.params.set(BaseService.CLIENT_ID, BaseService.CLIENT_ID_VALUE);
-    requestOptions.params.set(BaseService.GRANT_TYPE, BaseService.GRANT_TYPE_VALUE);
-    requestOptions.params.set(BaseService.CLIENT_SECRET, BaseService.CLIENT_SECRET_VALUE);
-    requestOptions.params.set('username', login);
-    requestOptions.params.set('password', password);
+    return new HttpHeaders(headers);
+  }
 
-    return requestOptions.params;
+  protected getBasicParams(login: string, password: string): HttpParams {
+    return new HttpParams()
+      .set(BaseService.CLIENT_ID, BaseService.CLIENT_ID_VALUE)
+      .set(BaseService.GRANT_TYPE, BaseService.GRANT_TYPE_VALUE)
+      .set(BaseService.CLIENT_SECRET, BaseService.CLIENT_SECRET_VALUE)
+      .set('username', login)
+      .set('password', password);
   }
 
 }

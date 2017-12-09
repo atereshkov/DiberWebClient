@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {keys} from '../../constants/storage.keys';
 
 @Component({
   selector: 'app-auth',
@@ -27,8 +28,8 @@ export class AuthComponent implements OnInit {
     this.loading = true;
     this.error = '';
     this.authService.login(this.username, this.password)
-      .subscribe(result => {
-          if (result === true) {
+      .subscribe(data => {
+          if (this.handleToken(data)) {
             this.handleUserInfo();
           } else {
             this.error = 'Authentication error';
@@ -43,8 +44,8 @@ export class AuthComponent implements OnInit {
 
   private handleUserInfo() {
     this.authService.getUserInfo()
-      .subscribe(result => {
-          if (result === true) {
+      .subscribe(data => {
+          if (this.handleUser(data)) {
             this.loading = false;
             if (this.authService.isUserLoggedIn()) {
               this.navigateToDashboard();
@@ -58,6 +59,28 @@ export class AuthComponent implements OnInit {
           this.error = 'Authentication error';
           this.loading = false;
         });
+  }
+
+  private handleToken(data: any): boolean {
+    const access_token = data.access_token;
+    const refresh_token = data.refresh_token;
+    if (access_token && refresh_token) {
+      localStorage.setItem(keys.TOKEN, JSON.stringify({
+        access_token: access_token,
+        refresh_token: refresh_token
+      }));
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private handleUser(data: any): boolean {
+    if (data) {
+      localStorage.setItem(keys.USER, JSON.stringify(data));
+      return true;
+    }
+    return false;
   }
 
   private navigateToDashboard() {

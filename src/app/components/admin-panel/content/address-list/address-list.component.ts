@@ -35,7 +35,7 @@ export class AddressListComponent implements OnInit {
           this.addresses = data.content;
           this.total = data.totalElements;
           this.loading = false;
-          this.onAddressesLoaded.emit(addresses.totalElements);
+          this.onAddressesLoaded.emit(data.totalElements);
           this.sortService.sort(this.addresses, {sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {

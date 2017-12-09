@@ -36,7 +36,7 @@ export class OrderListComponent implements OnInit {
           this.orders = data.content;
           this.total = data.totalElements;
           this.loading = false;
-          this.onOrdersLoaded.emit(orders.totalElements);
+          this.onOrdersLoaded.emit(data.totalElements);
           this.sortService.sort(this.orders, {sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {

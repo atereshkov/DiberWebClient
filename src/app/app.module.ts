@@ -30,6 +30,7 @@ import {AdminStatisticsComponent} from './components/admin-panel/content/admin-s
 import {AdminAnalyticsComponent} from './components/admin-panel/content/admin-analytics/admin-analytics.component';
 import {AdminSearchComponent} from './components/admin-panel/content/admin-search/admin-search.component';
 import {HttpGlobalInterceptor} from './services/interceptors/http.global.interceptor';
+import {AuthInterceptor} from './services/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -66,11 +67,8 @@ import {HttpGlobalInterceptor} from './services/interceptors/http.global.interce
     OrderService,
     UserService,
     AddressService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpGlobalInterceptor,
-      multi: true
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpGlobalInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, deps: [Router] }
   ],
   bootstrap: [AppComponent]
 })
