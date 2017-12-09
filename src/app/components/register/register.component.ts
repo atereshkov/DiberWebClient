@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {RegisterService} from '../../services/register.service';
 import {Register} from '../../models/register';
+import {keys} from "../../constants/storage.keys";
 
 @Component({
   selector: 'app-register',
@@ -27,8 +28,8 @@ export class RegisterComponent implements OnInit {
     // TODO Verify fields, etc.
     this.loading = true;
     this.registerService.register(this.user)
-      .subscribe(result => {
-          if (result === true) {
+      .subscribe(data => {
+          if (this.handleUserInfo(data)) {
             this.router.navigate(['/signin']);
           } else {
             this.error = 'Registration error';
@@ -39,6 +40,16 @@ export class RegisterComponent implements OnInit {
           this.error = 'Registration error';
           this.loading = false;
         });
+  }
+
+  private handleUserInfo(data: any): boolean {
+    console.log(data);
+    const user = data;
+    if (user) {
+      localStorage.setItem(keys.USER, JSON.stringify(user));
+      return true;
+    }
+    return false;
   }
 
 }
