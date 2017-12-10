@@ -31,11 +31,11 @@ export class UserListComponent implements OnInit {
     this.loading = true;
     this.userService.getUsers(this.page - 1, this.limit)
       .subscribe(
-        users => {
-          this.users = users.content;
-          this.total = users.totalElements;
+        data => {
+          this.users = data.content;
+          this.total = data.totalElements;
           this.loading = false;
-          this.onUsersLoaded.emit(users.totalElements);
+          this.onUsersLoaded.emit(data.totalElements);
           this.sortService.sort(this.users, {sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {
@@ -70,7 +70,7 @@ export class UserListComponent implements OnInit {
 
   // TODO Logger
   logError(error) {
-    console.error('Error: ' + +error.message ? error.message : error.toString());
+    console.error('Error: ' + error.message ? error.message : error.toString());
   }
 
 }

@@ -1,6 +1,6 @@
-import {RequestOptions, Headers, URLSearchParams} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {keys} from '../constants/storage.keys';
+import {HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable()
 export abstract class BaseService {
@@ -17,33 +17,39 @@ export abstract class BaseService {
 
   }
 
-  protected getBearerRequestOptions(): RequestOptions {
+  protected getBearerHeaders(): HttpHeaders {
     const token = JSON.parse(localStorage.getItem(keys.TOKEN)).access_token;
-    const headers = new Headers({
+    const headers = {
       'Authorization': 'Bearer' + token
-    });
-    return new RequestOptions({headers: headers});
+    };
+    return new HttpHeaders(headers);
   }
 
-  protected getBasicRequestOptions(): RequestOptions {
-    const headers = new Headers({
+  protected getBasicHeaders(): HttpHeaders {
+    const headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': BaseService.HEADER_AUTHORIZATION_VALUE
-    });
-
-    return new RequestOptions({headers: headers});
+    };
+    return new HttpHeaders(headers);
   }
 
-  protected getBasicParams(login: string, password: string): URLSearchParams {
-    const params: URLSearchParams = new URLSearchParams();
-    params.set(BaseService.CLIENT_ID, BaseService.CLIENT_ID_VALUE);
-    params.set(BaseService.GRANT_TYPE, BaseService.GRANT_TYPE_VALUE);
-    params.set(BaseService.CLIENT_SECRET, BaseService.CLIENT_SECRET_VALUE);
-    params.set('username', login);
-    params.set('password', password);
+  protected getRegisterHeaders(): HttpHeaders {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': BaseService.HEADER_AUTHORIZATION_VALUE
+    };
+    return new HttpHeaders(headers);
+  }
 
-    return params;
+  protected getBasicParams(login: string, password: string): HttpParams {
+    return new HttpParams()
+      .set(BaseService.CLIENT_ID, BaseService.CLIENT_ID_VALUE)
+      .set(BaseService.GRANT_TYPE, BaseService.GRANT_TYPE_VALUE)
+      .set(BaseService.CLIENT_SECRET, BaseService.CLIENT_SECRET_VALUE)
+      .set('username', login)
+      .set('password', password);
   }
 
 }

@@ -31,11 +31,11 @@ export class AddressListComponent implements OnInit {
     this.loading = true;
     this.addressService.getAddresses(this.page - 1, this.limit)
       .subscribe(
-        addresses => {
-          this.addresses = addresses.content;
-          this.total = addresses.totalElements;
+        data => {
+          this.addresses = data.content;
+          this.total = data.totalElements;
           this.loading = false;
-          this.onAddressesLoaded.emit(addresses.totalElements);
+          this.onAddressesLoaded.emit(data.totalElements);
           this.sortService.sort(this.addresses, {sortColumn: 'id', sortDirection: 'asc'});
         },
         err => {
@@ -70,7 +70,7 @@ export class AddressListComponent implements OnInit {
 
   // TODO Logger
   logError(error) {
-    console.error('Error: ' + +error.message ? error.message : error.toString());
+    console.error('Error: ' + error.message ? error.message : error.toString());
   }
 
 }
