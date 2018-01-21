@@ -16,7 +16,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.5.2",
+    "@angular/cli": "^1.6.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/compiler-cli": "^5.0.0",
@@ -36,7 +36,7 @@
     "typescript": "2.6.1"
   },
   "devDependencies": {
-    "@angular/cli": "1.5.2",
+    "@angular/cli": "^1.6.0",
     "@angular/compiler-cli": "^5.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
