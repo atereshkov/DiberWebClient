@@ -20,4 +20,11 @@ export class AddressService extends BaseService {
     });
   }
 
+  getClientAddresses(userId: number, page: number, size: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get('api/v1/users/' + userId + '/addresses' + '?' + 'page=' + page + '&' + 'size=' + size, {
+      headers: headers
+    });
+  }
+
 }
