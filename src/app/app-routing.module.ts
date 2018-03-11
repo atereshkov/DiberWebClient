@@ -21,7 +21,6 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [NotAuthorizedGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [LoggedInGuard]},
   {path: 'dashboard/courier', component: CourierDashboardComponent, canActivate: [CourierGuard]},
-  {path: 'dashboard/client', component: ClientDashboardComponent, canActivate: [ClientGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [LoggedInGuard]},
   {path: '**', component: PageNotFoundComponent}

@@ -31,7 +31,7 @@ import {AdminAnalyticsComponent} from './components/admin-panel/content/admin-an
 import {AdminSearchComponent} from './components/admin-panel/content/admin-search/admin-search.component';
 import {HttpGlobalInterceptor} from './services/interceptors/http.global.interceptor';
 import {AuthInterceptor} from './services/interceptors/auth.interceptor';
-import {StatisticsService} from "./services/statistics.service";
+import {StatisticsService} from './services/statistics.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +56,7 @@ import {StatisticsService} from "./services/statistics.service";
     RegisterModule,
     AuthModule,
     AdminPanelModule,
+    ClientDashboardModule,
     AppRoutingModule
   ],
   providers: [
