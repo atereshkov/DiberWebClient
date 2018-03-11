@@ -3,12 +3,14 @@ import {CommonModule} from '@angular/common';
 import {ClientDashboardComponent} from './client-dashboard.component';
 import {ClientDashboardRoutingModule} from './client-dashboard-routing.module';
 import {ClientOverviewModule} from './content/client-overview/client-overview.module';
+import {ClientOrderListModule} from './content/client-order-list/client-order-list.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ClientDashboardRoutingModule,
-    ClientOverviewModule
+    ClientOverviewModule,
+    ClientOrderListModule
   ],
   declarations: [
     ClientDashboardComponent

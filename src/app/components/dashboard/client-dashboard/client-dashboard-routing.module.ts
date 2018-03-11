@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ClientGuard} from '../../../guards/client.guard';
 import {ClientDashboardComponent} from './client-dashboard.component';
 import {ClientOverviewComponent} from './content/client-overview/client-overview.component';
+import {ClientOrderListComponent} from './content/client-order-list/client-order-list.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,11 @@ export const routes: Routes = [
       {
         path: 'overview',
         component: ClientOverviewComponent,
+        canActivate: [ClientGuard]
+      },
+      {
+        path: 'orders',
+        component: ClientOrderListComponent,
         canActivate: [ClientGuard]
       }
     ]

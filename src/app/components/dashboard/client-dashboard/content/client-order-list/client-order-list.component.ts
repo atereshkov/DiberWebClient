@@ -1,14 +1,14 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {Order} from '../../../../models/order';
-import {OrderService} from '../../../../services/order.service';
-import {SortService} from '../../../../services/sort.service';
+import {SortService} from '../../../../../services/sort.service';
+import {OrderService} from '../../../../../services/order.service';
+import {Order} from '../../../../../models/order';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: 'order-list.component.html',
-  styleUrls: ['order-list.component.css']
+  selector: 'app-client-order-list',
+  templateUrl: './client-order-list.component.html',
+  styleUrls: ['./client-order-list.component.css']
 })
-export class OrderListComponent implements OnInit {
+export class ClientOrderListComponent implements OnInit {
 
   orders: Order[];
 
@@ -74,3 +74,4 @@ export class OrderListComponent implements OnInit {
   }
 
 }
+
