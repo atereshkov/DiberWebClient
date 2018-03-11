@@ -20,4 +20,12 @@ export class OrderService extends BaseService {
     });
   }
 
+  getClientOrders(userId: number, page: number, size: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get(OrderService.ORDERS_URL + '?search=user.id:' + userId + '&' +
+      + 'page=' + page + '&' + 'size=' + size, {
+      headers: headers
+    });
+  }
+
 }

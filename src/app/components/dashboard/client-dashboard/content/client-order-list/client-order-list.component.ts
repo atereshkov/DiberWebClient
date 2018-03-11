@@ -2,6 +2,8 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {SortService} from '../../../../../services/sort.service';
 import {OrderService} from '../../../../../services/order.service';
 import {Order} from '../../../../../models/order';
+import {User} from "../../../../../models/user";
+import {UserAuthority} from "../../../../../helper/user.authority";
 
 @Component({
   selector: 'app-client-order-list',
@@ -29,7 +31,8 @@ export class ClientOrderListComponent implements OnInit {
 
   private loadData() {
     this.loading = true;
-    this.orderService.getOrders(this.page - 1, this.limit)
+    const user: User = UserAuthority.getCurrentUser();
+    this.orderService.getClientOrders(user.id, this.page - 1, this.limit)
       .subscribe(
         data => {
           this.orders = data.content;
