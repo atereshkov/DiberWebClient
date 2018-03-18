@@ -154,10 +154,13 @@
 
               <div *ngIf="!loading" class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                  <button type="button" (click)="resetForm()" class="btn btn-danger">Reset</button>
-                  <button [disabled]="addressDataForm.invalid || !addressDataForm.dirty"
-                          type="submit" class="btn btn-success">Submit
-                  </button>
+                  <div class="block-buttons">
+                    <div class="btn-group">
+                      <button type="button" (click)="resetForm()" class="btn btn-warning btn-default">Reset</button>
+                      <button [disabled]="addressDataForm.invalid || !addressDataForm.dirty"
+                            type="submit" class="btn btn-success btn-default">Submit</button>
+                  </div>
+                  </div>
                 </div>
               </div>
             </form>
