@@ -10,6 +10,7 @@ export class AdminPanelComponent implements OnInit {
 
   totalOrders = 0;
   totalUsers = 0;
+  totalAddresses = 0;
   loading = false;
 
   constructor(private statService: StatisticsService) {
@@ -27,6 +28,7 @@ export class AdminPanelComponent implements OnInit {
           this.loading = false;
           this.totalOrders = data.orders_count;
           this.totalUsers = data.users_count;
+          this.totalAddresses = data.addresses_count;
           console.log(data);
         },
         err => {
