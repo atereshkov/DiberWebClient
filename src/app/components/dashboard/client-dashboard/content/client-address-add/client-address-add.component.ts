@@ -68,6 +68,6 @@ export class ClientAddressAddComponent implements OnInit {
   }
 
   public resetForm() {
-    this.initializeEmptyUserForm();
+    this.initializeEmptyForm();
   }
 }
