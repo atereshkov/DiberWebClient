@@ -16,6 +16,8 @@ export class ClientAddressAddComponent implements OnInit {
   public addressDataForm: FormGroup;
   private formBuilder: FormBuilder;
 
+  loading = false;
+
   constructor(private addressService: AddressService, private router: Router) {
     this.formBuilder = new FormBuilder();
     this.initializeEmptyForm();
@@ -26,6 +28,7 @@ export class ClientAddressAddComponent implements OnInit {
   }
 
   public saveAddressData() {
+    this.loading = true;
     const address: Address = {
       id: 0,
       name: this.addressDataForm.value.name,
@@ -42,7 +45,12 @@ export class ClientAddressAddComponent implements OnInit {
 
     this.addressService.createAddress(user.id, address)
       .subscribe(address => {
+        this.loading = false;
         this.router.navigate(['/dashboard/client/addresses/']);
+      },error => {
+        // TODO parse error (handle 400 bad request)
+        this.error = 'Error occurred during request';
+        this.loading = false;
       });
   }
 
