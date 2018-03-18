@@ -49,7 +49,6 @@ export class ClientAddressAddComponent implements OnInit {
         this.router.navigate(['/dashboard/client/addresses/']);
       },error => {
         // TODO parse error (handle 400 bad request)
-        this.error = 'Error occurred during request';
         this.loading = false;
       });
   }
