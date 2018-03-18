@@ -4,6 +4,7 @@ import {SortService} from '../../../../../services/sort.service';
 import {AddressService} from '../../../../../services/address.service';
 import {UserAuthority} from '../../../../../helper/user.authority';
 import {User} from '../../../../../models/user';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-client-address-list',
@@ -21,7 +22,7 @@ export class ClientAddressListComponent implements OnInit {
 
   @Output() onAddressesLoaded: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private addressService: AddressService, private sortService: SortService) {
+  constructor(private addressService: AddressService, private sortService: SortService, private router: Router) {
     this.addresses = [];
   }
 
@@ -74,6 +75,12 @@ export class ClientAddressListComponent implements OnInit {
   // TODO Logger
   logError(error) {
     console.error('Error: ' + error.message ? error.message : error.toString());
+  }
+
+  // Public Actions
+
+  public newAddressClick() {
+    this.router.navigate(['/dashboard/client/addresses/new']);
   }
 
 }
