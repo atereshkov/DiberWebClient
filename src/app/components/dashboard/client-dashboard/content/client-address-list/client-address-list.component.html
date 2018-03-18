@@ -7,10 +7,10 @@
   <table class="table table-striped" sortable-table (sorted)="onSorted($event)">
     <thead class="thead-inverse">
     <tr>
-      <th sortable-column="id" sort-direction="asc">#</th>
-      <th sortable-column="userId">User ID</th>
+      <th sortable-column="name" sort-direction="asc">Name</th>
       <th sortable-column="country">Country</th>
       <th sortable-column="city">City</th>
+      <th sortable-column="region">Region</th>
       <th sortable-column="address">Address</th>
       <th sortable-column="phone">Phone</th>
       <th>Edit</th>
@@ -19,10 +19,10 @@
     </thead>
     <tbody *ngIf="!loading">
     <tr *ngFor="let address of addresses">
-      <td>{{address.id}}</td>
-      <td>{{address.userId}}</td>
+      <td>{{address.name}}</td>
       <td>{{address.country}}</td>
       <td>{{address.city}}</td>
+      <td>{{address.region}}</td>
       <td>{{address.address}}</td>
       <td>{{address.phone}}</td>
       <td>
