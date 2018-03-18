@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {api} from '../constants/api';
 import {BaseService} from './base.service';
+import {Address} from "../models/address";
 
 @Injectable()
 export class AddressService extends BaseService {
@@ -23,6 +24,13 @@ export class AddressService extends BaseService {
   getClientAddresses(userId: number, page: number, size: number): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.get('api/v1/users/' + userId + '/addresses' + '?' + 'page=' + page + '&' + 'size=' + size, {
+      headers: headers
+    });
+  }
+
+  createAddress(userId: number, address: Address): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.post('api/v1/users/' + userId + '/addresses', address, {
       headers: headers
     });
   }

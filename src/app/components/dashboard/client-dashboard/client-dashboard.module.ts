@@ -5,6 +5,7 @@ import {ClientDashboardRoutingModule} from './client-dashboard-routing.module';
 import {ClientOverviewModule} from './content/client-overview/client-overview.module';
 import {ClientOrderListModule} from './content/client-order-list/client-order-list.module';
 import {ClientAddressListModule} from './content/client-address-list/client-address-list.module';
+import {ClientAddressAddModule} from './content/client-address-add/client-address-add.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import {ClientAddressListModule} from './content/client-address-list/client-addr
     ClientDashboardRoutingModule,
     ClientOverviewModule,
     ClientOrderListModule,
-    ClientAddressListModule
+    ClientAddressListModule,
+    ClientAddressAddModule
   ],
   declarations: [
     ClientDashboardComponent
