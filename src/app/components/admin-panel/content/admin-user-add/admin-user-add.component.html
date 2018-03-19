@@ -19,14 +19,12 @@
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="text" formControlName="fullname" class="form-control" style="margin-bottom: 10px;">
-                  <div
-                    *ngIf="userDataForm.get('fullname').hasError('required') && userDataForm.get('fullname').touched">
+                  <div *ngIf="userDataForm.get('fullname').hasError('required') && userDataForm.get('fullname').touched">
                     <div class="alert alert-danger alert-dismissable">
                       Full Name is required
                     </div>
                   </div>
-                  <div
-                    *ngIf="userDataForm.get('fullname').hasError('minlength') && userDataForm.get('fullname').touched">
+                  <div *ngIf="userDataForm.get('fullname').hasError('minlength') && userDataForm.get('fullname').touched">
                     <div class="alert alert-danger alert-dismissable">
                       Minimum of 2 characters
                     </div>
@@ -40,16 +38,19 @@
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="text" formControlName="email" class="form-control" style="margin-bottom: 10px;">
-                  <div
-                    *ngIf="userDataForm.get('email').hasError('required') && userDataForm.get('email').touched">
+                  <div *ngIf="userDataForm.get('email').hasError('required') && userDataForm.get('email').touched">
                     <div class="alert alert-danger alert-dismissable">
                       Email is required
                     </div>
                   </div>
-                  <div
-                    *ngIf="userDataForm.get('email').hasError('minlength') && userDataForm.get('email').touched">
+                  <div *ngIf="userDataForm.get('email').hasError('minlength') && userDataForm.get('email').touched">
                     <div class="alert alert-danger alert-dismissable">
                       Minimum of 3 characters
+                    </div>
+                  </div>
+                  <div *ngIf="userDataForm.get('email').hasError('pattern') && userDataForm.get('email').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Incorrect email format
                     </div>
                   </div>
                 </div>
@@ -61,8 +62,7 @@
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="text" formControlName="username" class="form-control" style="margin-bottom: 10px;">
-                  <div
-                    *ngIf="userDataForm.get('username').hasError('required') && userDataForm.get('username').touched">
+                  <div *ngIf="userDataForm.get('username').hasError('required') && userDataForm.get('username').touched">
                     <div class="alert alert-danger alert-dismissable">
                       Username is required
                     </div>
@@ -89,14 +89,12 @@
                   </span>
                   </div>
 
-                  <div
-                    *ngIf="userDataForm.get('password').hasError('required') && userDataForm.get('password').touched">
+                  <div *ngIf="userDataForm.get('password').hasError('required') && userDataForm.get('password').touched">
                     <div class="alert alert-danger alert-dismissable">
                       Password is required
                     </div>
                   </div>
-                  <div
-                    *ngIf="userDataForm.get('password').hasError('minlength') && userDataForm.get('password').touched">
+                  <div *ngIf="userDataForm.get('password').hasError('minlength') && userDataForm.get('password').touched">
                     <div class="alert alert-danger alert-dismissable">
                       Minimum of 6 characters
                     </div>

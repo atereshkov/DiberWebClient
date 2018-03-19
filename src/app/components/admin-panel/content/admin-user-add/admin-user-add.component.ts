@@ -52,7 +52,8 @@ export class AdminUserAddComponent implements OnInit {
     this.userDataForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(2)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.minLength(2),
+        Validators.pattern('^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')]],
       fullname: ['', [Validators.required, Validators.minLength(2)]],
       customer: [false],
       courier: [false],
