@@ -52,4 +52,12 @@ export abstract class BaseService {
       .set('password', password);
   }
 
+  protected getBasicJsonHeader(): HttpHeaders {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    return new HttpHeaders(headers);
+  }
+
 }

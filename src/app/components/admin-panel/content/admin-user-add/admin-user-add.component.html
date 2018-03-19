@@ -1,0 +1,151 @@
+<div class="">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="x_title">
+              <h2>Create new user
+              </h2>
+              <div class="clearfix"></div>
+            </div>
+
+            <form id="account-info-form" (ngSubmit)="saveUserData()" [formGroup]="userDataForm" novalidate
+                  class="form-horizontal form-label-left">
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" style="margin-top: 12px;">Full Name<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="fullname" class="form-control" style="margin-bottom: 10px;">
+                  <div
+                    *ngIf="userDataForm.get('fullname').hasError('required') && userDataForm.get('fullname').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Full Name is required
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="userDataForm.get('fullname').hasError('minlength') && userDataForm.get('fullname').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Email<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="email" class="form-control" style="margin-bottom: 10px;">
+                  <div
+                    *ngIf="userDataForm.get('email').hasError('required') && userDataForm.get('email').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Email is required
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="userDataForm.get('email').hasError('minlength') && userDataForm.get('email').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 3 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Username<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="username" class="form-control" style="margin-bottom: 10px;">
+                  <div
+                    *ngIf="userDataForm.get('username').hasError('required') && userDataForm.get('username').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Username is required
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="userDataForm.get('username').hasError('minlength') && userDataForm.get('username').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 4 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Password<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="input-group">
+                    <input type="password" #password formControlName="password" class="form-control">
+                    <span class="input-group-addon">
+                    <input type="checkbox" aria-label="Checkbox for following text input"
+                           (click)="showPassword(password)">
+                  </span>
+                  </div>
+
+                  <div
+                    *ngIf="userDataForm.get('password').hasError('required') && userDataForm.get('password').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Password is required
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="userDataForm.get('password').hasError('minlength') && userDataForm.get('password').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 6 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Roles</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div class="">
+                    <label>
+                      <input type="checkbox" value="true" formControlName="customer" class="js-switch"/>
+                      Customer
+                    </label>
+                    <br/>
+                    <label>
+                      <input type="checkbox" value="true" formControlName="courier" class="js-switch"/>
+                      Courier
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div class="">
+                    <label>
+                      <input type="checkbox" value="true" formControlName="enabled" class="js-switch"/>
+                      Enabled
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ln_solid"></div>
+              <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                  <button type="button" (click)="resetForm()" class="btn btn-warning">Reset</button>
+                  <button [disabled]="userDataForm.invalid || !userDataForm.dirty"
+                          type="submit" class="btn btn-success">Create
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import {OrderListModule} from './content/order-list/order-list.module';
 import {UserListModule} from './content/user-list/user-list.module';
 import {AddressListModule} from './content/address-list/address-list.module';
 import {AdminOverviewModule} from './content/admin-overview/admin-overview.module';
+import {AdminUserAddModule} from './content/admin-user-add/admin-user-add.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {AdminOverviewModule} from './content/admin-overview/admin-overview.modul
     OrderListModule,
     UserListModule,
     AddressListModule,
-    AdminOverviewModule
+    AdminOverviewModule,
+    AdminUserAddModule
   ],
   declarations: [
     AdminPanelComponent
