@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from '../../../../services/user.service';
 import {User} from '../../../../models/user';
 import {SortService} from '../../../../services/sort.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +20,7 @@ export class UserListComponent implements OnInit {
 
   @Output() onUsersLoaded: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private userService: UserService, private sortService: SortService) {
+  constructor(private userService: UserService, private sortService: SortService, private router: Router) {
     this.users = [];
   }
 
@@ -71,6 +72,12 @@ export class UserListComponent implements OnInit {
   // TODO Logger
   logError(error) {
     console.error('Error: ' + error.message ? error.message : error.toString());
+  }
+
+  // Public Actions
+
+  public newUserClick() {
+    this.router.navigate(['/dashboard/admin/users/new']);
   }
 
 }
