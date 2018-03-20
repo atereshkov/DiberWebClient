@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Order} from '../../../../../models/order';
 import {User} from '../../../../../models/user';
 import {UserAuthority} from '../../../../../helper/user.authority';
+import {IMyDpOptions, MyDatePickerModule} from 'mydatepicker';
 
 @Component({
   selector: 'app-client-order-add',
@@ -17,6 +18,10 @@ export class ClientOrderAddComponent implements OnInit {
   private formBuilder: FormBuilder;
 
   loading = false;
+
+  public datePickerOptions: IMyDpOptions = {
+    dateFormat: 'dd.mm.yyyy'
+  };
 
   constructor(private orderService: OrderService, private router: Router) {
     this.formBuilder = new FormBuilder();
@@ -59,6 +64,7 @@ export class ClientOrderAddComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(2)]],
       price: [0, [Validators.required, Validators.minLength(1),
         Validators.pattern('^(0|[1-9][0-9]*)$')]],
+      date: [null, Validators.required],
       customer: [false],
       courier: [false],
       enabled: [true]
