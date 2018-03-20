@@ -1,4 +1,9 @@
+<div>
+  <button type="button" class="btn btn-secondary pull-left" (click)="newOrderClick();"><i class="fa fa-plus"></i> New</button>
+</div>
+
 <div class="table-responsive">
+  <div style="margin-bottom: 0.5em"></div>
   <table class="table table-striped" sortable-table (sorted)="onSorted($event)">
     <thead class="thead-inverse">
     <tr>

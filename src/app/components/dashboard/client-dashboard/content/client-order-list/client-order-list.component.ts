@@ -4,6 +4,7 @@ import {OrderService} from '../../../../../services/order.service';
 import {Order} from '../../../../../models/order';
 import {User} from "../../../../../models/user";
 import {UserAuthority} from "../../../../../helper/user.authority";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-client-order-list',
@@ -21,7 +22,7 @@ export class ClientOrderListComponent implements OnInit {
 
   @Output() onOrdersLoaded: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private orderService: OrderService, private sortService: SortService) {
+  constructor(private orderService: OrderService, private sortService: SortService, private router: Router) {
     this.orders = [];
   }
 
@@ -75,6 +76,13 @@ export class ClientOrderListComponent implements OnInit {
   logError(error) {
     console.error('Error: ' + error.message ? error.message : error.toString());
   }
+
+  // Public Actions
+
+  public newOrderClick() {
+    this.router.navigate(['/dashboard/client/orders/new']);
+  }
+
 
 }
 

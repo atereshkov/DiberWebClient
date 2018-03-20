@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {api} from '../constants/api';
 import {BaseService} from './base.service';
-import {UserRegister} from '../models/user-register';
+import {UserRegister} from '../models/dto/user-register';
 
 @Injectable()
 export class UserService extends BaseService {

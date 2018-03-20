@@ -6,6 +6,7 @@ import {ClientOverviewComponent} from './content/client-overview/client-overview
 import {ClientOrderListComponent} from './content/client-order-list/client-order-list.component';
 import {ClientAddressListComponent} from './content/client-address-list/client-address-list.component';
 import {ClientAddressAddComponent} from './content/client-address-add/client-address-add.component';
+import {ClientOrderAddComponent} from './content/client-order-add/client-order-add.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,11 @@ export const routes: Routes = [
       {
         path: 'orders',
         component: ClientOrderListComponent,
+        canActivate: [ClientGuard]
+      },
+      {
+        path: 'orders/new',
+        component: ClientOrderAddComponent,
         canActivate: [ClientGuard]
       },
       {
