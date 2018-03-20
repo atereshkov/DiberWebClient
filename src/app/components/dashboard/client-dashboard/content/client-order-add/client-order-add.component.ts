@@ -20,7 +20,10 @@ export class ClientOrderAddComponent implements OnInit {
   loading = false;
 
   public datePickerOptions: IMyDpOptions = {
-    dateFormat: 'dd.mm.yyyy'
+    dateFormat: 'dd.mm.yyyy',
+    editableDateField: false,
+    openSelectorOnInputClick: true,
+    disableUntil: {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() - 1}
   };
 
   constructor(private orderService: OrderService, private router: Router) {
