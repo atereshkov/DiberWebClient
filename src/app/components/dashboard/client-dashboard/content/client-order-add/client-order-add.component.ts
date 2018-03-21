@@ -6,6 +6,9 @@ import {Order} from '../../../../../models/order';
 import {User} from '../../../../../models/user';
 import {UserAuthority} from '../../../../../helper/user.authority';
 import {IMyDpOptions, MyDatePickerModule} from 'mydatepicker';
+import {IMultiSelectOption, IMultiSelectSettings, MultiselectDropdownModule} from 'angular-2-dropdown-multiselect';
+import {Address} from '../../../../../models/address';
+import {AddressService} from '../../../../../services/address.service';
 
 @Component({
   selector: 'app-client-order-add',
@@ -16,9 +19,26 @@ export class ClientOrderAddComponent implements OnInit {
 
   public orderDataForm: FormGroup;
   private formBuilder: FormBuilder;
-
   loading = false;
 
+  optionsFromModel: Address[];
+  optionsToModel: Address[];
+  addresses: Address[];
+  addressFromOptions: IMultiSelectOption[];
+  addressToOptions: IMultiSelectOption[];
+
+  // Select field settings configuration
+  selectFieldConfig: IMultiSelectSettings = {
+    enableSearch: false,
+    buttonClasses: 'btn btn-default btn-secondary', // btn-block
+    dynamicTitleMaxItems: 3,
+    displayAllSelectedText: true,
+    selectionLimit: 1,
+    autoUnselect: true,
+    closeOnSelect: true
+  };
+
+  // Date picker field options
   public datePickerOptions: IMyDpOptions = {
     dateFormat: 'dd.mm.yyyy',
     editableDateField: false,
@@ -26,13 +46,13 @@ export class ClientOrderAddComponent implements OnInit {
     disableUntil: {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() - 1}
   };
 
-  constructor(private orderService: OrderService, private router: Router) {
+  constructor(private orderService: OrderService, private addressService: AddressService, private router: Router) {
     this.formBuilder = new FormBuilder();
     this.initializeEmptyForm();
   }
 
   ngOnInit() {
-
+    this.loadAddresses();
   }
 
   public saveOrderData() {
@@ -40,17 +60,21 @@ export class ClientOrderAddComponent implements OnInit {
 
     const user: User = UserAuthority.getCurrentUser();
 
+    const addressFrom: Address = this.addresses.find(x => x.id === this.orderDataForm.value.fromSelectDropDown);
+    const addressTo: Address = this.addresses.find(x => x.id === this.orderDataForm.value.toSelectDropDown);
     const order: Order = {
       id: this.orderDataForm.value.username,
       date: this.orderDataForm.value.date,
       description: this.orderDataForm.value.description,
       price: this.orderDataForm.value.price,
       status: 'New',
-      addressFrom: this.orderDataForm.value.addressFrom,
-      addressTo: this.orderDataForm.value.addressTo,
+      addressFrom: addressFrom,
+      addressTo: addressTo,
       customer: user,
       courier: null
     };
+
+    console.log(order);
 
     this.orderService.createOrder(user.id, order)
       .subscribe(order => {
@@ -62,15 +86,46 @@ export class ClientOrderAddComponent implements OnInit {
       });
   }
 
+  private loadAddresses() {
+    const user: User = UserAuthority.getCurrentUser();
+    this.addressService.getAllClientAddresses(user.id)
+      .subscribe(
+        data => {
+          this.optionsFromModel = data.content;
+          this.optionsToModel = data.content;
+          this.addresses = data.content;
+          this.setupSelectOptions();
+        },
+        err => {
+          // TODO handle error
+          this.addressFromOptions = [];
+          this.addressToOptions = [];
+        }
+      );
+  }
+
+  private setupSelectOptions() {
+    this.addressToOptions = this.optionsToModel.map(item =>
+      ({
+        id: item.id,
+        name: item.name
+      })
+    );
+    this.addressFromOptions = this.optionsFromModel.map(item =>
+      ({
+        id: item.id,
+        name: item.name
+      })
+    );
+  }
+
   private initializeEmptyForm() {
     this.orderDataForm = this.formBuilder.group({
       description: ['', [Validators.required, Validators.minLength(2)]],
       price: [0, [Validators.required, Validators.minLength(1),
         Validators.pattern('^(0|[1-9][0-9]*)$')]],
-      date: [null, Validators.required],
-      customer: [false],
-      courier: [false],
-      enabled: [true]
+      fromSelectDropDown: [null, Validators.required],
+      toSelectDropDown: [null, Validators.required]
     });
   }
 

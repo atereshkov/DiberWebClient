@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoadingIndicatorModule} from '../../../../common/loading-indicator/loading-indicator.module';
 import {ClientOrderAddComponent} from './client-order-add.component';
 import {MyDatePickerModule} from 'mydatepicker';
+import {MultiselectDropdownModule} from 'angular-2-dropdown-multiselect';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import {MyDatePickerModule} from 'mydatepicker';
     LoadingIndicatorModule,
     FormsModule,
     ReactiveFormsModule,
-    MyDatePickerModule
+    MyDatePickerModule,
+    MultiselectDropdownModule
   ],
   declarations: [
     ClientOrderAddComponent

@@ -28,6 +28,13 @@ export class AddressService extends BaseService {
     });
   }
 
+  getAllClientAddresses(userId: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get('api/v1/users/' + userId + '/addresses', {
+      headers: headers
+    });
+  }
+
   createAddress(userId: number, address: Address): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.post('api/v1/users/' + userId + '/addresses', address, {
