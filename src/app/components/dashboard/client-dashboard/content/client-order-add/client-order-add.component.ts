@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../../../../services/order.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Order} from '../../../../../models/order';
 import {User} from '../../../../../models/user';
 import {UserAuthority} from '../../../../../helper/user.authority';
-import {IMyDpOptions, MyDatePickerModule} from 'mydatepicker';
-import {IMultiSelectOption, IMultiSelectSettings, MultiselectDropdownModule} from 'angular-2-dropdown-multiselect';
+import {IMultiSelectOption, IMultiSelectSettings} from 'angular-2-dropdown-multiselect';
 import {Address} from '../../../../../models/address';
 import {AddressService} from '../../../../../services/address.service';
 
@@ -38,13 +37,7 @@ export class ClientOrderAddComponent implements OnInit {
     closeOnSelect: true
   };
 
-  // Date picker field options
-  public datePickerOptions: IMyDpOptions = {
-    dateFormat: 'dd.mm.yyyy',
-    editableDateField: false,
-    openSelectorOnInputClick: true,
-    disableUntil: {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() - 1}
-  };
+  public minDate = new Date();
 
   constructor(private orderService: OrderService, private addressService: AddressService, private router: Router) {
     this.formBuilder = new FormBuilder();
@@ -59,12 +52,15 @@ export class ClientOrderAddComponent implements OnInit {
     this.loading = true;
 
     const user: User = UserAuthority.getCurrentUser();
+    const addressFrom = this.addresses.find(x => x.id == this.orderDataForm.value.fromSelectDropDown);
+    const addressTo = this.addresses.find(x => x.id == this.orderDataForm.value.toSelectDropDown);
+    const date = this.orderDataForm.value.date + this.orderDataForm.value.time;
 
-    const addressFrom: Address = this.addresses.find(x => x.id === this.orderDataForm.value.fromSelectDropDown);
-    const addressTo: Address = this.addresses.find(x => x.id === this.orderDataForm.value.toSelectDropDown);
+    console.log('Time: ' + this.orderDataForm.value.datetime);
+
     const order: Order = {
       id: this.orderDataForm.value.username,
-      date: this.orderDataForm.value.date,
+      date: date,
       description: this.orderDataForm.value.description,
       price: this.orderDataForm.value.price,
       status: 'New',
@@ -75,7 +71,7 @@ export class ClientOrderAddComponent implements OnInit {
     };
 
     console.log(order);
-
+    /*
     this.orderService.createOrder(user.id, order)
       .subscribe(order => {
         this.loading = false;
@@ -84,6 +80,7 @@ export class ClientOrderAddComponent implements OnInit {
         // TODO parse error (handle 400 bad request)
         this.loading = false;
       });
+      */
   }
 
   private loadAddresses() {
@@ -125,7 +122,8 @@ export class ClientOrderAddComponent implements OnInit {
       price: [0, [Validators.required, Validators.minLength(1),
         Validators.pattern('^(0|[1-9][0-9]*)$')]],
       fromSelectDropDown: [null, Validators.required],
-      toSelectDropDown: [null, Validators.required]
+      toSelectDropDown: [null, Validators.required],
+      datetime: [new Date(), Validators.required]
     });
   }
 
