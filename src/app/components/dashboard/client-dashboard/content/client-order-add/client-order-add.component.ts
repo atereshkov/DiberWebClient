@@ -54,13 +54,11 @@ export class ClientOrderAddComponent implements OnInit {
     const user: User = UserAuthority.getCurrentUser();
     const addressFrom = this.addresses.find(x => x.id == this.orderDataForm.value.fromSelectDropDown);
     const addressTo = this.addresses.find(x => x.id == this.orderDataForm.value.toSelectDropDown);
-    const date = this.orderDataForm.value.date + this.orderDataForm.value.time;
-
-    console.log('Time: ' + this.orderDataForm.value.datetime);
+    const timestamp = (this.orderDataForm.value.datetime.getTime() / 1000).toFixed(0);
 
     const order: Order = {
       id: this.orderDataForm.value.username,
-      date: date,
+      date: parseInt(timestamp),
       description: this.orderDataForm.value.description,
       price: this.orderDataForm.value.price,
       status: 'New',
@@ -71,7 +69,7 @@ export class ClientOrderAddComponent implements OnInit {
     };
 
     console.log(order);
-    /*
+
     this.orderService.createOrder(user.id, order)
       .subscribe(order => {
         this.loading = false;
@@ -80,7 +78,6 @@ export class ClientOrderAddComponent implements OnInit {
         // TODO parse error (handle 400 bad request)
         this.loading = false;
       });
-      */
   }
 
   private loadAddresses() {
