@@ -8,8 +8,6 @@ import {LandingPageComponent} from './components/landing-page/landing-page.compo
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoggedInGuard} from './guards/logged-in.guard';
 import {CourierDashboardComponent} from './components/dashboard/courier-dashboard/courier-dashboard.component';
-import {ClientDashboardComponent} from './components/dashboard/client-dashboard/client-dashboard.component';
-import {ClientGuard} from './guards/client.guard';
 import {CourierGuard} from './guards/courier.guard';
 import {SettingsComponent} from './components/settings/settings.component';
 import {ProfileComponent} from './components/profile/profile.component';

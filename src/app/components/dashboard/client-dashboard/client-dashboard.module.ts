@@ -7,6 +7,7 @@ import {ClientOrderListModule} from './content/client-order-list/client-order-li
 import {ClientAddressListModule} from './content/client-address-list/client-address-list.module';
 import {ClientAddressAddModule} from './content/client-address-add/client-address-add.module';
 import {ClientOrderAddModule} from './content/client-order-add/client-order-add.module';
+import {ClientOrderEditModule} from "./content/client-order-edit/client-order-edit.module";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {ClientOrderAddModule} from './content/client-order-add/client-order-add.
     ClientOrderListModule,
     ClientAddressListModule,
     ClientAddressAddModule,
-    ClientOrderAddModule
+    ClientOrderAddModule,
+    ClientOrderEditModule
   ],
   declarations: [
     ClientDashboardComponent

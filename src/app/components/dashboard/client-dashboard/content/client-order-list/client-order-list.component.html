@@ -22,7 +22,7 @@
       <td>{{order.date * 1000 | date: 'short' }}</td>
       <td>{{order.price}}</td>
       <td>
-        <button class="btn btn-warning">Edit</button>
+        <button (click)= "editOrder(order)" class="btn btn-warning">Edit</button>
       </td>
       <td>
         <button class="btn btn-danger">Remove</button>
