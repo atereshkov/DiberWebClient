@@ -8,6 +8,7 @@ import {ClientAddressListComponent} from './content/client-address-list/client-a
 import {ClientAddressAddComponent} from './content/client-address-add/client-address-add.component';
 import {ClientOrderAddComponent} from './content/client-order-add/client-order-add.component';
 import {ClientOrderEditComponent} from './content/client-order-edit/client-order-edit.component';
+import {ClientAddressEditComponent} from './content/client-address-edit/client-address-edit.component';
 
 export const routes: Routes = [
   {
@@ -47,7 +48,12 @@ export const routes: Routes = [
         path: 'addresses/new',
         component: ClientAddressAddComponent,
         canActivate: [ClientGuard]
-      }
+      },
+      {
+        path: 'addresses/:id/edit',
+        component: ClientAddressEditComponent,
+        canActivate: [ClientGuard]
+      },
     ]
   }
 ];

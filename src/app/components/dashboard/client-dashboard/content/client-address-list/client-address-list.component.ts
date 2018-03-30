@@ -83,4 +83,9 @@ export class ClientAddressListComponent implements OnInit {
     this.router.navigate(['/dashboard/client/addresses/new']);
   }
 
+  public editAddress(address: Address) {
+    // TODO additional check?
+    this.router.navigate(['/dashboard/client/addresses', address.id, 'edit']);
+  }
+
 }

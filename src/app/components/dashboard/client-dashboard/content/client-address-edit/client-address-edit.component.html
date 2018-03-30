@@ -1,0 +1,171 @@
+<div class="">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="x_title">
+              <h2>Edit Address
+              </h2>
+              <div class="clearfix"></div>
+            </div>
+
+            <form id="account-info-form" (ngSubmit)="saveAddressData()" [formGroup]="addressDataForm" novalidate
+                  class="form-horizontal form-label-left">
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" style="margin-top: 12px;">Name (home, work, etc)<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="name" class="form-control" style="margin-bottom: 10px;">
+                  <div *ngIf="addressDataForm.get('name').hasError('required') && addressDataForm.get('name').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Name is required
+                    </div>
+                  </div>
+                  <div *ngIf="addressDataForm.get('name').hasError('minlength') && addressDataForm.get('name').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Country<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="country" class="form-control" style="margin-bottom: 10px;">
+                  <div *ngIf="addressDataForm.get('country').hasError('required') && addressDataForm.get('country').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Country is required
+                    </div>
+                  </div>
+                  <div *ngIf="addressDataForm.get('country').hasError('minlength') && addressDataForm.get('country').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">City<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="city" class="form-control" style="margin-bottom: 10px;">
+                  <div *ngIf="addressDataForm.get('city').hasError('required') && addressDataForm.get('city').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      City is required
+                    </div>
+                  </div>
+                  <div *ngIf="addressDataForm.get('city').hasError('minlength') && addressDataForm.get('city').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Region<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="region" class="form-control" style="margin-bottom: 10px;">
+                  <div *ngIf="addressDataForm.get('region').hasError('required') && addressDataForm.get('region').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Region is required
+                    </div>
+                  </div>
+                  <div *ngIf="addressDataForm.get('region').hasError('minlength') && addressDataForm.get('region').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Address<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="address" class="form-control" style="margin-bottom: 10px;">
+                  <div *ngIf="addressDataForm.get('address').hasError('required') && addressDataForm.get('address').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Region is required
+                    </div>
+                  </div>
+                  <div *ngIf="addressDataForm.get('address').hasError('minlength') && addressDataForm.get('address').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Postal Code<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="number" formControlName="postalCode" class="form-control" style="margin-bottom: 10px;">
+                  <div *ngIf="addressDataForm.get('postalCode').hasError('required') && addressDataForm.get('postalCode').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Postal Code is required
+                    </div>
+                  </div>
+                  <div *ngIf="addressDataForm.get('postalCode').hasError('minlength') && addressDataForm.get('postalCode').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone<span
+                  class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" formControlName="phone" class="form-control" style="margin-bottom: 10px;">
+                  <div *ngIf="addressDataForm.get('phone').hasError('required') && addressDataForm.get('phone').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Phone is required
+                    </div>
+                  </div>
+                  <div *ngIf="addressDataForm.get('phone').hasError('minlength') && addressDataForm.get('phone').touched">
+                    <div class="alert alert-danger alert-dismissable">
+                      Minimum of 2 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="loading" class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                  <app-loading-indicator
+                    [loading]="loading"></app-loading-indicator>
+                </div>
+              </div>
+
+              <div *ngIf="!loading" class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                  <div class="block-buttons">
+                    <div class="btn-group">
+                      <button [disabled]="addressDataForm.invalid || !addressDataForm.dirty"
+                              type="submit" class="btn btn-success btn-default">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -21,6 +21,13 @@ export class AddressService extends BaseService {
     });
   }
 
+  getAddress(id: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get(AddressService.ADDRESSES_URL + '/' + id, {
+      headers: headers
+    });
+  }
+
   getClientAddresses(userId: number, page: number, size: number): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.get('api/v1/users/' + userId + '/addresses' + '?' + 'page=' + page + '&' + 'size=' + size, {
@@ -38,6 +45,13 @@ export class AddressService extends BaseService {
   createAddress(userId: number, address: Address): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.post('api/v1/users/' + userId + '/addresses', address, {
+      headers: headers
+    });
+  }
+
+  updateAddress( address: Address): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.put('api/v1/addresses/', address, {
       headers: headers
     });
   }
