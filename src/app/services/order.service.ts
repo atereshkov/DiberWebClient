@@ -21,6 +21,13 @@ export class OrderService extends BaseService {
     });
   }
 
+  getOrder(id: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get(OrderService.ORDERS_URL + '/' + id, {
+      headers: headers
+    });
+  }
+
   getClientOrders(userId: number, page: number, size: number): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.get(OrderService.ORDERS_URL + '?search=user.id:' + userId + '&' +
@@ -32,6 +39,13 @@ export class OrderService extends BaseService {
   createOrder(userId: number, order: Order): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.post('api/v1/users/' + userId + '/orders', order, {
+      headers: headers
+    });
+  }
+
+  updateOrder(order: Order): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.put('api/v1/orders', order, {
       headers: headers
     });
   }

@@ -28,4 +28,11 @@ export class UserService extends BaseService {
     });
   }
 
+  getUser(id: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get(UserService.USERS_URL + '/' + id, {
+      headers: headers
+    });
+  }
+
 }
