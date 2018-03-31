@@ -49,9 +49,9 @@ export class AddressService extends BaseService {
     });
   }
 
-  updateAddress( address: Address): Observable<any> {
+  updateAddress(userId: number, address: Address): Observable<any> {
     const headers = this.getBearerHeaders();
-    return this.http.put('api/v1/addresses/', address, {
+    return this.http.put('api/v1/users/' + userId + '/addresses/' + address.id, address, {
       headers: headers
     });
   }

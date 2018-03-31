@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Address} from '../../../../../models/address';
 import {ActivatedRoute} from '@angular/router';
 import {AddressService} from '../../../../../services/address.service';
+import {UserAuthority} from "../../../../../helper/user.authority";
+import {User} from "../../../../../models/user";
 
 @Component({
   selector: 'app-client-address-edit',
@@ -34,8 +36,10 @@ export class ClientAddressEditComponent implements OnInit {
 
   public updateAddress() {
 
+    const user: User = UserAuthority.getCurrentUser();
+
     const address: Address = {
-      id: 0,
+      id: this.address.id,
       name: this.addressDataForm.value.name,
       country: this.addressDataForm.value.country,
       postalCode: this.addressDataForm.value.postalCode,
@@ -46,7 +50,7 @@ export class ClientAddressEditComponent implements OnInit {
       userId: null
     };
 
-    this.addressService.updateAddress(address)
+    this.addressService.updateAddress(user.id, address)
       .subscribe(response => {
 
       });
