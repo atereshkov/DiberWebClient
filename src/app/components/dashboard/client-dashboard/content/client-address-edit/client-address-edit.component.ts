@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Address} from '../../../../../models/address';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AddressService} from '../../../../../services/address.service';
-import {UserAuthority} from "../../../../../helper/user.authority";
-import {User} from "../../../../../models/user";
+import {UserAuthority} from '../../../../../helper/user.authority';
+import {User} from '../../../../../models/user';
 
 @Component({
   selector: 'app-client-address-edit',
@@ -20,8 +20,8 @@ export class ClientAddressEditComponent implements OnInit {
 
   loading = false;
 
-  constructor(private addressService: AddressService, private router: ActivatedRoute) {
-    this.id = parseInt(this.router.snapshot.paramMap.get('id'));
+  constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router) {
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.formBuilder = new FormBuilder();
     this.loadEmptyForm();
   }
@@ -35,7 +35,7 @@ export class ClientAddressEditComponent implements OnInit {
   }
 
   public updateAddress() {
-
+    this.loading = true;
     const user: User = UserAuthority.getCurrentUser();
 
     const address: Address = {
@@ -51,8 +51,12 @@ export class ClientAddressEditComponent implements OnInit {
     };
 
     this.addressService.updateAddress(user.id, address)
-      .subscribe(response => {
-
+      .subscribe(address => {
+        this.loading = false;
+        this.router.navigate(['/dashboard/client/addresses/']);
+      }, error => {
+        // TODO parse error (handle 400 bad request)
+        this.loading = false;
       });
   }
 
