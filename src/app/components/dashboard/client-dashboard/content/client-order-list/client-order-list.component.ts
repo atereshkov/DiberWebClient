@@ -88,6 +88,10 @@ export class ClientOrderListComponent implements OnInit {
     this.router.navigate(['/dashboard/client/orders', order.id, 'edit']);
   }
 
+  public openDetails(order: Order) {
+    this.router.navigate(['/dashboard/client/orders', order.id]);
+  }
+
 
 }
 
