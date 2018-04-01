@@ -41,9 +41,9 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-panel-link">
           <a *ngIf="isAdmin()" class="dropdown-item" routerLink="dashboard/admin">Admin</a>
-          <div class="dropdown-divider"></div>
+          <div *ngIf="isAdmin()" class="dropdown-divider"></div>
           <a *ngIf="isCustomer()" class="dropdown-item" routerLink="dashboard/client">Client</a>
-          <div class="dropdown-divider"></div>
+          <div *ngIf="isCustomer() && isCourier()" class="dropdown-divider"></div>
           <a *ngIf="isCourier()" class="dropdown-item" routerLink="dashboard/courier">Courier</a>
         </div>
       </li>
