@@ -1,3 +1,11 @@
 th[sortable-column] {
   cursor: pointer;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  background-color: #f5f5f5;
+}

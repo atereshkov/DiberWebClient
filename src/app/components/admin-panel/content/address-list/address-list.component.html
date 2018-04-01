@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody *ngIf="!loading">
-    <tr *ngFor="let address of addresses">
+    <tr *ngFor="let address of addresses" (click)="openDetails(address)" class="pointer">
       <td>{{address.id}}</td>
       <td>{{address.userId}}</td>
       <td>{{address.country}}</td>

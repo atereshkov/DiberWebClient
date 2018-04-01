@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Address} from '../../../../models/address';
 import {AddressService} from '../../../../services/address.service';
 import {SortService} from '../../../../services/sort.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-address-list',
@@ -19,7 +20,7 @@ export class AddressListComponent implements OnInit {
 
   @Output() onAddressesLoaded: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private addressService: AddressService, private sortService: SortService) {
+  constructor(private addressService: AddressService, private sortService: SortService, private router: Router) {
     this.addresses = [];
   }
 
@@ -71,6 +72,12 @@ export class AddressListComponent implements OnInit {
   // TODO Logger
   logError(error) {
     console.error('Error: ' + error.message ? error.message : error.toString());
+  }
+
+  // Public Actions
+
+  public openDetails(address: Address) {
+    this.router.navigate(['/dashboard/admin/addresses', address.id]);
   }
 
 }

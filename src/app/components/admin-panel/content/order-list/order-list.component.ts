@@ -2,6 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Order} from '../../../../models/order';
 import {OrderService} from '../../../../services/order.service';
 import {SortService} from '../../../../services/sort.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-order-list',
@@ -19,7 +20,7 @@ export class OrderListComponent implements OnInit {
 
   @Output() onOrdersLoaded: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private orderService: OrderService, private sortService: SortService) {
+  constructor(private orderService: OrderService, private sortService: SortService, private router: Router) {
     this.orders = [];
   }
 
@@ -71,6 +72,12 @@ export class OrderListComponent implements OnInit {
   // TODO Logger
   logError(error) {
     console.error('Error: ' + error.message ? error.message : error.toString());
+  }
+
+  // Public Actions
+
+  public openDetails(order: Order) {
+    this.router.navigate(['/dashboard/admin/orders', order.id]);
   }
 
 }

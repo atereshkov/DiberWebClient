@@ -80,4 +80,8 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['/dashboard/admin/users/new']);
   }
 
+  public openDetails(user: User) {
+    this.router.navigate(['/dashboard/admin/users', user.id]);
+  }
+
 }

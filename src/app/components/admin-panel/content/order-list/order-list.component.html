@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <table class="table table-striped" sortable-table (sorted)="onSorted($event)">
+  <table class="table" sortable-table (sorted)="onSorted($event)">
     <thead class="thead-inverse">
     <tr>
       <th sortable-column="id" sort-direction="asc">#</th>
@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody *ngIf="!loading">
-    <tr *ngFor="let order of orders">
+    <tr *ngFor="let order of orders" (click)="openDetails(order)" class="pointer">
       <td>{{order.id}}</td>
       <td>{{order.status}}</td>
       <td>{{order.date * 1000 | date: 'short' }}</td>
