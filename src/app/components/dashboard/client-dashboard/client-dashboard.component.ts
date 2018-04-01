@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {StatisticsService} from '../../../services/statistics.service';
+import {UserAuthority} from '../../../helper/user.authority';
+import {User} from '../../../models/user';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientDashboardComponent implements OnInit {
 
-  constructor() { }
+  public totalOrders = 0;
+  public totalAddresses = 0;
+  public loading = false;
+
+  constructor(private statService: StatisticsService) { }
 
   ngOnInit() {
+    this.loadStatisticsData();
+  }
+
+  private loadStatisticsData() {
+    this.loading = true;
+
+    const user: User = UserAuthority.getCurrentUser();
+
+    this.statService.getClientStatistics(user.id)
+      .subscribe(
+        data => {
+          this.loading = false;
+          this.totalOrders = data.orders_count;
+          this.totalAddresses = data.addresses_count;
+        },
+        err => {
+          console.error(err);
+          this.loading = false;
+        }
+      );
   }
 
 }

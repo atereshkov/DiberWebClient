@@ -20,4 +20,11 @@ export class StatisticsService extends BaseService {
     });
   }
 
+  getClientStatistics(userId: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get(StatisticsService.STATISTICS_URL + '/' + userId, {
+      headers: headers
+    });
+  }
+
 }
