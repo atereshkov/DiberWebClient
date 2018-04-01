@@ -88,4 +88,8 @@ export class ClientAddressListComponent implements OnInit {
     this.router.navigate(['/dashboard/client/addresses', address.id, 'edit']);
   }
 
+  public openDetails(address: Address) {
+    this.router.navigate(['/dashboard/client/addresses', address.id]);
+  }
+
 }

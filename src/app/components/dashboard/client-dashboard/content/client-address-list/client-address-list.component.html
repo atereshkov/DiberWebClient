@@ -4,7 +4,7 @@
 
 <div class="table-responsive">
   <div style="margin-bottom: 0.5em"></div>
-  <table class="table table-striped" sortable-table (sorted)="onSorted($event)">
+  <table class="table" sortable-table (sorted)="onSorted($event)">
     <thead class="thead-inverse">
     <tr>
       <th sortable-column="name" sort-direction="asc">Name</th>
@@ -18,7 +18,7 @@
     </tr>
     </thead>
     <tbody *ngIf="!loading">
-    <tr *ngFor="let address of addresses">
+    <tr *ngFor="let address of addresses" (click)="openDetails(address)" class="pointer">
       <td>{{address.name}}</td>
       <td>{{address.country}}</td>
       <td>{{address.city}}</td>
