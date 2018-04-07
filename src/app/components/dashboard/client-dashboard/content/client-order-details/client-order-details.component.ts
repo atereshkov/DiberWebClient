@@ -15,6 +15,8 @@ export class ClientOrderDetailsComponent implements OnInit {
   private id: number;
   public loading = false;
 
+  private GOOGLE_MAPS_API_KEY = 'AIzaSyAC3tY0chS8_96_NMhHEvwVZc-xCAvpMXo';
+
   constructor(private orderService: OrderService, private router: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.id = parseInt(this.router.snapshot.paramMap.get('id'));
   }
@@ -35,8 +37,18 @@ export class ClientOrderDetailsComponent implements OnInit {
     const fromLon = this.order.addressFrom.longitude;
 
     const url = 'https://www.google.com/maps/embed/v1/directions' +
-      '?key=AIzaSyAC3tY0chS8_96_NMhHEvwVZc-xCAvpMXo&origin=' + toLat + ',' + toLon +
+      '?key=' + this.GOOGLE_MAPS_API_KEY + '&origin=' + toLat + ',' + toLon +
       '&destination=' + fromLat + ',' + fromLon + '&avoid=tolls';
+
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  public currentLocationURL() {
+    // TODO Current order location
+    // const location = this.order.location;
+
+    const url = 'https://www.google.com/maps/embed/v1/place?key=' + this.GOOGLE_MAPS_API_KEY + '&q=' +
+      'Space+Needle,Seattle+WA';
 
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
