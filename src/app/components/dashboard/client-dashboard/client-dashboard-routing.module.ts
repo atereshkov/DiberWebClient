@@ -9,6 +9,7 @@ import {ClientAddressAddComponent} from './content/client-address-add/client-add
 import {ClientOrderAddComponent} from './content/client-order-add/client-order-add.component';
 import {ClientOrderEditComponent} from './content/client-order-edit/client-order-edit.component';
 import {ClientAddressEditComponent} from './content/client-address-edit/client-address-edit.component';
+import {ClientOrderDetailsComponent} from './content/client-order-detaills/client-order-details.component';
 
 export const routes: Routes = [
   {
@@ -30,8 +31,13 @@ export const routes: Routes = [
         canActivate: [ClientGuard]
       },
       {
-        path: 'orders/new',
+        path: 'orders/add',
         component: ClientOrderAddComponent,
+        canActivate: [ClientGuard]
+      },
+      {
+        path: 'orders/:id',
+        component: ClientOrderDetailsComponent,
         canActivate: [ClientGuard]
       },
       {

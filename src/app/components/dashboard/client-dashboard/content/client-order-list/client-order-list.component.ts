@@ -80,11 +80,11 @@ export class ClientOrderListComponent implements OnInit {
   // Public Actions
 
   public newOrderClick() {
-    this.router.navigate(['/dashboard/client/orders/new']);
+    this.router.navigate(['/dashboard/client/orders/add']);
   }
 
   public editOrder(order: Order) {
-    // TODO if order.status != accepter or in progress
+    // TODO if order.status != accepted or in progress
     this.router.navigate(['/dashboard/client/orders', order.id, 'edit']);
   }
 
