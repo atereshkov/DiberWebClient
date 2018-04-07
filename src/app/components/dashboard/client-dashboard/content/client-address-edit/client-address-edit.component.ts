@@ -19,6 +19,7 @@ export class ClientAddressEditComponent implements OnInit {
   private formBuilder: FormBuilder;
 
   loading = false;
+  formLoading = false;
 
   constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router) {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -27,8 +28,10 @@ export class ClientAddressEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formLoading = true;
     this.addressService.getAddress(this.id)
       .subscribe((address: Address) => {
+        this.formLoading = false;
         this.address = address;
         this.loadAddressForm();
       });

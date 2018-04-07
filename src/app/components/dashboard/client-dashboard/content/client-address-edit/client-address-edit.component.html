@@ -10,8 +10,8 @@
               <div class="clearfix"></div>
             </div>
 
-            <form id="account-info-form" (ngSubmit)="updateAddress()" [formGroup]="addressDataForm" novalidate
-                  class="form-horizontal form-label-left">
+            <form *ngIf="!formLoading" id="account-info-form" (ngSubmit)="updateAddress()"
+                  [formGroup]="addressDataForm" novalidate class="form-horizontal form-label-left">
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" style="margin-top: 12px;">Name (home, work, etc)<span
                   class="required">*</span>
@@ -163,6 +163,13 @@
                 </div>
               </div>
             </form>
+
+            <div *ngIf="formLoading" class="form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                <app-loading-indicator
+                  [loading]="formLoading"></app-loading-indicator>
+              </div>
+            </div>
           </div>
         </div>
       </div>
