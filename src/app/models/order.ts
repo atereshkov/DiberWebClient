@@ -13,7 +13,8 @@ export class Order {
   customer: User;
   courier: User;
 
-  constructor(id: number, date: number, description: string, price: number, status: string, addressFrom: Address, addressTo: Address, customer: User, courier: User) {
+  constructor(id: number, date: number, description: string, price: number, status: string,
+              addressFrom: Address, addressTo: Address, customer: User, courier: User) {
     this.id = id;
     this.date = date;
     this.description = description;

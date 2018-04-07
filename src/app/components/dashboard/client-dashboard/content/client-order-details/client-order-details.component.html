@@ -1,3 +1,13 @@
-<p>
-  client-order-details works!
-</p>
+<div *ngIf="!loading" id="order-detail">
+
+  <h3>Order #{{order.id}}</h3>
+
+  <iframe
+    width="100%"
+    height="300"
+    frameborder="0" style="border:0"
+    [src]="addressURL()" allowfullscreen>
+  </iframe>
+
+
+</div>
