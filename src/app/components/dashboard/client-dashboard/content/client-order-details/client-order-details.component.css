@@ -1,0 +1,16 @@
+#maps_container {
+  text-align: center;
+}
+
+#maps_container > div {
+  display: inline-block;
+  width: 49%;
+}
+
+.left-map {
+  float: left;
+}
+
+.right-map {
+  float: right;
+}
