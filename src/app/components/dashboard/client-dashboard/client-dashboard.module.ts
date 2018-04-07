@@ -9,7 +9,7 @@ import {ClientAddressAddModule} from './content/client-address-add/client-addres
 import {ClientOrderAddModule} from './content/client-order-add/client-order-add.module';
 import {ClientOrderEditModule} from './content/client-order-edit/client-order-edit.module';
 import {ClientAddressEditModule} from './content/client-address-edit/client-address-edit.module';
-import {ClientOrderDetailsModule} from './content/client-order-detaills/client-order-details.module';
+import {ClientOrderDetailsModule} from './content/client-order-details/client-order-details.module';
 
 @NgModule({
   imports: [
