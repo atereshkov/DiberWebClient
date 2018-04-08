@@ -10,6 +10,7 @@ import {ClientOrderAddModule} from './content/client-order-add/client-order-add.
 import {ClientOrderEditModule} from './content/client-order-edit/client-order-edit.module';
 import {ClientAddressEditModule} from './content/client-address-edit/client-address-edit.module';
 import {ClientOrderDetailsModule} from './content/client-order-details/client-order-details.module';
+import {ClientSupportListModule} from './content/client-support-list/client-support-list.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {ClientOrderDetailsModule} from './content/client-order-details/client-or
     ClientOrderAddModule,
     ClientOrderEditModule,
     ClientAddressEditModule,
-    ClientOrderDetailsModule
+    ClientOrderDetailsModule,
+    ClientSupportListModule
   ],
   declarations: [
     ClientDashboardComponent
