@@ -38,7 +38,9 @@ export class ClientAddressAddComponent implements OnInit {
       region: this.addressDataForm.value.region,
       address: this.addressDataForm.value.address,
       phone: this.addressDataForm.value.phone,
-      userId: null
+      userId: null,
+      latitude: null,
+      longitude: null
     };
 
     const user: User = UserAuthority.getCurrentUser();

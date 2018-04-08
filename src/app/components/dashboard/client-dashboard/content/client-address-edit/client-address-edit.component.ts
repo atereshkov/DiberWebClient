@@ -50,7 +50,9 @@ export class ClientAddressEditComponent implements OnInit {
       region: this.addressDataForm.value.region,
       address: this.addressDataForm.value.address,
       phone: this.addressDataForm.value.phone,
-      userId: null
+      userId: null,
+      longitude: null,
+      latitude: null
     };
 
     this.addressService.updateAddress(user.id, address)
