@@ -1,3 +1,43 @@
-<p>
-  client-support-list works!
-</p>
+<div>
+  <button type="button" class="btn btn-secondary pull-left" (click)="newTicketClick();"><i class="fa fa-plus"></i> New</button>
+</div>
+
+<div class="table-responsive">
+  <div style="margin-bottom: 0.5em"></div>
+  <table class="table" sortable-table (sorted)="onSorted($event)">
+    <thead class="thead-inverse">
+    <tr>
+      <th sortable-column="id" sort-direction="asc">#</th>
+      <th sortable-column="status">Status</th>
+      <th sortable-column="title">Title</th>
+      <th sortable-column="date">Created</th>
+      <th sortable-column="price">Updated</th>
+      <th sortable-column="messages">Messages</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="!loading">
+    <tr *ngFor="let ticket of tickets" (click)="openDetails(ticket)" class="pointer">
+      <td>{{ticket.id}}</td>
+      <td>{{ticket.status}}</td>
+      <td>{{ticket.title}}</td>
+      <td>{{ticket.created_date * 1000 | date: 'short' }}</td>
+      <td>{{ticket.updated_date * 1000 | date: 'short' }}</td>
+      <td>{{ticket.messages.count}}</td>
+      <td>
+        <button (click)= "closeTicket(ticket)" class="btn btn-warning">Close</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <app-loading-indicator
+    [loading]="loading"></app-loading-indicator>
+  <app-pagination
+    (goPage)="goToPage($event)"
+    (goNext)="onNext()"
+    (goPrev)="onPrev()"
+    [pagesToShow]="5"
+    [page]="page"
+    [perPage]="limit"
+    [count]="total"></app-pagination>
+</div>

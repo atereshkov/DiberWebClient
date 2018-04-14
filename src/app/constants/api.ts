@@ -5,6 +5,7 @@ export const api = {
   REGISTER: 'api/v1/auth/register',
   ORDERS_ALL: 'api/v1/orders',
   ADDRESSES_ALL: 'api/v1/addresses',
+  TICKETS_ALL: 'api/v1/tickets',
   USERS_ALL: 'api/v1/users',
   STATISTICS: 'api/v1/statistics'
 };

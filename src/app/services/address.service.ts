@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {api} from '../constants/api';
 import {BaseService} from './base.service';
-import {Address} from "../models/address";
+import {Address} from '../models/address';
 
 @Injectable()
 export class AddressService extends BaseService {

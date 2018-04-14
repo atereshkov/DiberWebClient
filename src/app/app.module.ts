@@ -32,6 +32,7 @@ import {AdminSearchComponent} from './components/admin-panel/content/admin-searc
 import {HttpGlobalInterceptor} from './services/interceptors/http.global.interceptor';
 import {AuthInterceptor} from './services/interceptors/auth.interceptor';
 import {StatisticsService} from './services/statistics.service';
+import {TicketService} from "./services/ticket.service";
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import {StatisticsService} from './services/statistics.service';
     UserService,
     AddressService,
     StatisticsService,
+    TicketService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpGlobalInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, deps: [Router] }
   ],
