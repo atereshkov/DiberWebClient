@@ -1,0 +1,10 @@
+.block-buttons {
+  position: relative;
+}
+.block-buttons .btn-group {
+  width: 100%;
+}
+
+.block-buttons button {
+  width: 100%;
+}

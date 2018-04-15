@@ -11,6 +11,7 @@ import {ClientOrderEditComponent} from './content/client-order-edit/client-order
 import {ClientAddressEditComponent} from './content/client-address-edit/client-address-edit.component';
 import {ClientOrderDetailsComponent} from './content/client-order-details/client-order-details.component';
 import {ClientSupportListComponent} from './content/client-support-list/client-support-list.component';
+import {ClientSupportAddComponent} from './content/client-support-add/client-support-add.component';
 
 export const routes: Routes = [
   {
@@ -64,6 +65,11 @@ export const routes: Routes = [
       {
         path: 'support',
         component: ClientSupportListComponent,
+        canActivate: [ClientGuard]
+      },
+      {
+        path: 'support/add',
+        component: ClientSupportAddComponent,
         canActivate: [ClientGuard]
       }
     ]

@@ -1,5 +1,5 @@
 <div>
-  <button type="button" class="btn btn-secondary pull-left" (click)="newTicketClick();"><i class="fa fa-plus"></i> New</button>
+  <button type="button" class="btn btn-secondary pull-left" (click)="newOrderClick();"><i class="fa fa-plus"></i> New</button>
 </div>
 
 <div class="table-responsive">
@@ -12,7 +12,7 @@
       <th sortable-column="title">Title</th>
       <th sortable-column="date">Created</th>
       <th sortable-column="price">Updated</th>
-      <th sortable-column="messages">Messages</th>
+      <!--<th sortable-column="messages">Messages</th>-->
       <th>Action</th>
     </tr>
     </thead>
@@ -23,7 +23,7 @@
       <td>{{ticket.title}}</td>
       <td>{{ticket.created_date * 1000 | date: 'short' }}</td>
       <td>{{ticket.updated_date * 1000 | date: 'short' }}</td>
-      <td>{{ticket.messages.count}}</td>
+      <!--<td>{{ticket.messages.count}}</td>-->
       <td>
         <button (click)= "closeTicket(ticket)" class="btn btn-warning">Close</button>
       </td>

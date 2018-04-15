@@ -32,7 +32,7 @@ import {AdminSearchComponent} from './components/admin-panel/content/admin-searc
 import {HttpGlobalInterceptor} from './services/interceptors/http.global.interceptor';
 import {AuthInterceptor} from './services/interceptors/auth.interceptor';
 import {StatisticsService} from './services/statistics.service';
-import {TicketService} from "./services/ticket.service";
+import {TicketService} from './services/ticket.service';
 
 @NgModule({
   declarations: [
