@@ -12,6 +12,7 @@ export class ClientDashboardComponent implements OnInit {
 
   public totalOrders = 0;
   public totalAddresses = 0;
+  public totalTickets = 0;
   public loading = false;
 
   constructor(private statService: StatisticsService) { }
@@ -31,6 +32,7 @@ export class ClientDashboardComponent implements OnInit {
           this.loading = false;
           this.totalOrders = data.orders_count;
           this.totalAddresses = data.addresses_count;
+          this.totalTickets = data.tickets_count; // TODO change to only active ("In progress") tickets
         },
         err => {
           console.error(err);
