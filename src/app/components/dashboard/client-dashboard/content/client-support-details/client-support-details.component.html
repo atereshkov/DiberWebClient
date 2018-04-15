@@ -1,5 +1,12 @@
-<div *ngFor="let message of messages" class="card">
-  <div class="card-body">
-    {{ message.msg }}
+<div *ngIf="!loading">
+  <div *ngFor="let message of messages" class="card">
+    <div class="card-body">
+      {{ message.msg }}
+    </div>
   </div>
+</div>
+
+<div *ngIf="loading">
+  <app-loading-indicator
+    [loading]="loading"></app-loading-indicator>
 </div>
