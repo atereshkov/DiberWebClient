@@ -33,6 +33,7 @@ import {HttpGlobalInterceptor} from './services/interceptors/http.global.interce
 import {AuthInterceptor} from './services/interceptors/auth.interceptor';
 import {StatisticsService} from './services/statistics.service';
 import {TicketService} from './services/ticket.service';
+import {MessageService} from './services/message.service';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import {TicketService} from './services/ticket.service';
     AddressService,
     StatisticsService,
     TicketService,
+    MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpGlobalInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, deps: [Router] }
   ],

@@ -22,7 +22,7 @@
       <td>{{ticket.status}}</td>
       <td>{{ticket.title}}</td>
       <td>{{ticket.created_date * 1000 | date: 'short' }}</td>
-      <td>{{ticket.updated_date * 1000 | date: 'short' }}</td>
+      <td>{{ticket.updated_date * 1000 | timeAgo }}</td>
       <!--<td>{{ticket.messages.count}}</td>-->
       <td>
         <button (click)= "closeTicket(ticket)" class="btn btn-warning">Close</button>

@@ -12,6 +12,7 @@ import {ClientAddressEditComponent} from './content/client-address-edit/client-a
 import {ClientOrderDetailsComponent} from './content/client-order-details/client-order-details.component';
 import {ClientSupportListComponent} from './content/client-support-list/client-support-list.component';
 import {ClientSupportAddComponent} from './content/client-support-add/client-support-add.component';
+import {ClientSupportDetailsComponent} from './content/client-support-details/client-support-details.component';
 
 export const routes: Routes = [
   {
@@ -71,7 +72,12 @@ export const routes: Routes = [
         path: 'support/add',
         component: ClientSupportAddComponent,
         canActivate: [ClientGuard]
-      }
+      },
+      {
+        path: 'support/:id',
+        component: ClientSupportDetailsComponent,
+        canActivate: [ClientGuard]
+      },
     ]
   }
 ];
