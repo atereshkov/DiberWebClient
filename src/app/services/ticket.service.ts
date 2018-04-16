@@ -35,6 +35,13 @@ export class TicketService extends BaseService {
     });
   }
 
+  getAllUserTickets(userId: number): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.get('api/v1/users/' + userId + '/tickets/all', {
+      headers: headers
+    });
+  }
+
   createTicket(userId: number, ticket: Ticket): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.post('api/v1/users/' + userId + '/tickets', ticket, {

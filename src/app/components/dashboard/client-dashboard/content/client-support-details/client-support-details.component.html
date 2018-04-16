@@ -1,29 +1,13 @@
 <div *ngIf="!loading" id="ticket_container">
   <div class="left-block">
 
-    <div id="contacts">
-      <ul>
+    <div *ngIf="!ticketsLoading" id="contacts">
+      <ul *ngFor="let ticket of tickets" (click)="onTicketClick(ticket)">
         <li class="contact">
           <div class="wrap">
             <div class="meta">
-              <p class="name">Ticket 1</p>
-              <p class="preview">New</p>
-            </div>
-          </div>
-        </li>
-        <li class="contact active">
-          <div class="wrap">
-            <div class="meta">
-              <p class="name">Ticket 2</p>
-              <p class="preview">In progress</p>
-            </div>
-          </div>
-        </li>
-        <li class="contact">
-          <div class="wrap">
-            <div class="meta">
-              <p class="name">Ticket3</p>
-              <p class="preview">Closed</p>
+              <p class="name">{{ ticket.title }}</p>
+              <p class="preview">{{ ticket.status }}</p>
             </div>
           </div>
         </li>

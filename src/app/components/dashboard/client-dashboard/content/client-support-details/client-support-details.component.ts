@@ -17,6 +17,7 @@ export class ClientSupportDetailsComponent implements OnInit {
 
   public ticket: Ticket;
   public messages: Message[];
+  public tickets: Ticket[];
   private id: number;
 
   public ticketDataForm: FormGroup;
@@ -24,8 +25,10 @@ export class ClientSupportDetailsComponent implements OnInit {
 
   public loading = false;
   public msgLoading = false;
+  public ticketsLoading = false;
 
   constructor(private ticketService: TicketService, private messageService: MessageService, private router: ActivatedRoute) {
+    this.tickets = [];
     this.id = parseInt(this.router.snapshot.paramMap.get('id'));
     this.formBuilder = new FormBuilder();
     this.initializeEmptyForm();
@@ -42,6 +45,8 @@ export class ClientSupportDetailsComponent implements OnInit {
         this.ticket = ticket;
         this.loadMessages();
       });
+
+    this.loadTickets();
   }
 
   private loadMessages() {
@@ -55,6 +60,22 @@ export class ClientSupportDetailsComponent implements OnInit {
         err => {
           // TODO
           this.loading = false;
+        }
+      );
+  }
+
+  private loadTickets() {
+    this.ticketsLoading = true;
+    const user: User = UserAuthority.getCurrentUser();
+    this.ticketService.getAllUserTickets(user.id)
+      .subscribe(
+        data => {
+          this.tickets = data;
+          this.ticketsLoading = false;
+        },
+        err => {
+          // this.logError(err); // TODO
+          this.ticketsLoading = false;
         }
       );
   }
@@ -92,6 +113,10 @@ export class ClientSupportDetailsComponent implements OnInit {
   public isMyMessage(message: Message): boolean {
     const user: User = UserAuthority.getCurrentUser();
     return message.user.id === user.id;
+  }
+
+  public onTicketClick(ticket: Ticket) {
+    this.router.navigate(['/dashboard/client/support/', ticket.id]);
   }
 
 }

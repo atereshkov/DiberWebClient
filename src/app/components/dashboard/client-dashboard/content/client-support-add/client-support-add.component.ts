@@ -42,7 +42,7 @@ export class ClientSupportAddComponent implements OnInit {
     this.ticketService.createTicket(user.id, ticket)
       .subscribe(ticket => {
         this.loading = false;
-        this.router.navigate(['/dashboard/client/support/']);
+        this.router.navigate(['/dashboard/client/support/']); // TODO open newly created ticket
       }, error => {
         // TODO parse error (handle 400 bad request)
         this.loading = false;
