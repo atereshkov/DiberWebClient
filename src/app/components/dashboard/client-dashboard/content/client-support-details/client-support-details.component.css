@@ -59,7 +59,7 @@ textarea {
 /* Tickets Block */
 
 #contacts {
-  max-height: 493px;
+  max-height: 630px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -69,7 +69,7 @@ textarea {
 
 @media screen and (max-width: 735px) {
   #contacts {
-    max-height: 493px;
+    max-height: 630px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
