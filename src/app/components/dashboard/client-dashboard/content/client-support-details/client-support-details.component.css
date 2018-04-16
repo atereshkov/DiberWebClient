@@ -56,6 +56,119 @@ textarea {
   max-width: 205px;
 }
 
+/* Tickets Block */
+
+#contacts {
+  max-height: 493px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#contacts ul {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 735px) {
+  #contacts {
+    max-height: 493px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  #contacts::-webkit-scrollbar {
+    display: none;
+  }
+}
+#contacts::-webkit-scrollbar {
+  width: 8px;
+  background: #f3f3f3;
+}
+#contacts::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+}
+#contacts ul li.contact {
+  position: relative;
+  padding: 10px 0 15px 0;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+@media screen and (max-width: 735px) {
+  #contacts ul li.contact {
+    /*padding: 6px 0 46px 8px;*/
+  }
+}
+#contacts ul li.contact:hover {
+  background: #dddddd;
+}
+#contacts ul li.contact.active {
+  background: #dddddd;
+  border-right: 5px solid #435f7a;
+}
+#contacts ul li.contact.active span.contact-status {
+  border: 2px solid #3498db !important;
+}
+#contacts ul li.contact .wrap {
+  width: 88%;
+  margin: 0 auto;
+  position: relative;
+}
+@media screen and (max-width: 735px) {
+  #contacts ul li.contact .wrap {
+    width: 100%;
+  }
+}
+#contacts ul li.contact .wrap span {
+  position: absolute;
+  left: 0;
+  margin: -2px 0 0 -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #2c3e50;
+  background: #95a5a6;
+}
+#contacts ul li.contact .wrap img {
+  width: 40px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+@media screen and (max-width: 735px) {
+  #contacts ul li.contact .wrap img {
+    margin-right: 0;
+  }
+}
+#contacts ul li.contact .wrap .meta {
+  padding: 5px 0 0 0;
+}
+@media screen and (max-width: 735px) {
+  #contacts ul li.contact .wrap .meta {
+    display: none;
+  }
+}
+#contacts ul li.contact .wrap .meta .name {
+  font-weight: 600;
+}
+#contacts ul li.contact .wrap .meta .preview {
+  margin: 5px 0 0 0;
+  padding: 0 0 1px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -moz-transition: 1s all ease;
+  -o-transition: 1s all ease;
+  -webkit-transition: 1s all ease;
+  transition: 1s all ease;
+}
+#contacts ul li.contact .wrap .meta .preview span {
+  position: initial;
+  border-radius: initial;
+  background: none;
+  border: none;
+  padding: 0 2px 0 0;
+  margin: 0 0 0 1px;
+  opacity: .5;
+}
+
 /* Messages Block Chat */
 
 .messages {
