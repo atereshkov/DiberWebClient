@@ -9,7 +9,8 @@ import {AdminOverviewComponent} from './content/admin-overview/admin-overview.co
 import {AdminSearchComponent} from './content/admin-search/admin-search.component';
 import {AdminStatisticsComponent} from './content/admin-statistics/admin-statistics.component';
 import {AdminAnalyticsComponent} from './content/admin-analytics/admin-analytics.component';
-import {AdminUserAddComponent} from "./content/admin-user-add/admin-user-add.component";
+import {AdminUserAddComponent} from './content/admin-user-add/admin-user-add.component';
+import {AdminSupportListComponent} from './content/admin-support-list/admin-support-list.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,11 @@ export const routes: Routes = [
         path: 'overview',
         component: AdminOverviewComponent,
         canActivate: [AdminGuard],
+      },
+      {
+        path: 'support',
+        component: AdminSupportListComponent,
+        canActivate: [AdminGuard]
       },
       {
         path: 'orders',

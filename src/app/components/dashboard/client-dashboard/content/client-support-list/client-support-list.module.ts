@@ -5,7 +5,7 @@ import {LoadingIndicatorModule} from '../../../../common/loading-indicator/loadi
 import {SortableTableModule} from '../../../../common/sortable-table/sortable-column.module';
 import {RouterModule} from '@angular/router';
 import {ClientSupportListComponent} from './client-support-list.component';
-import {TimeAgoPipe} from 'time-ago-pipe';
+import {TimeAgoPipeModule} from '../../../../common/timeago-pipe-module/timeago-pipe.module';
 
 @NgModule({
   imports: [
@@ -13,11 +13,11 @@ import {TimeAgoPipe} from 'time-ago-pipe';
     LoadingIndicatorModule,
     PaginationModule,
     SortableTableModule,
-    RouterModule
+    RouterModule,
+    TimeAgoPipeModule
   ],
   declarations: [
-    ClientSupportListComponent,
-    TimeAgoPipe
+    ClientSupportListComponent
   ]
 })
 
