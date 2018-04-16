@@ -8,6 +8,7 @@ import {AddressListModule} from './content/address-list/address-list.module';
 import {AdminOverviewModule} from './content/admin-overview/admin-overview.module';
 import {AdminUserAddModule} from './content/admin-user-add/admin-user-add.module';
 import {AdminSupportListModule} from './content/admin-support-list/admin-support-list.module';
+import {AdminSupportDetailsModule} from './content/admin-support-details/admin-support-details.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {AdminSupportListModule} from './content/admin-support-list/admin-support
     AddressListModule,
     AdminOverviewModule,
     AdminUserAddModule,
-    AdminSupportListModule
+    AdminSupportListModule,
+    AdminSupportDetailsModule
   ],
   declarations: [
     AdminPanelComponent

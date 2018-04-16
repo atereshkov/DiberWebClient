@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {Ticket} from '../../../../../models/ticket';
-import {TicketService} from '../../../../../services/ticket.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Message} from '../../../../../models/message';
-import {MessageService} from '../../../../../services/message.service';
-import {User} from '../../../../../models/user';
-import {UserAuthority} from '../../../../../helper/user.authority';
+import {Message} from '../../../../models/message';
+import {Ticket} from '../../../../models/ticket';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {TicketService} from '../../../../services/ticket.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MessageService} from '../../../../services/message.service';
+import {UserAuthority} from '../../../../helper/user.authority';
+import {User} from '../../../../models/user';
 
 @Component({
-  selector: 'app-client-support-details',
-  templateUrl: './client-support-details.component.html',
-  styleUrls: ['./client-support-details.component.css']
+  selector: 'app-admin-support-details',
+  templateUrl: './admin-support-details.component.html',
+  styleUrls: ['./admin-support-details.component.css']
 })
-export class ClientSupportDetailsComponent implements OnInit {
+export class AdminSupportDetailsComponent implements OnInit {
 
   public ticket: Ticket;
   public messages: Message[];
-  public tickets: Ticket[];
   private id: number;
 
   public ticketDataForm: FormGroup;
@@ -25,11 +24,9 @@ export class ClientSupportDetailsComponent implements OnInit {
 
   public loading = false;
   public msgLoading = false;
-  public ticketsLoading = false;
 
   constructor(private ticketService: TicketService, private messageService: MessageService, private route: ActivatedRoute,
               private router: Router) {
-    this.tickets = [];
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.formBuilder = new FormBuilder();
     this.initializeEmptyForm();
@@ -46,8 +43,6 @@ export class ClientSupportDetailsComponent implements OnInit {
         this.ticket = ticket;
         this.loadMessages();
       });
-
-    this.loadTickets();
   }
 
   private loadMessages() {
@@ -61,22 +56,6 @@ export class ClientSupportDetailsComponent implements OnInit {
         err => {
           // TODO
           this.loading = false;
-        }
-      );
-  }
-
-  private loadTickets() {
-    this.ticketsLoading = true;
-    const user: User = UserAuthority.getCurrentUser();
-    this.ticketService.getAllUserTickets(user.id)
-      .subscribe(
-        data => {
-          this.tickets = data;
-          this.ticketsLoading = false;
-        },
-        err => {
-          // this.logError(err); // TODO
-          this.ticketsLoading = false;
         }
       );
   }

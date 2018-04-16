@@ -1,0 +1,67 @@
+<div *ngIf="!loading" id="ticket_container">
+  <div class="right-block">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ ticket.title }} > {{ ticket.status }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Created: {{ ticket.created_date | date: 'short' }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Updated: {{ ticket.updated_date | date: 'short' }}</h6>
+        <div class="text-right">
+          <a href="#" class="card-link">Close ticket</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="msg-group center">
+      <div class="messages">
+        <ul *ngFor="let message of messages">
+          <li *ngIf="!isMyMessage(message)" class="sent">
+            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+            <p>
+              <b>{{ message.user.fullname }}</b>:
+              <br>
+              {{ message.msg }}
+            </p>
+          </li>
+          <li *ngIf="isMyMessage(message)" class="replies">
+            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+            <p>
+              <b>You</b>:
+              <br>
+              {{ message.msg }}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="!msgLoading" class="msg-send center">
+      <form id="ticket-message-form" (ngSubmit)="sendMessage()" [formGroup]="ticketDataForm" novalidate
+            class="form-horizontal form-label-left">
+        <div class="input-group">
+            <textarea id="input-box" formControlName="message"
+                      class="form-control" rows="1" placeholder="Your message..."></textarea>
+          <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </span>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="msgLoading">
+      <app-loading-indicator
+        [loading]="msgLoading"></app-loading-indicator>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <app-loading-indicator
+    [loading]="loading"></app-loading-indicator>
+</div>
+
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script>
+  $(document).ready(function() {
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+  });
+</script>

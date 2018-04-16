@@ -34,7 +34,7 @@ import {AuthInterceptor} from './services/interceptors/auth.interceptor';
 import {StatisticsService} from './services/statistics.service';
 import {TicketService} from './services/ticket.service';
 import {MessageService} from './services/message.service';
-import { TimeagoPipeModuleComponent } from './components/common/timeago-pipe-module/timeago-pipe-module.component';
+import {TimeagoPipeModuleComponent} from './components/common/timeago-pipe-module/timeago-pipe-module.component';
 
 @NgModule({
   declarations: [

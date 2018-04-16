@@ -11,6 +11,7 @@ import {AdminStatisticsComponent} from './content/admin-statistics/admin-statist
 import {AdminAnalyticsComponent} from './content/admin-analytics/admin-analytics.component';
 import {AdminUserAddComponent} from './content/admin-user-add/admin-user-add.component';
 import {AdminSupportListComponent} from './content/admin-support-list/admin-support-list.component';
+import {AdminSupportDetailsComponent} from './content/admin-support-details/admin-support-details.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,11 @@ export const routes: Routes = [
       {
         path: 'support',
         component: AdminSupportListComponent,
+        canActivate: [AdminGuard]
+      },
+      {
+        path: 'support/:id',
+        component: AdminSupportDetailsComponent,
         canActivate: [AdminGuard]
       },
       {
