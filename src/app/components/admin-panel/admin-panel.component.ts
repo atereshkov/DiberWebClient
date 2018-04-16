@@ -11,6 +11,7 @@ export class AdminPanelComponent implements OnInit {
   totalOrders = 0;
   totalUsers = 0;
   totalAddresses = 0;
+  totalTickets = 0;
   loading = false;
 
   constructor(private statService: StatisticsService) {
@@ -29,6 +30,7 @@ export class AdminPanelComponent implements OnInit {
           this.totalOrders = data.orders_count;
           this.totalUsers = data.users_count;
           this.totalAddresses = data.addresses_count;
+          this.totalTickets = data.tickets_count; // TODO only in progress state
           console.log(data);
         },
         err => {
