@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Ticket} from '../../../../../models/ticket';
 import {TicketService} from '../../../../../services/ticket.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Message} from '../../../../../models/message';
 import {MessageService} from '../../../../../services/message.service';
 import {User} from '../../../../../models/user';
@@ -27,9 +27,10 @@ export class ClientSupportDetailsComponent implements OnInit {
   public msgLoading = false;
   public ticketsLoading = false;
 
-  constructor(private ticketService: TicketService, private messageService: MessageService, private router: ActivatedRoute) {
+  constructor(private ticketService: TicketService, private messageService: MessageService, private route: ActivatedRoute,
+              private router: Router) {
     this.tickets = [];
-    this.id = parseInt(this.router.snapshot.paramMap.get('id'));
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.formBuilder = new FormBuilder();
     this.initializeEmptyForm();
   }
