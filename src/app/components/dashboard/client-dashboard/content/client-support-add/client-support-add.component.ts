@@ -34,7 +34,8 @@ export class ClientSupportAddComponent implements OnInit {
       title: this.ticketDataForm.value.subject,
       status: null,
       created_date: null,
-      updated_date: null
+      updated_date: null,
+      user: null
     };
 
     const user: User = UserAuthority.getCurrentUser();

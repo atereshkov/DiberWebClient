@@ -4,6 +4,7 @@
     <thead class="thead-inverse">
     <tr>
       <th sortable-column="id" sort-direction="asc">#</th>
+      <th sortable-column="user">User ID</th>
       <th sortable-column="status">Status</th>
       <th sortable-column="title">Title</th>
       <th sortable-column="date">Created</th>
@@ -15,6 +16,7 @@
     <tbody *ngIf="!loading">
     <tr *ngFor="let ticket of tickets" (click)="openDetails(ticket)" class="pointer">
       <td>{{ticket.id}}</td>
+      <td>{{ticket.user.id}}</td>
       <td><span class="badge badge-primary">{{ticket.status}}</span></td>
       <td>{{ticket.title}}</td>
       <td>{{ticket.created_date * 1000 | date: 'short' }}</td>
