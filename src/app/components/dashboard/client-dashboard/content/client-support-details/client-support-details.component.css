@@ -14,12 +14,12 @@
 .msg-send {
   position: static;
   bottom: 0;
-  height: 80px;
+  height: 70px;
   margin-bottom: 16px;
 }
 
 textarea {
-  height: 80px;
+  height: 70px;
 }
 
 .card {
@@ -37,15 +37,17 @@ textarea {
 
 #ticket_container > div {
   display: inline-block;
-  width: 49%;
+  /*width: 49%;*/
 }
 
 .left-block {
   float: left;
+  width: 30%;;
 }
 
 .right-block {
   float: right;
+  width: 70%;
 }
 
 .card-body li p {
