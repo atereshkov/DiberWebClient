@@ -20,7 +20,7 @@
                   <input type="text" formControlName="subject" class="form-control" style="margin-bottom: 10px;">
                   <div *ngIf="ticketDataForm.get('subject').hasError('required') && ticketDataForm.get('subject').touched">
                     <div class="alert alert-danger alert-dismissable">
-                      Name is required
+                      Subject field is required
                     </div>
                   </div>
                   <div *ngIf="ticketDataForm.get('subject').hasError('minlength') && ticketDataForm.get('subject').touched">
@@ -40,7 +40,7 @@
                             placeholder="Describe your question or problem.." required></textarea>
                   <div *ngIf="ticketDataForm.get('message').hasError('required') && ticketDataForm.get('message').touched">
                     <div class="alert alert-danger alert-dismissable">
-                      Country is required
+                      Message field is required
                     </div>
                   </div>
                   <div *ngIf="ticketDataForm.get('message').hasError('minlength') && ticketDataForm.get('message').touched">

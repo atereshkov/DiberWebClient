@@ -1,5 +1,5 @@
 <div>
-  <button type="button" class="btn btn-secondary pull-left" (click)="newOrderClick();"><i class="fa fa-plus"></i> New</button>
+  <button type="button" class="btn btn-secondary pull-left" (click)="newTicketClick();"><i class="fa fa-plus"></i> New</button>
 </div>
 
 <div class="table-responsive">
@@ -19,7 +19,7 @@
     <tbody *ngIf="!loading">
     <tr *ngFor="let ticket of tickets" (click)="openDetails(ticket)" class="pointer">
       <td>{{ticket.id}}</td>
-      <td>{{ticket.status}}</td>
+      <td><span class="badge badge-primary">{{ticket.status}}</span></td>
       <td>{{ticket.title}}</td>
       <td>{{ticket.created_date * 1000 | date: 'short' }}</td>
       <td>{{ticket.updated_date * 1000 | timeAgo }}</td>
