@@ -1,12 +1,36 @@
-<div *ngIf="!loading">
-  <div *ngFor="let message of messages" class="card">
-    <div class="card-body">
-      {{ message.msg }}
+<div class="container-flude">
+  <div class="msg-group center">
+    <div *ngIf="!loading">
+      <div *ngFor="let message of messages" class="card">
+        <div *ngIf="!isMyMessage(message)" class="card-body">
+          <b>{{ message.user.fullname }}</b> – {{ message.created_date * 1000 | date: 'short' }}:<br>
+          {{ message.msg }}
+        </div>
+        <div *ngIf="isMyMessage(message)" class="card-body text-right">
+          <b>{{ message.user.fullname }}</b> – {{ message.created_date * 1000 | date: 'short' }}:<br>
+          {{ message.msg }}
+        </div>
+      </div>
+
+      <form id="ticket-message-form" (ngSubmit)="sendMessage()" [formGroup]="ticketDataForm" novalidate
+            class="form-horizontal form-label-left">
+        <div class="input-group">
+          <textarea id="input-box" formControlName="message"
+                    class="form-control" rows="1" placeholder="Your message..."></textarea>
+          <span *ngIf="!msgLoading" class="input-group-btn">
+            <button type="submit" class="btn btn-secondary">Send</button>
+          </span>
+          <div *ngIf="msgLoading">
+            <app-loading-indicator
+              [loading]="msgLoading"></app-loading-indicator>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="loading">
+      <app-loading-indicator
+        [loading]="loading"></app-loading-indicator>
     </div>
   </div>
-</div>
-
-<div *ngIf="loading">
-  <app-loading-indicator
-    [loading]="loading"></app-loading-indicator>
 </div>

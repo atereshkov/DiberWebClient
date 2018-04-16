@@ -1,0 +1,15 @@
+.center {
+  /* this will keep the content center */
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.msg-group {
+  /*max-width: 720px;*/
+  overflow-y: scroll;  /*if the content beyond width and height, use the scrollbar*/
+}
+
+.card {
+  padding: 10px 10px 10px 10px;
+}
