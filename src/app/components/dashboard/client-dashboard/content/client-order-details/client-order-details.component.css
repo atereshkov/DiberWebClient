@@ -14,3 +14,15 @@
 .right-map {
   float: right;
 }
+
+#block_container > div {
+  display: inline-block;
+}
+
+.block1 {
+  float: left;
+}
+
+.block2 {
+  float: right;
+}
