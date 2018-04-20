@@ -30,6 +30,15 @@ export class ClientOrderDetailsComponent implements OnInit {
       });
   }
 
+  public orderIsInProgress() {
+    return this.order.status === 'In progress';
+  }
+
+  public orderHasRequests() {
+    // TODO complete this (check order requests)
+    return this.order.status === 'New';
+  }
+
   public addressURL() {
     const toLat = this.order.addressTo.latitude;
     const toLon = this.order.addressTo.longitude;
