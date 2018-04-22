@@ -3,7 +3,8 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {api} from '../constants/api';
 import {BaseService} from './base.service';
-import {Order} from "../models/order";
+import {Order} from '../models/order';
+import {OrderStatus} from '../models/dto/order-status';
 
 @Injectable()
 export class OrderService extends BaseService {
@@ -46,6 +47,13 @@ export class OrderService extends BaseService {
   updateOrder(order: Order): Observable<any> {
     const headers = this.getBearerHeaders();
     return this.http.put('api/v1/orders', order, {
+      headers: headers
+    });
+  }
+
+  acceptOrder(order: Order, status: OrderStatus): Observable<any> {
+    const headers = this.getBearerHeaders();
+    return this.http.put('api/v1/orders/' + order.id + '/status', status, {
       headers: headers
     });
   }

@@ -6,9 +6,9 @@
     </div>
     <div class="col-md-6">
       <button type="button" class="btn btn-info">Info</button>
-      <button *ngIf="!orderIsInProgress()" type="button" class="btn btn-warning">Edit</button>
-      <button type="button" class="btn btn-primary">Close</button>
-      <button type="button" class="btn btn-success">Accept</button>
+      <button *ngIf="!orderIsInProgress()" type="button" class="btn btn-warning" (click)="editOrderClick();">Edit</button>
+      <!--<button type="button" class="btn btn-primary">Close</button>-->
+      <button *ngIf="orderIsDelivered()" type="button" class="btn btn-success" (click)="acceptOrderClick();">Accept</button>
     </div>
   </div>
 

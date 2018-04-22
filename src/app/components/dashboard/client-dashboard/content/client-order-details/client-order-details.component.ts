@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Order} from '../../../../../models/order';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {OrderService} from '../../../../../services/order.service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {OrderStatus} from '../../../../../models/dto/order-status';
 
 @Component({
   selector: 'app-client-order-details',
@@ -17,11 +18,16 @@ export class ClientOrderDetailsComponent implements OnInit {
 
   private GOOGLE_MAPS_API_KEY = 'AIzaSyAC3tY0chS8_96_NMhHEvwVZc-xCAvpMXo';
 
-  constructor(private orderService: OrderService, private router: ActivatedRoute, private sanitizer: DomSanitizer) {
-    this.id = parseInt(this.router.snapshot.paramMap.get('id'));
+  constructor(private orderService: OrderService, private route: ActivatedRoute,
+              private router: Router, private sanitizer: DomSanitizer) {
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit() {
+    this.loadOrderData();
+  }
+
+  private loadOrderData() {
     this.loading = true;
     this.orderService.getOrder(this.id)
       .subscribe((order: Order) => {
@@ -30,13 +36,38 @@ export class ClientOrderDetailsComponent implements OnInit {
       });
   }
 
+  private acceptOrderRequest(order: Order, status: OrderStatus) {
+    this.loading = true;
+    this.orderService.acceptOrder(order, status)
+      .subscribe((order: Order) => {
+        this.loading = false;
+        this.loadOrderData();
+      });
+  }
+
   public orderIsInProgress() {
     return this.order.status === 'In progress';
+  }
+
+  public orderIsDelivered() {
+    return this.order.status === 'Delivered';
   }
 
   public orderHasRequests() {
     // TODO complete this (check order requests)
     return this.order.status === 'New';
+  }
+
+  // Public Actions
+
+  public acceptOrderClick() {
+    const orderStatus: OrderStatus = new OrderStatus('Completed');
+    this.acceptOrderRequest(this.order, orderStatus);
+  }
+
+  public editOrderClick() {
+    // TODO if order.status != accepted or in progress
+    this.router.navigate(['/dashboard/client/orders', this.order.id, 'edit']);
   }
 
   public addressURL() {
