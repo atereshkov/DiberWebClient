@@ -48,6 +48,9 @@
           </li>
         </ul>
       </div>
+      <div *ngIf="messages.length == 0">
+        <h6 class="text-muted text-center" style="margin-top: 8px;">No messages...</h6>
+      </div>
     </div>
 
     <div *ngIf="!msgLoading" class="msg-send center">
