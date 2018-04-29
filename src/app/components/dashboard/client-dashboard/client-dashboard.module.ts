@@ -13,6 +13,7 @@ import {ClientOrderDetailsModule} from './content/client-order-details/client-or
 import {ClientSupportListModule} from './content/client-support-list/client-support-list.module';
 import {ClientSupportAddModule} from './content/client-support-add/client-support-add.module';
 import {ClientSupportDetailsModule} from './content/client-support-details/client-support-details.module';
+import {ClientAddressDetailsModule} from './content/client-address-details/client-address-details.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {ClientSupportDetailsModule} from './content/client-support-details/clien
     ClientOrderDetailsModule,
     ClientSupportListModule,
     ClientSupportAddModule,
-    ClientSupportDetailsModule
+    ClientSupportDetailsModule,
+    ClientAddressDetailsModule
   ],
   declarations: [
     ClientDashboardComponent

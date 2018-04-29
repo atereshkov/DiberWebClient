@@ -1,3 +1,36 @@
-<p>
-  client-address-details works!
-</p>
+<div *ngIf="!loading" id="order-detail">
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>{{address.name}}</h3>
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-warning" (click)="editAddressClick();">Edit</button>
+      <button type="button" class="btn btn-danger" (click)="removeAddressClick();">Remove</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      {{ address.address }}, {{ address.city }}, {{ address.country }}, {{ address.postalCode }}
+      <br>
+      {{ address.phone }}
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <iframe
+      width="100%"
+      height="300"
+      frameborder="0" style="border:0"
+      [src]="addressURL()" allowfullscreen>
+    </iframe>
+  </div>
+
+</div>
+
+<div *ngIf="loading">
+  <app-loading-indicator [loading]="loading"></app-loading-indicator>
+</div>
