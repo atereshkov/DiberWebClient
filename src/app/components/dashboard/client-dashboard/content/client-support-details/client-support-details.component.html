@@ -1,76 +1,76 @@
-<div *ngIf="!loading" id="ticket_container">
-  <div class="left-block">
-
-    <div *ngIf="!ticketsLoading" id="contacts">
-      <ul *ngFor="let ticket of tickets" (click)="onTicketClick(ticket)">
-        <li class="contact">
-          <div class="wrap">
-            <div class="meta">
-              <p class="name">{{ ticket.title }}</p>
-              <p class="preview">{{ ticket.status }}</p>
+<div *ngIf="!loading">
+  <div class="row">
+    <div class="col-md-4">
+      <div *ngIf="!ticketsLoading" id="contacts">
+        <ul *ngFor="let ticket of tickets" (click)="onTicketClick(ticket)">
+          <li class="contact">
+            <div class="wrap">
+              <div class="meta">
+                <p class="name">{{ ticket.title }}</p>
+                <p class="preview">{{ ticket.status }}</p>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-  <div class="right-block">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ ticket.title }} > {{ ticket.status }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Created: {{ ticket.created_date | date: 'short' }}</h6>
-        <h6 class="card-subtitle mb-2 text-muted">Updated: {{ ticket.updated_date | date: 'short' }}</h6>
-        <div class="text-right">
-          <a href="#" class="card-link">Close ticket</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="msg-group center">
-      <div class="messages">
-        <ul *ngFor="let message of messages">
-          <li *ngIf="!isMyMessage(message)" class="sent">
-            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-            <p>
-              <b>{{ message.user.fullname }}</b>:
-              <br>
-              {{ message.msg }}
-            </p>
-          </li>
-          <li *ngIf="isMyMessage(message)" class="replies">
-            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-            <p>
-              <b>You</b>:
-              <br>
-              {{ message.msg }}
-            </p>
           </li>
         </ul>
       </div>
-      <div *ngIf="messages.length == 0">
-        <h6 class="text-muted text-center" style="margin-top: 8px;">No messages...</h6>
-      </div>
     </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ ticket.title }} > {{ ticket.status }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Created: {{ ticket.created_date | date: 'short' }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Updated: {{ ticket.updated_date | date: 'short' }}</h6>
+          <div class="text-right">
+            <a href="#" class="card-link">Close ticket</a>
+          </div>
+        </div>
+      </div>
 
-    <div *ngIf="!msgLoading" class="msg-send center">
-      <form id="ticket-message-form" (ngSubmit)="sendMessage()" [formGroup]="ticketDataForm" novalidate
-            class="form-horizontal form-label-left">
-        <div class="input-group">
+      <div class="msg-group center">
+        <div class="messages">
+          <ul *ngFor="let message of messages">
+            <li *ngIf="!isMyMessage(message)" class="sent">
+              <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+              <p>
+                <b>{{ message.user.fullname }}</b>:
+                <br>
+                {{ message.msg }}
+              </p>
+            </li>
+            <li *ngIf="isMyMessage(message)" class="replies">
+              <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+              <p>
+                <b>You</b>:
+                <br>
+                {{ message.msg }}
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="messages.length == 0">
+          <h6 class="text-muted text-center" style="margin-top: 8px;">No messages...</h6>
+        </div>
+      </div>
+
+      <div *ngIf="!msgLoading" class="msg-send center">
+        <form id="ticket-message-form" (ngSubmit)="sendMessage()" [formGroup]="ticketDataForm" novalidate
+              class="form-horizontal form-label-left">
+          <div class="input-group">
             <textarea id="input-box" formControlName="message"
                       class="form-control" rows="1" placeholder="Your message..."></textarea>
-          <span class="input-group-btn">
+            <span class="input-group-btn">
           <button type="submit" class="btn btn-primary">Send</button>
         </span>
-        </div>
-      </form>
-    </div>
+          </div>
+        </form>
+      </div>
 
-    <div *ngIf="msgLoading">
-      <app-loading-indicator
-        [loading]="msgLoading"></app-loading-indicator>
-    </div>
+      <div *ngIf="msgLoading">
+        <app-loading-indicator
+          [loading]="msgLoading"></app-loading-indicator>
+      </div>
 
+    </div>
   </div>
 </div>
 
