@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!loading" class="container">
   <div class="row profile">
     <div class="col-md-3">
       <div class="profile-sidebar">
@@ -42,3 +42,8 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="loading">
+  <app-loading-indicator [loading]="loading"></app-loading-indicator>
+</div>
+
