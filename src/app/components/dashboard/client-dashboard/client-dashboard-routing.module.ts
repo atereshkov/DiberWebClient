@@ -55,11 +55,6 @@ export const routes: Routes = [
         canActivate: [ClientGuard]
       },
       {
-        path: 'addresses/:id',
-        component: ClientAddressDetailsComponent,
-        canActivate: [ClientGuard]
-      },
-      {
         path: 'addresses/new',
         component: ClientAddressAddComponent,
         canActivate: [ClientGuard]
@@ -67,6 +62,11 @@ export const routes: Routes = [
       {
         path: 'addresses/:id/edit',
         component: ClientAddressEditComponent,
+        canActivate: [ClientGuard]
+      },
+      {
+        path: 'addresses/:id',
+        component: ClientAddressDetailsComponent,
         canActivate: [ClientGuard]
       },
       {
