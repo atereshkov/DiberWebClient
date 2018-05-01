@@ -14,6 +14,8 @@ import {ClientSupportListComponent} from './content/client-support-list/client-s
 import {ClientSupportAddComponent} from './content/client-support-add/client-support-add.component';
 import {ClientSupportDetailsComponent} from './content/client-support-details/client-support-details.component';
 import {ClientAddressDetailsComponent} from './content/client-address-details/client-address-details.component';
+import {ClientSearchComponent} from './content/client-search/client-search.component';
+import {ClientAnalyticsComponent} from './content/client-analytics/client-analytics.component';
 
 export const routes: Routes = [
   {
@@ -84,6 +86,16 @@ export const routes: Routes = [
         component: ClientSupportDetailsComponent,
         canActivate: [ClientGuard]
       },
+      {
+        path: 'search',
+        component: ClientSearchComponent,
+        canActivate: [ClientGuard]
+      },
+      {
+        path: 'analytics',
+        component: ClientAnalyticsComponent,
+        canActivate: [ClientGuard]
+      }
     ]
   }
 ];

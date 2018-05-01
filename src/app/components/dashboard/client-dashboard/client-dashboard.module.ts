@@ -14,6 +14,8 @@ import {ClientSupportListModule} from './content/client-support-list/client-supp
 import {ClientSupportAddModule} from './content/client-support-add/client-support-add.module';
 import {ClientSupportDetailsModule} from './content/client-support-details/client-support-details.module';
 import {ClientAddressDetailsModule} from './content/client-address-details/client-address-details.module';
+import {ClientSearchModule} from './content/client-search/client-search.module';
+import {ClientAnalyticsModule} from './content/client-analytics/client-analytics.module';
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import {ClientAddressDetailsModule} from './content/client-address-details/clien
     ClientSupportListModule,
     ClientSupportAddModule,
     ClientSupportDetailsModule,
-    ClientAddressDetailsModule
+    ClientAddressDetailsModule,
+    ClientSearchModule,
+    ClientAnalyticsModule
   ],
   declarations: [
     ClientDashboardComponent
