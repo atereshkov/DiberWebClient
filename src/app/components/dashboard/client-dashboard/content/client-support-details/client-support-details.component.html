@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-4">
       <div *ngIf="!ticketsLoading" id="contacts">
-        <ul *ngFor="let ticket of tickets" (click)="onTicketClick(ticket)">
-          <li class="contact">
+        <ul>
+          <li *ngFor="let ticket of tickets" [ngClass]="{'active': id == ticket.id}" (click)="onTicketClick(ticket)" class="contact">
             <div class="wrap">
               <div class="meta">
                 <p class="name">{{ ticket.title }}</p>
