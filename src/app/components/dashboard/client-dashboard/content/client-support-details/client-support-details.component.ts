@@ -36,6 +36,10 @@ export class ClientSupportDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadTicket();
+  }
+
+  private loadTicket() {
     this.loading = true;
 
     const user: User = UserAuthority.getCurrentUser();
@@ -118,6 +122,9 @@ export class ClientSupportDetailsComponent implements OnInit {
 
   public onTicketClick(ticket: Ticket) {
     this.router.navigate(['/dashboard/client/support/', ticket.id]);
+
+    this.id = ticket.id;
+    this.loadTicket();
   }
 
 }
