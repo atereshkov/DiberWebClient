@@ -88,7 +88,7 @@ export class ClientOrderDetailsComponent implements OnInit {
     // const location = this.order.location;
 
     const url = 'https://www.google.com/maps/embed/v1/place?key=' + this.GOOGLE_MAPS_API_KEY + '&q=' +
-      'Space+Needle,Seattle+WA';
+      'Lida,Belarus';
 
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
